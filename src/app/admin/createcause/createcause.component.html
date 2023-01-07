@@ -1,0 +1,57 @@
+<section>
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                <h3 class="text-center">Contact us</h3>
+                <form [formGroup]="CreateForm" role="form" id="contact-form" method="post" autocomplete="off">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-label>cause name </mat-label>
+                                <div class="input-group mb-4">
+                                    <input class="form-control" matInput formControlName="categoryname"  placeholder="" type="text">
+                                  
+                                    <mat-error *ngIf="CreateForm.controls['categoryname'].hasError( 'required') ">
+                                        cause name is <strong>required</strong>
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="mb-4 ">
+                                <label>cause image</label>
+                                <div class="input-group ">
+                                    <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" class="form-control " >
+                                </div>
+                            </div>
+                            <div class="col-md-6 ps-2 ">
+
+                                <mat-label>cause description</mat-label>
+                                <div class="input-group ">
+                                    <input type="text " matInput formControlName="categoryDesc" class="form-control " placeholder=" " aria-label="Last Name... ">
+                                    <mat-error *ngIf="CreateForm.controls['categoryDesc'].hasError('required') ">
+                                        cause description is <strong>required</strong>
+                                    </mat-error>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ps-2 ">
+
+                                <mat-label>cause paragraph</mat-label>
+                                <div class="input-group ">
+                                    <input type="text " matInput formControlName="categoryParagraph" class="form-control " placeholder=" " aria-label="Last Name... ">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <button type="submit " class="btn bg-gradient-dark w-100 " (click)="createcause()">create cause</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

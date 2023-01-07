@@ -1,0 +1,5 @@
+.scrollable {
+    overflow: scroll;
+    width: 410px;
+    height: 410px;
+}

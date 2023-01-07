@@ -1,0 +1,20 @@
+.input{
+  width: 80%;
+  border: 0;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.col-12{
+  display: flex;
+  justify-content: space-between;
+}
+
+.error{
+  text-transform: capitalize;
+    position: absolute;
+    right: 28%;
+    color: red;
+    font-weight: 100;
+}

@@ -1,0 +1,17 @@
+.div{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.h3{
+  text-align: center;
+  padding-top: 17px;  font-family: 'Font Awesome 5 Pro';   font-weight: bold;     font-size: 18px;
+  letter-spacing: 1px;
+}
+.input{
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    width: 76%;
+    border: 0;
+    border-radius: 1px;
+}

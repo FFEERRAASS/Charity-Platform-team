@@ -1,0 +1,139 @@
+<div id="body" class="g-sidenav-show  bg-gray-100  ">
+
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " id="sidenav-main">
+    <app-headerandfooter></app-headerandfooter>
+  </aside>
+
+
+
+
+
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <app-sidebar></app-sidebar>
+
+    <div class="container-fluid py-4" style="display: flex;
+    justify-content: center;">
+
+  <div class="row">
+
+     
+  </div>
+
+  <div class="col-md-9 mt-7" style="align-content: center;" >
+      <div class="card"    >
+        <div class="card-header pb-0 px-3">
+          <h6 class="mb-0">Incoming contact messages</h6>
+          <div *ngIf="home.contact  !== null">
+            <br>
+            <h5>No incomming contacts</h5>
+          </div>
+        </div>
+        <div class="card-body pt-4 p-3 ">
+          <ul class="list-group"  *ngFor="let obj of home.contact  ">
+            <li  class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">{{obj.email}}</h6>
+                <span class="mb-2 text-xs">subject: <span class="text-dark font-weight-bold ms-sm-2">{{obj.subject}}</span></span>
+                <span class="mb-2 text-xs">phonenumber: <span class="text-dark ms-sm-2 font-weight-bold">{{obj.phonenumber}}</span></span>
+                <span class="text-xs">message: <span class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                <span class="text-dark ms-sm-2 font-weight-bold" style="width:500px;">{{obj.msg}}</span>
+              </div>
+              <div class="ms-auto text-end" style="    justify-content: center;
+              display: flex;
+              align-items: center;">
+                <button type="button" (click)="DeleteFun(obj.contactid)" class="btn bg-gradient-primary btn-sm me-2" style="height: 40px;">delete</button>
+             
+              </div>
+            </li>
+            <!-- <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">Lucas Harper</h6>
+                <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Stone Tech Zone</span></span>
+                <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>
+                <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+              </div>
+              <div class="ms-auto text-end">
+                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+              </div>
+            </li>
+            <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">Ethan James</h6>
+                <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>
+                <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>
+                <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+              </div>
+              <div class="ms-auto text-end">
+                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  <!-- <button type="button" (click)="createcause()" class="btn bg-gradient-primary btn-sm me-2">create cause</button>
+
+  <ng-template #callDeleteDialog>
+      <h3>Are you Sure?</h3>
+      <button mat-dialog-close="yes" type="button" class="btn bg-gradient-primary btn-sm me-2">yes</button>
+      <button mat-dialog-close="no" type="button" class="btn bg-gradient-primary btn-sm me-2">no</button>
+  </ng-template> -->
+
+
+  <ng-template #callUpdateDialog>
+      <section>
+          <div class="container py-4">
+              <div class="row">
+                  <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                      <h3 class="text-center">Contact us</h3>
+                      <!-- <form [formGroup]="updateForm" role="form" id="contact-form" method="post" autocomplete="off">
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <mat-label>cause name </mat-label>
+                                      <div class="input-group mb-4">
+                                          <input class="form-control" matInput formControlName="categoryname" [(ngModel)]="p_data.categoryname" type="text">
+
+                                      </div>
+                                  </div>
+                                  <div class="mb-4 ">
+                                      <label>cause image</label>
+                                      <div class="input-group ">
+                                          <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" [(ngModel)]="p_data.categoryimage" class="form-control">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6 ps-2 ">
+
+                                      <mat-label>cause description</mat-label>
+                                      <div class="input-group ">
+                                          <input type="text" matInput formControlName="categoryDesc" [(ngModel)]="p_data.categoryDesc" class="form-control">
+
+                                      </div>
+                                  </div>
+
+                                  <div class="col-md-6 ps-2 ">
+
+                                      <mat-label>cause paragraph</mat-label>
+                                      <div class="input-group ">
+                                          <input type="text" matInput formControlName="categoryParagraph" [(ngModel)]="p_data.categoryParagraph" class="form-control">
+
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                              <div class="row ">
+                                  <div class="col-md-12 ">
+                                      <button type="submit" class="btn bg-gradient-dark w-100 " (click)="updatecause()">update cause</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </form> -->
+                  </div>
+              </div>
+          </div>
+      </section>
+  </ng-template>
