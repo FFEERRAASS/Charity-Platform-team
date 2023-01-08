@@ -125,7 +125,6 @@ export class HomeService {
     })
   }
   getDonation() {
-    debugger;
     this.http.get('https://localhost:44324/api/Donation/getAllDonation').subscribe((response) => {
       this.alldonation = response;
       this.backup = response;

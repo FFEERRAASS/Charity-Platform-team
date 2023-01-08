@@ -1,6 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { AdminService } from 'src/app/services/admin.service';
 import { HomeService } from 'src/app/services/home.service';
 
 @Component({
@@ -13,7 +16,7 @@ import { HomeService } from 'src/app/services/home.service';
 
 export class DonationsreportComponent implements OnInit  {
 
-  constructor(public home :HomeService , public pipe : DatePipe){}
+  constructor(public home :HomeService , public pipe : DatePipe ,public admin:AdminService){}
 
   searchForm:FormGroup=new FormGroup({
     date1:new FormControl(),
@@ -23,13 +26,16 @@ export class DonationsreportComponent implements OnInit  {
   
 
   ngOnInit(): void {
-
+    this.admin.getgeneralreport();
     this.home.getDonation()
-    debugger;
   }
 
-  downloadTableAsExcel(){
-  
+  DownloadData(){
+    const doc = new jsPDF()
+    
+    autoTable(doc, { html: '#my-table' ,theme:'grid',startY:2,margin:{horizontal:10},pageBreak:'auto',rowPageBreak:'avoid',columnStyles: {0: {cellWidth: 22, minCellHeight: 25},1: {cellWidth: 22},2: {cellWidth: 22},3: {cellWidth: 25},4: {cellWidth: 20},5: {cellWidth: 20}}})
+    
+    doc.save('table.pdf')
   }
 
   searchindoniation(){

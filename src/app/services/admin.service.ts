@@ -13,8 +13,15 @@ export class AdminService {
   display_Image2: any;
   display_Image: any;
   causes: any = [];
+  generalreport:any={}
 
   About: any = [];
+
+  getgeneralreport(){
+    this.http.get('https://localhost:44324/api/Report/GetGeneralReport').subscribe((result:any)=>{
+      this.generalreport=result;
+    })
+  }
   deleteCourse(id: number) {
     this.http.delete('https://localhost:44324/api/Category/DeleteCategory/' + id).subscribe((result) => {
       alert('delete succeful');

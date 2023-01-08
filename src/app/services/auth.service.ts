@@ -39,7 +39,6 @@ export class AuthService {
       let user: any = jwt_decode(responce.token);
       console.log(user);
 
-      debugger;
       localStorage.setItem('user', JSON.stringify({ ...user }));
       let x: number = 1;
 
