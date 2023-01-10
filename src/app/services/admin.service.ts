@@ -13,13 +13,13 @@ export class AdminService {
   display_Image2: any;
   display_Image: any;
   causes: any = [];
-  generalreport:any={}
+  generalreport: any = {}
 
   About: any = [];
 
-  getgeneralreport(){
-    this.http.get('https://localhost:44324/api/Report/GetGeneralReport').subscribe((result:any)=>{
-      this.generalreport=result;
+  getgeneralreport() {
+    this.http.get('https://localhost:44324/api/Report/GetGeneralReport').subscribe((result: any) => {
+      this.generalreport = result;
     })
   }
   deleteCourse(id: number) {
@@ -55,17 +55,54 @@ export class AdminService {
     })
 
   }
-  benfactorprofile: any = [];
+  users1: any = [];
   usero = JSON.parse(localStorage.getItem('user') || '{}');
 
   getuserProfile() {
+    debugger;
 
     this.http.get("https://localhost:44324/api/users/GetUserById/" + this.usero.USERID).subscribe((result1: any) => {
-      debugger;
-      this.benfactorprofile = result1;
+      this.users1 = result1;
 
     }, err => {
-      alert('not found');
+      this.toastr.error("Not Found")
+    })
+  }
+  users2: any = {};
+
+  getuserProfileuseBlock(id: number) {
+    debugger;
+
+    this.http.get("https://localhost:44324/api/users/GetUserById/" + id).subscribe((result1: any) => {
+      this.users2 = result1;
+      console.log(this.users2);
+
+
+    }, err => {
+      this.toastr.error("Not Found")
+    })
+  }
+  allusersinnerRole: any = [];
+
+  getallusersinnerRole() {
+    this.http.get('https://localhost:44324/api/Users/getallusersinnerrole').subscribe((userss) => {
+
+      this.allusersinnerRole = userss;
+      this.allusersinnerRole = this.allusersinnerRole.filter((x: any) => x.isaccepted == 1);
+      this.toastr.success("User Blocked")
+    }, err => {
+      this.toastr.success("User Can't blocked")
+    })
+  }
+  getallusersinnerRole2() {
+    this.http.get('https://localhost:44324/api/Users/getallusersinnerrole').subscribe((userss) => {
+
+      this.allusersinnerRole = userss;
+      this.allusersinnerRole = this.allusersinnerRole.filter((x: any) => x.isaccepted == 0);
+      this.toastr.success("User Unblocked")
+
+    }, err => {
+      this.toastr.error("User Can't Unblocked")
     })
   }
   uploadBenefactorImage(file: FormData) {
@@ -140,50 +177,50 @@ export class AdminService {
 
 
 
-  participantsList:any=[];
+  participantsList: any = [];
 
-  GetAllAbout(){
+  GetAllAbout() {
     //Show Spinner
     // Hits API
     //Result => Toaster + Hide Spinner
     //this.spinner.show();
-    this.http.get('https://localhost:44324/api/Aboutu/GetAllaboutus').subscribe((result)=>{
+    this.http.get('https://localhost:44324/api/Aboutu/GetAllaboutus').subscribe((result) => {
       debugger;
-    this.About=result; 
-     let count=0;
-    for (let index = 0; index < this.About.length; index++) {
-    
-    
-      const element = this.About[index];
-      if(index!=1){
-        this.participantsList[count]=this.About[index]
-        count++
-      
-       // this.About[index]=result[index]
-      }
-      
-    }
-    
-    
-   
-  
-  
-      //this.spinner.hide();
-        },err=>{
-          this.toastr.error('Error'+ err.message , err.status);
-          //this.spinner.hide();
-        })
-    }
+      this.About = result;
+      let count = 0;
+      for (let index = 0; index < this.About.length; index++) {
 
-    deletContact(contactid: Number) {
-      this.http.delete('https://localhost:44324/api/ContactUs/Deletecontactus/' + contactid).subscribe((result: any) => {
-        alert('delete suceeful');
-  
-      }, err => {
-        alert('didn\'t work')
-      })
-  
-    }
+
+        const element = this.About[index];
+        if (index != 1) {
+          this.participantsList[count] = this.About[index]
+          count++
+
+          // this.About[index]=result[index]
+        }
+
+      }
+
+
+
+
+
+      //this.spinner.hide();
+    }, err => {
+      this.toastr.error('Error' + err.message, err.status);
+      //this.spinner.hide();
+    })
+  }
+
+  deletContact(contactid: Number) {
+    this.http.delete('https://localhost:44324/api/ContactUs/Deletecontactus/' + contactid).subscribe((result: any) => {
+      alert('delete suceeful');
+
+    }, err => {
+      alert('didn\'t work')
+    })
+
+  }
   updateAbout(obj: any) {
 
     this.http.put('https://localhost:44324/api/Aboutu/Updateaboutus', obj)

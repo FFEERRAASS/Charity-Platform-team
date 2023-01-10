@@ -5,20 +5,14 @@ import autoTable from 'jspdf-autotable'
 import { FormControl, FormGroup } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { MatDialog } from '@angular/material/dialog';
-// declare var require: any;
-
-// import * as pdfMake from "pdfmake/build/pdfmake";
-// import * as pdfFonts from "pdfmake/build/vfs_fonts";
-// const htmlToPdfmake = require("html-to-pdfmake");
-// (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
-// declare const $:any;
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  selector: 'app-blocked-users',
+  templateUrl: './blocked-users.component.html',
+  styleUrls: ['./blocked-users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class BlockedUsersComponent {
   constructor(public home: HomeService, public admin: AdminService, public dialog: MatDialog) { }
+
   @ViewChild('SureBlock') SureBlock1!: TemplateRef<any>;
 
   UpdateBlock: FormGroup = new FormGroup({
@@ -39,9 +33,9 @@ export class UsersComponent implements OnInit {
 
   })
   p_data: any = {}
-  users: any = [];
+
   ngOnInit(): void {
-    this.admin.getallusersinnerRole();
+    this.admin.getallusersinnerRole2();
 
 
   }
@@ -63,7 +57,7 @@ export class UsersComponent implements OnInit {
       this.UpdateBlock.controls['password'].setValue(this.p_data.password);
       this.UpdateBlock.controls['requestMoney'].setValue(this.p_data.requestMoney);
 
-      this.UpdateBlock.controls['isaccepted'].setValue(0);
+      this.UpdateBlock.controls['isaccepted'].setValue(1);
       this.admin.display_Image = this.p_data.imagepath;
       this.dialog.open(this.SureBlock1);
     }, 1000);
@@ -88,7 +82,4 @@ export class UsersComponent implements OnInit {
 
     doc.save('table.pdf')
   }
-
-
-
 }

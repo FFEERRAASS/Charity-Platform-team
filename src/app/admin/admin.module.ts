@@ -27,6 +27,8 @@ import { ChaityallComponent } from './chaityall/chaityall.component';
 import { DonationsreportComponent } from './donationsreport/donationsreport.component';
 import { UsersComponent } from './users/users.component';
 import { FormsModule } from '@angular/forms';
+import { DistributionOfFundsComponent } from './distribution-of-funds/distribution-of-funds.component';
+import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { FormsModule } from '@angular/forms';
     CreatecauseComponent,
     ChaityallComponent,
     DonationsreportComponent,
-    UsersComponent
+    UsersComponent,
+    DistributionOfFundsComponent,
+    BlockedUsersComponent
 
 
 

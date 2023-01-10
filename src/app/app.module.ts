@@ -15,13 +15,14 @@ import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toas
 import { TokenInterceptors } from 'src/Interceptor/token.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
   @NgModule({
     declarations: [
       AppComponent,
       ContactComponent,
       AboutComponent,
-      RegisterComponent
+      RegisterComponent,
+
 
 
     ],
@@ -33,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       SharedModule,
       HttpClientModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      NgxSpinnerModule
 
 
 
@@ -42,11 +44,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports:[SharedModule],
     providers: [
-      DatePipe/*{
+      DatePipe,
+      {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptors,
       multi:true
-    }*/],
+    }
+  ],
     bootstrap: [AppComponent]
   })
   export class AppModule { }
