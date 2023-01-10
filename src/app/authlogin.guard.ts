@@ -24,7 +24,6 @@ export class AuthloginGuard implements CanActivate {
         if(state.url.indexOf('admin')>=0)
         {
           let user :any= localStorage.getItem('user');
-          debugger;
           if(user)
           {
             user= JSON.parse(user);
