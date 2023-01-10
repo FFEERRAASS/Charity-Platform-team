@@ -29,7 +29,6 @@ export class AuthService {
       headers: new HttpHeaders(headerDirc)
     }
 
-
     this.http.post('https://localhost:44324/api/JWT/login', body, requestOption).subscribe((resp: any) => {
       const responce = {
         token: resp.toString()
@@ -41,9 +40,8 @@ export class AuthService {
 
       localStorage.setItem('user', JSON.stringify({ ...user }));
       let x: number = 1;
-      debugger;
-      if (user.IsAccepted == '1') {
-        if (user.Role == '1') {
+
+      if (user.Role == '1') {
 
         this.router.navigate(['admin/main1']);
       }
@@ -58,7 +56,6 @@ export class AuthService {
       } else if (user.Role == '6') {
         this.router.navigate(['beneficiary/BeneficiaryProfile']);
       }
-
 
     }, err => {
       this.toastr.error('Incorrect username or password ')
