@@ -48,7 +48,7 @@ export class AuthService {
         this.router.navigate(['admin/main1']);
       }
       else if (user.Role == '2') {
-        this.router.navigate(['modertor/main']);
+        this.router.navigate(['Moderator/ManageCharity']);
       }
       else if (user.Role == '3') {
         this.router.navigate(['benefactor/main']);

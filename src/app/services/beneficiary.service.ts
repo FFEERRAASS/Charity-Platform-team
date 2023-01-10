@@ -47,8 +47,7 @@ export class BeneficiaryService {
     })
   }
   uploadAttachmentforabout2(file: FormData) {
-    this.http.post('https://localhost:44324/api/Category/UploadImages', file)
-      .subscribe((data: any) => {
+    this.http.post('https://localhost:44324/api/Category/UploadImages', file).subscribe((data: any) => {
 
 
         this.display_Image2 = data.categoryimage;

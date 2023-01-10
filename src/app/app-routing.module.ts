@@ -8,6 +8,8 @@ import { CausesComponent } from './benefactor/causes/causes.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import { MangeCharityComponent } from './modertor/mange-charity/mange-charity.component';
+import { ModertorModule } from './modertor/modertor.module';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [{
@@ -40,6 +42,10 @@ loadChildren:()=>import('./beneficiary/beneficiary.module').then((m)=>m.Benefici
 {
   path:'Register',
   component:RegisterComponent
+},
+{
+  path:'Moderator',
+  loadChildren:()=>ModertorModule
 }
 ];
 
