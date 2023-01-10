@@ -1,1 +1,178 @@
-<p>profile works!</p>
+<ng-template #callUpdateDialog class="mat-mdc-dialog-surfac">
+
+  <form [formGroup]="updateForn" >
+      <div class="row"  style=" width: 551px; align-items: center;   justify-content: center; margin: 0; padding: 0;">
+         <h3 class="h3">Updade Personal Information</h3>
+         <hr style="height: 1px; width: 100%; background-color:aquamarine;">
+        <div class="col-10 div">
+          <label for="M2">Image</label>
+          <input class="input" required id="M2" type="file"
+          formControlName="imagepath" #file (change)="uploadFileabout2(file.files)" [(ngModel)]="data.imagepath">
+        </div>
+        <div class="col-10 div">
+          <label for="firstname">First Name</label>
+          <input id="firstname" type="text" required  class="input"   matInput formControlName="firstname" [(ngModel)]="data.firstname">
+        </div>
+
+        <div class="col-10 div">
+          <label for="firstname1">Last Name</label>
+          <input id="firstname1" type="text" required  class="input"   matInput formControlName="lastname" [(ngModel)]="data.lastname">
+        </div>
+        <div class="col-10 div">
+          <label for="firstname2">Phone</label>
+          <input id="firstname2" type="text" required class="input"   matInput formControlName="phonenumber" [(ngModel)]="data.phonenumber">
+        </div>
+        <div class="col-10 div">
+          <label for="firstname3">EMAIL</label>
+          <input id="firstname3" type="email" required class="input"  matInput formControlName="email" [(ngModel)]="data.email">
+        </div>
+
+      </div>
+  </form>
+
+
+
+
+  <hr style="height: 1px;background-color: #000;">
+  <div class="row" style=" text-align: center;margin: 0;
+  justify-content: space-around;">
+   <button style="width: 33%;" class="btn" mat-button mat-dialog-close>Cancel</button>
+   <button style="width: 33%;" class="btn" mat-button   cdkFocusInitial (click)="updateData()">Update</button>
+
+  </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="body" class="g-sidenav-show  bg-gray-100" style="min-height: 100vh;">
+
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  "
+      id="sidenav-main" style="background-color: #fff ;z-index: 999;">
+
+      <app-header></app-header>
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <app-sidebar></app-sidebar>
+      <div class="container-fluid py-4">
+        <div class="row justify-content-center " style="margin-bottom: 70px;">
+
+
+            <div class="col-12 col-xl-10">
+              <div class="card h-100">
+                  <div class="card-header pb-0 p-3">
+                      <div class="row">
+                          <div class="col-md-8 d-flex align-items-center">
+                              <h6 class="mb-0">Profile Information</h6>
+                          </div>
+                          <div class="col-md-4 text-end">
+                              <a href="javascript:;">
+                                  <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body p-3">
+
+                      <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                          <img width="100%" height="100%" style="height:373px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" src="../../../assets/img/{{beneficary.user.imagepath}}" class="text-sm" alt="">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <h3 style="margin-top: 36px;text-align: center; font-weight: 800;  font-size: 22px;  font-family: 'Font Awesome 5 Brands';letter-spacing: 2px;">User Information</h3>
+                          <hr class="horizontal gray-light my-4" style="background-color: #000;">
+                          <ul class="list-group" >
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">First Name:</strong> &nbsp; {{beneficary.user.firstname}}</li>
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Last Name:</strong> &nbsp; {{beneficary.user.lastname}}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">USERNAME</strong> &nbsp;{{beneficary.user.username}}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 36px;">Email:</strong> &nbsp;{{beneficary.user.email}}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 31px;">Phone:</strong> &nbsp;{{beneficary.user.phonenumber}}</li>
+                        </ul>
+                          <div style="text-align: right; padding-top: 16px;margin-top: 36px;">
+                            <BUtton (click)="updateuserInfo(beneficary.user)"  class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Edit</BUtton>
+                          </div>
+                        </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <!-- <div class="col-12 col-xl-4">
+                <div class="card h-100">
+                    <div class="card-header pb-0 p-3">
+                        <h6 class="mb-0">Conversations</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../assets/img/kal-visuals-square.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Sophie B.</h6>
+                                    <p class="mb-0 text-xs">Hi! I need more information..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Anne Marie</h6>
+                                    <p class="mb-0 text-xs">Awesome work, can you..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../assets/img/ivana-square.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Ivanna</h6>
+                                    <p class="mb-0 text-xs">About files I can..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../assets/img/team-4.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Peterson</h6>
+                                    <p class="mb-0 text-xs">Have a great afternoon..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0">
+                                <div class="avatar me-3">
+                                    <img src="../assets/img/team-3.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Nick Daniel</h6>
+                                    <p class="mb-0 text-xs">Hi! I need more information..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+        <app-footer></app-footer>
+    </div>
+    </main>
+</div>

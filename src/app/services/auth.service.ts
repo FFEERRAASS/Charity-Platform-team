@@ -45,22 +45,18 @@ export class AuthService {
       if (user.IsAccepted == '1') {
         if (user.Role == '1') {
 
-          this.router.navigate(['admin/main1']);
-        }
-        else if (user.Role == '2') {
-          this.router.navigate(['modertor/main']);
-        }
-        else if (user.Role == '3') {
-          this.router.navigate(['benefactor/main']);
-        }
-        else if (user.Role == '4') {
-          this.router.navigate(['beneficiary/profile']);
-        } else if (user.Role == '6') {
-          this.router.navigate(['beneficiary/BeneficiaryProfile']);
-        }
+        this.router.navigate(['admin/main1']);
       }
-      else {
-        this.toastr.error('We apologize, you are prohibited from entering the site');
+      else if (user.Role == '2') {
+        this.router.navigate(['Moderator/ManageCharity']);
+      }
+      else if (user.Role == '3') {
+        this.router.navigate(['benefactor/main']);
+      }
+      else if (user.Role == '4') {
+        this.router.navigate(['beneficiary/profile']);
+      } else if (user.Role == '6') {
+        this.router.navigate(['beneficiary/BeneficiaryProfile']);
       }
 
 

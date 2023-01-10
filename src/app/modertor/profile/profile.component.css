@@ -1,0 +1,42 @@
+.div{
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.h3{
+  text-align: center;
+  padding-top: 17px;  font-family: 'Font Awesome 5 Pro';   font-weight: bold;     font-size: 18px;
+  letter-spacing: 1px;
+}
+.input{
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    width: 76%;
+    border: 0;
+    border-radius: 1px;
+}
+
+.x h6{
+  border-radius: 15px;
+}
+
+.dis{
+  display: none;
+}
+
+
+.x:hover h6{
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+
+
+  padding: 0;
+  cursor: pointer;
+  background-image: linear-gradient(310deg, #737175 0%, #ababab 100%);
+  color: #fff;
+  transition: 1s;
+}
+
+.ml3 {
+  font-weight: 900;
+  font-size: 3.5em;
+}
