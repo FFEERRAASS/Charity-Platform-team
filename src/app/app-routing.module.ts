@@ -5,9 +5,12 @@ import { AdminModule } from './admin/admin.module';
 import { AuthloginGuard } from './authlogin.guard';
 import { BenefactorModule } from './benefactor/benefactor.module';
 import { CausesComponent } from './benefactor/causes/causes.component';
+import { BeneficiaryModule } from './beneficiary/beneficiary.module';
 import { ContactComponent } from './contact/contact.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import { MangeCharityComponent } from './modertor/mange-charity/mange-charity.component';
+import { ModertorModule } from './modertor/modertor.module';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [{
@@ -21,11 +24,13 @@ const routes: Routes = [{
 },
 {
   path:'benefactor',
-  loadChildren:()=>BenefactorModule
+  loadChildren:()=>BenefactorModule,
+  canActivate:[AuthloginGuard]
 },
 {
   path:'beneficiary',
-loadChildren:()=>import('./beneficiary/beneficiary.module').then((m)=>m.BeneficiaryModule)
+loadChildren:()=>BeneficiaryModule,
+canActivate:[AuthloginGuard]
 },{
   path:'about',
   component:AboutComponent
@@ -40,6 +45,12 @@ loadChildren:()=>import('./beneficiary/beneficiary.module').then((m)=>m.Benefici
 {
   path:'Register',
   component:RegisterComponent
+},
+{
+  path:'Moderator',
+  loadChildren:()=>ModertorModule,
+  canActivate:[AuthloginGuard]
+
 }
 ];
 

@@ -1,114 +1,187 @@
-<div id="body" class="g-sidenav-show  bg-gray-100  ">
-
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " id="sidenav-main">
-        <app-headerandfooter></app-headerandfooter>
-    </aside>
-
-
-
-
+<div id="body" class="g-sidenav-show bg-gray-100">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+    id="sidenav-main" style="overflow: hidden;"
+  >
+    <app-headerandfooter></app-headerandfooter>
+  </aside>
 
 
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <app-sidebar></app-sidebar>
 
-        <div class="container-fluid py-4">
-            <div class="row">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card mb-4">
-                            <div class="card-header pb-0">
-                                <h6>All Donations</h6>
+
+
+
+ <main
+    class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
+  >
+    <app-sidebar></app-sidebar>
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6>All Donations</h6>
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0" id="content">
+                  <section class="py-7">
+                    <div class="container">
+                      <div class="row justify-space-between py-2">
+                        <div class="col-lg-4 mx-auto">
+                          <form [formGroup]="searchForm">
+                            <div class="row">
+                              <div class="col-4">
+                                <input
+                                  type="date"
+                                  matInput
+                                  formControlName="date1"
+                                  placeholder="Regular"
+                                  class="form-control"
+                                />
+                              </div>
+                              <div class="col-4">
+                                <input
+                                  type="date"
+                                  matInput
+                                  formControlName="date2"
+                                  placeholder="Regular"
+                                  class="form-control"
+                                />
+                              </div>
+                              <div class="col-4">
+                                <input
+                                  type="button"
+                                  value="Search"
+                                  (click)="searchindoniation()"
+                                  class="btn btn-success"
+                                />
+                              </div>
                             </div>
-                            <div class="card-body px-0 pt-0 pb-2">
-                                <div class="table-responsive p-0" id="content">
-                                    <section class="py-7">
-                                        <div class="container">
-                                            <div class="row justify-space-between py-2">
-                                                <div class="col-lg-4 mx-auto">
-                                                    <form [formGroup]="searchForm">
-                                                        <div class="row">
-                                                            <div class="col-4">
-                                                                <input type="date" matInput formControlName="date1" placeholder="Regular" class="form-control">
-
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <input type="date" matInput formControlName="date2" placeholder="Regular" class="form-control">
-
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <input type="button" value="Search" (click)="searchindoniation()" class="btn btn-success">
-
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-
-                                    <table id="my-table" class="table align-items-center justify-content-center mb-0 ">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Charity Name</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 ">Benefactor First Name</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 ">Benefactor Last Name</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 ">Benefactor Email</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2 ">Donation Date</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2 ">Amount</th>
-
-                                                <!-- <th></th> -->
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let obj of home.alldonation ">
-
-                                                <td>
-                                                    <p class="text-sm font-weight-bold mb-0 ">{{obj.charityname}} </p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-sm font-weight-bold mb-0 ">{{obj.firstname}} </p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-sm font-weight-bold mb-0 ">{{obj.lastname}}</p>
-                                                </td>
-                                                <td>
-                                                    <span class="text-xs font-weight-bold ">{{obj.email}}</span>
-                                                </td>
-                                                <td>
-                                                    <p class="text-sm font-weight-bold mb-0
-                                        ">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {{obj.datedonation | date:"dd/MM/yyy "}} </p>
-                                                </td>
-                                                <td>
-                                                    <p class="text-sm font-weight-bold mb-0 ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{obj.amount}} </p>
-                                                </td>
-                                                <!-- <td class="align-middle ">
-                    <button class="btn btn-link text-secondary mb-0 ">
-                      <i class="fa fa-ellipsis-v text-xs "></i>
-                    </button>
-                  </td> -->
-                                            </tr>
-
-
-                                            <tr>
-                                                <td>benefactors: {{this.admin.generalreport.numberofdoners}}</td>
-                                                <td>beneficiaries: {{this.admin.generalreport.numberofbenificiaries}}</td>
-                                                <td>users: {{this.admin.generalreport.totalusers}} </td>
-                                                <td>total Donations: {{this.admin.generalreport.numberofdonations}} </td>
-                                                <td>total Amounts: {{this.admin.generalreport.totaldonations}}</td>
-                                            </tr>
-                                            <button mat-raised-button (click)="DownloadData() " class="btn btn-success ">download report</button>
-
-
-
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                          </form>
                         </div>
+                      </div>
                     </div>
-                </div>
+                  </section>
 
-                <app-footer></app-footer>
+                  <table
+                    id="my-table"
+                    class="table align-items-center justify-content-center mb-0"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        >
+                          Charity Name
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Benefactor First Name
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Benefactor Last Name
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Benefactor Email
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2"
+                        >
+                          Donation Date
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2"
+                        >
+                          Amount
+                        </th>
+
+                        <!-- <th></th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let obj of home.alldonation">
+                        <td>
+                          <p class="text-sm font-weight-bold mb-0">
+                            {{ obj.charityname }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="text-sm font-weight-bold mb-0">
+                            {{ obj.firstname }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="text-sm font-weight-bold mb-0">
+                            {{ obj.lastname }}
+                          </p>
+                        </td>
+                        <td>
+                          <span class="text-xs font-weight-bold">{{
+                            obj.email
+                          }}</span>
+                        </td>
+                        <td>
+                          <p class="text-sm font-weight-bold mb-0">
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                            {{ obj.datedonation | date : "dd/MM/yyy " }}
+                          </p>
+                        </td>
+                        <td>
+                          <p class="text-sm font-weight-bold mb-0">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                              obj.amount
+                            }}
+                          </p>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          benefactors:
+                          {{ this.admin.generalreport.numberofdoners }}
+                        </td>
+                        <td>
+                          beneficiaries:
+                          {{ this.admin.generalreport.numberofbenificiaries }}
+                        </td>
+                        <td>
+                          users: {{ this.admin.generalreport.totalusers }}
+                        </td>
+                        <td>
+                          total Donations:
+                          {{ this.admin.generalreport.numberofdonations }}
+                        </td>
+                        <td>
+                          total Amounts:
+                          {{ this.admin.generalreport.totaldonations }}
+                        </td>
+                      </tr>
+                      <button
+                        mat-raised-button
+                        (click)="DownloadData()"
+                        class="btn btn-success"
+                      >
+                        download report
+                      </button>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </main>
+</div>

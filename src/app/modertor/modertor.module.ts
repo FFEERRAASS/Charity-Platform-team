@@ -2,31 +2,51 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ModertorRoutingModule } from './modertor-routing.module';
-import { DocumentRequestComponent } from './document-request/document-request.component';
-import { AcceptDonationsComponent } from './accept-donations/accept-donations.component';
-import { MangeTestimonialComponent } from './mange-testimonial/mange-testimonial.component';
-import { ManagetestimonialComponent } from '../admin/managetestimonial/managetestimonial.component';
-import { MsgContactusComponent } from './msg-contactus/msg-contactus.component';
-import { MsgRealchatComponent } from './msg-realchat/msg-realchat.component';
-import { MangeUsersComponent } from './mange-users/mange-users.component';
-import { ProfileComponent } from './profile/profile.component';
 import { Main2Component } from './main2/main2.component';
+import { MangeCharityComponent } from './mange-charity/mange-charity.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
+ import { HeaderComponent } from './header/header.component';
+import { ManageRequestComponent } from './manage-request/manage-request.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
+import {MatInputModule} from '@angular/material/input';
+import { MatError } from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgChartsModule } from 'ng2-charts';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 @NgModule({
   declarations: [
-    DocumentRequestComponent,
-    AcceptDonationsComponent,
-    MangeTestimonialComponent,
-    MsgContactusComponent,
-    MsgRealchatComponent,
-    MangeUsersComponent,
+    Main2Component,
+    MangeCharityComponent,
     ProfileComponent,
-    Main2Component
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
+    ManageRequestComponent
+
   ],
   imports: [
     CommonModule,
-    ModertorRoutingModule
-  ]
+    ModertorRoutingModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatSortModule,MatTableModule,
+    NgChartsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
+  ],
+  exports: [HeaderComponent,SidebarComponent,FooterComponent]
 })
 export class ModertorModule { }

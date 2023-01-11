@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private router:Router,public auth:AuthService){}
+  constructor(private spinner:NgxSpinnerService,private router:Router,public auth:AuthService){}
 
   email :FormControl = new FormControl('',[Validators.required,Validators.email]);
   password :FormControl= new FormControl('',[Validators.required,Validators.minLength(8)])
@@ -33,9 +32,14 @@ export class LoginComponent {
   
   submit(){
     
+    this.spinner.show();
+
+
+
 
     this.auth.submit(this.email,this.password) 
-  
+    this.spinner.hide();
+
     
   }
  

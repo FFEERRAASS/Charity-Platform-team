@@ -430,6 +430,24 @@ export class HomeService {
       alert('operation didnt work');
     })
   }
+  WatingCharity:any=[]
+
+  GetAllChartyWating() {
+      let count=0
+      this.http.get('https://localhost:44324/api/Charity/GetAllcahrity').subscribe((result) => {
+      let x:any=result;
+      for (let index = 0; index < x.length; index++) {
+        const element = x[index];
+        if(element.requestmoney=='requsetmony'){
+          this.WatingCharity[count]=element;
+          count++
+        }
+      };
+    }, err => {
+      alert('operation didnt work');
+    })
+  }
+
   GetAllCharty1() {
     return this.http.get('https://localhost:44324/api/Charity/GetAllcahrity')
   }
@@ -470,6 +488,16 @@ export class HomeService {
     })
   }
 
+  AcceptTransferMoneyFromCharityWallet(id:any){
+    this.http.get('https://localhost:44324/api/Charity/UpdateCharityUserWallet/'+id).subscribe((result) => {
+
+      this.toastr.success('Accepted')
+    }, err => {
+      this.toastr.error('Failed')
+    })
+  }
+
+
   Reajcted_CHARTIY(body: any) {
     body.isaccepted = 3
     this.http.put('https://localhost:44324/api/Charity/Updatecahrity', body).subscribe((result) => {
@@ -493,7 +521,7 @@ export class HomeService {
     })
   }
 
- 
+
 
 
 

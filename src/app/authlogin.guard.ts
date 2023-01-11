@@ -40,6 +40,60 @@ export class AuthloginGuard implements CanActivate {
             }
           }
         }
+        else if(state.url.indexOf('moderator')>=0){
+          let user :any= localStorage.getItem('user');
+          if(user)
+          {
+            user= JSON.parse(user);
+       
+            if(user.Role=='2')
+            {
+              
+              return true;
+            }
+            else{
+              this.toaster.warning('Sorry, this page for Moderator');
+              this.router.navigate(['/login']);
+              return false;
+            }
+          }
+        }
+        else if(state.url.indexOf('benefactor')>=0){
+          let user :any= localStorage.getItem('user');
+          if(user)
+          {
+            user= JSON.parse(user);
+       
+            if(user.Role=='3')
+            {
+              
+              return true;
+            }
+            else{
+              this.toaster.warning('Sorry, this page for Benefactor');
+              this.router.navigate(['/login']);
+              return false;
+            }
+          }
+        }
+        else if(state.url.indexOf('beneficiary')>=0){
+          let user :any= localStorage.getItem('user');
+          if(user)
+          {
+            user= JSON.parse(user);
+       
+            if(user.Role=='4')
+            {
+              
+              return true;
+            }
+            else{
+              this.toaster.warning('Sorry, this page for Beneficiary');
+              this.router.navigate(['/login']);
+              return false;
+            }
+          }
+        }
 
 
         return true;

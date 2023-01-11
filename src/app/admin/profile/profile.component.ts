@@ -55,7 +55,7 @@ export class ProfileComponent {
 
 
     this.dialog.open(this.callUpdate);
-    this.p_data = this.admin.benfactorprofile;
+    this.p_data = this.admin.users1;
     debugger;
     this.updateForm.controls['userid'].setValue(this.p_data.userid);
     this.updateForm.controls['roleidFk'].setValue(this.p_data.roleidFk);
@@ -71,7 +71,7 @@ export class ProfileComponent {
   ChangePassword() {
     debugger;
     this.dialog.open(this.ChangePasswords);
-    this.p_data = this.admin.benfactorprofile;
+    this.p_data = this.admin.users1;
 
     // this.updateForm.controls['userid'].setValue(this.p_data.userid);
     // this.updateForm.controls['roleidFk'].setValue(this.p_data.roleidFk);

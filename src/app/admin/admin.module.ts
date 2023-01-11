@@ -28,6 +28,8 @@ import { DonationsreportComponent } from './donationsreport/donationsreport.comp
 import { UsersComponent } from './users/users.component';
 import { FormsModule } from '@angular/forms';
 import { ManageTestComponent } from './manage-test/manage-test.component';
+import { DistributionOfFundsComponent } from './distribution-of-funds/distribution-of-funds.component';
+import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { ManageTestComponent } from './manage-test/manage-test.component';
     DonationsreportComponent,
     UsersComponent,
     ManageTestComponent
+    DistributionOfFundsComponent,
+    BlockedUsersComponent
 
 
 

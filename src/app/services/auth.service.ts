@@ -29,7 +29,6 @@ export class AuthService {
       headers: new HttpHeaders(headerDirc)
     }
 
-
     this.http.post('https://localhost:44324/api/JWT/login', body, requestOption).subscribe((resp: any) => {
       const responce = {
         token: resp.toString()
@@ -47,7 +46,7 @@ export class AuthService {
         this.router.navigate(['admin/main1']);
       }
       else if (user.Role == '2') {
-        this.router.navigate(['modertor/main']);
+        this.router.navigate(['Moderator/ManageCharity']);
       }
       else if (user.Role == '3') {
         this.router.navigate(['benefactor/main']);

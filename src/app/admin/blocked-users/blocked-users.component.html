@@ -1,0 +1,139 @@
+<div id="body" class="g-sidenav-show  bg-gray-100  ">
+
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  "
+        id="sidenav-main" style="overflow: hidden;">
+        <app-headerandfooter></app-headerandfooter>
+    </aside>
+
+
+
+
+
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <app-sidebar></app-sidebar>
+        <button class="btn btn-primary" (click)="printPage()">Print Data</button>&nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="DownloadData()">Download Data</button>
+
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-4">
+                            <div class="card-header pb-0">
+                                <h6>All Users</h6>
+                            </div>
+                            <div class="card-body px-0 pt-0 pb-2">
+                                <!-------------  //  -->
+                                <div class="table-responsive p-0">
+
+
+                                    <table class="table align-items-center justify-content-center mb-0" id="my-table">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    First Name</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Last Name</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Username</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Email</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                                    Gender</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                                    Phone Number</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                                    User Image</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                                    Type</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                                    Blocked</th>
+
+
+
+
+
+                                                <!-- <th></th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let obj of admin.allusersinnerRole">
+
+                                                <td>
+                                                    <p class="text-sm font-weight-bold mb-0">{{obj.firstname}}</p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-sm font-weight-bold mb-0">{{obj.lastname}} </p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-sm font-weight-bold mb-0">{{obj.username}}</p>
+                                                </td>
+                                                <td>
+                                                    <span class="text-xs font-weight-bold">{{obj.email}}</span>
+                                                </td>
+                                                <td>
+                                                    <p class="text-sm font-weight-bold mb-0">&nbsp; &nbsp; &nbsp; &nbsp;
+                                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; {{obj.gender}}
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <p class="text-sm font-weight-bold mb-0">{{obj.phonenumber}} </p>
+                                                </td>
+
+                                                <!-- {{obj.isaccepted}} -->
+                                                <td>
+                                                    <img src="../assets/img/{{obj.imagepath}}" height="50px"
+                                                        width="50px" />
+                                                </td>
+                                                <td>
+                                                    <p class="text-sm font-weight-bold mb-0" id="role">{{obj.rolename}}
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-success" (click)="blockUser(obj.userid)">Un
+                                                        Block</button>
+                                                </td>
+                                                <!-- <td class="align-middle">
+                    <button class="btn btn-link text-secondary mb-0">
+                      <i class="fa fa-ellipsis-v text-xs"></i>
+                    </button>
+                  </td> -->
+                                            </tr>
+
+
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #SureBlock>
+                    <section>
+                        <div class="container py-4">
+                            <div class="row">
+                                <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                                    <h3 class="text-center">Change Password</h3>
+                                    <button class="btn tb-danger" (click)="doneBlock()">Yes</button>
+                                    <button class="btn tb-danger">No</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </ng-template>
+                <app-footer></app-footer>

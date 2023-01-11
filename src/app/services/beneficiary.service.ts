@@ -47,11 +47,25 @@ export class BeneficiaryService {
     })
   }
   uploadAttachmentforabout2(file: FormData) {
-    this.http.post('https://localhost:44324/api/Category/UploadImages', file)
-      .subscribe((data: any) => {
+    this.http.post('https://localhost:44324/api/Category/UploadImages', file).subscribe((data: any) => {
 
 
         this.display_Image2 = data.categoryimage;
+
+        if (data) {
+          console.log(data);
+        }
+      }, err => {
+        alert('operation image didnt work');
+      })
+  }
+
+  uploadAttachmentBeneficary(file: FormData) {
+    debugger;
+    this.http.post('https://localhost:44324/api/Charity/UploadDocs', file).subscribe((data: any) => {
+
+
+        this.display_Image2 = data.docidFk;
 
         if (data) {
           console.log(data);
@@ -77,8 +91,8 @@ export class BeneficiaryService {
     Obj.balance = parseInt(Obj.balance);
     Obj.isaccepted = parseInt(Obj.isaccepted);
     Obj.state = parseInt(Obj.state);
-    Obj.imagepath = this.display_Image2;
-    Obj.docidFk = this.display_Image;
+    Obj.imagepath = this.display_Image;
+    Obj.docidFk = this.display_Image2;
     this.http.put('https://localhost:44324/api/Charity/Updatecahrity', Obj).subscribe((result) => {
       this.toastr.success('Updated')
     }, err => {
@@ -110,8 +124,8 @@ export class BeneficiaryService {
   testWallet: any;
   charityId: any;
 
-  GetCharitybyId(id: number) {
-    this.http.get('https://localhost:44324/api/Charity/GetcahrityById/' + id).subscribe((result1) => {
+  async GetCharitybyId(id: number) {
+    await this.http.get('https://localhost:44324/api/Charity/GetcahrityById/' + id).subscribe((result1) => {
       if (result1 != null) {
         debugger;
         this.charityId = result1;
