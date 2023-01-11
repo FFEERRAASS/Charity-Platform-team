@@ -51,7 +51,7 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     ChaityallComponent,
     DonationsreportComponent,
     UsersComponent,
-    ManageTestComponent
+    ManageTestComponent,
     DistributionOfFundsComponent,
     BlockedUsersComponent
 
