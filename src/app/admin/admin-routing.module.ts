@@ -10,6 +10,7 @@ import { ManageAboutComponent } from './manage-about/manage-about.component';
 import { ManageCausesComponent } from './manage-causes/manage-causes.component';
 import { ManageContactComponent } from './manage-contact/manage-contact.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { ManageTestComponent } from './manage-test/manage-test.component';
 import { ManageWalletComponent } from './manage-wallet/manage-wallet.component';
 import { ManagetestimonialComponent } from './managetestimonial/managetestimonial.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -71,6 +72,10 @@ const routes: Routes = [{
 {
   path:'allusers',
   component:UsersComponent
+},
+{
+  path:'mantest',
+  component:ManageTestComponent
 }
 
 
