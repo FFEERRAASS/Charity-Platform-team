@@ -34,12 +34,12 @@ export class LoginComponent {
     
     this.spinner.show();
 
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000);
+
+
 
     this.auth.submit(this.email,this.password) 
-    
+    this.spinner.hide();
+
     
   }
  

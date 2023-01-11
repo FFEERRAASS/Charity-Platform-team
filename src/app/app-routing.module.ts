@@ -48,7 +48,9 @@ canActivate:[AuthloginGuard]
 },
 {
   path:'Moderator',
-  loadChildren:()=>ModertorModule
+  loadChildren:()=>ModertorModule,
+  canActivate:[AuthloginGuard]
+
 }
 ];
 

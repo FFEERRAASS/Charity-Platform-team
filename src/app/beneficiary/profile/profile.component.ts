@@ -20,6 +20,8 @@ export class ProfileComponent implements OnInit {
   public  id?:number;
   public show?:boolean;
   public showupdate?:boolean;
+  public showInverse?:boolean;
+
   updateForn:FormGroup=new FormGroup({
     userid:new FormControl(),
     email:new FormControl(),
@@ -42,6 +44,7 @@ data:any={};
 updateuserInfo(boj:any){
   this.dialogg.open(this.callUpdate);
   this.data=boj;
+  debugger;
   this.updateForn.controls['userid'].setValue(this.data.userid);
   this.updateForn.controls['username'].setValue(this.data.username);
   this.updateForn.controls['gender'].setValue(this.data.gender);
@@ -71,7 +74,6 @@ updateCharityForm:FormGroup=new FormGroup({
   imagepath: new FormControl(),
   goal:new FormControl(),
   numdonation:new FormControl(),
-  balance:new FormControl(),
   charityname:new FormControl(),
   isaccepted:new FormControl(),
   state:new FormControl(),
@@ -87,6 +89,9 @@ updatecharityInfo(boj:any){
   this.updateCharityForm.controls['isaccepted'].setValue(this.data.isaccepted);
   this.updateCharityForm.controls['state'].setValue(this.data.state);
   this.updateCharityForm.controls['balance'].setValue(this.data.balance);
+  this.updateCharityForm.controls['numdonation'].setValue(this.data.numdonation);
+  this.updateCharityForm.controls['goal'].setValue(this.data.goal);
+
   this.beneficary.display_Image= this.data.docidFk;
   this.beneficary.display_Image2= this.data.imagepath;
 }
@@ -101,17 +106,19 @@ updatecharityInfo(boj:any){
       setTimeout(() => {
         if(this.beneficary.charityId.charityid==-1){
           this.show=true;
+
         }else{
           this.show=false;
+
         }
-      }, 1000);
+      }, 3000);
       setTimeout(() => {
         if(this.beneficary.charityId.charityid!=-1){
           this.showupdate=true;
         }else{
-          this.showupdate=false;
+          this.showInverse=true;
         }
-      }, 1000);
+      }, 3000);
   }
 
   
@@ -136,12 +143,13 @@ updatecharityInfo(boj:any){
 
 
   uploadFileabout2(file:any){
+    debugger;
     if(file.length==0) //zero image
     return ;
     let fileToUpload =<File>file[0];
     const formdata=new FormData();
     formdata.append('file',fileToUpload,fileToUpload.name);
-    this.beneficary.uploadAttachmentforabout2(formdata);
+    this.beneficary.uploadAttachmentforabout1(formdata);
 
   }
 
@@ -153,7 +161,8 @@ updatecharityInfo(boj:any){
     let fileToUpload =<File>file[0];
     const formdata=new FormData();
     formdata.append('file',fileToUpload,fileToUpload.name);
-    this.beneficary.uploadAttachmentforabout1(formdata);
+   
+    this.beneficary.uploadAttachmentBeneficary(formdata);
   }
   updateData(){
     debugger;
