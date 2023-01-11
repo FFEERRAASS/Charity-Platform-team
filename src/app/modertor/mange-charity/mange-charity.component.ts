@@ -19,10 +19,20 @@ export class MangeCharityComponent implements OnInit {
   }
 
 
-    doc(obj:any){
-      this.docu=obj;
-      this.dialog.open(this.callDoc);
-    }
+  doc(obj:any){
+ 
+    this.dialog.open(this.callDoc);
+
+
+    this.docu=obj;
+    let x =document.getElementById("ifram");
+    let attr = document.createAttribute("src");
+    attr.value="../../../assets/Docs/"+obj;
+    x?.setAttributeNode(attr);
+    let s =document.getElementById("ifram");
+    console.log(s);
+
+}
     wating(){
     this.home.GetAllCharty()
 

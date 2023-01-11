@@ -83,6 +83,17 @@ export class AdminService {
     })
   }
   allusersinnerRole: any = [];
+  allCharityWating:any=[];
+  GetAllChartyWatingForAdmin() {
+    this.http.get('https://localhost:44324/api/Charity/GetAllcahrity').subscribe((result) => {
+    this.allCharityWating=result;
+    this.allCharityWating = this.allCharityWating.filter((x: any) => x.isaccepted==2);
+
+  }, err => {
+    alert('operation didnt work');
+  })
+}
+
 
   getallusersinnerRole() {
     this.http.get('https://localhost:44324/api/Users/getallusersinnerrole').subscribe((userss) => {

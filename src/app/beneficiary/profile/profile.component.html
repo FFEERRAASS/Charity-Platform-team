@@ -62,14 +62,14 @@
           <input id="charityname" type="text"  class="input" matInput formControlName="charityname" [(ngModel)]="data.charityname">
         </div>
 
-        <div class="col-10 div">
+        <!-- <div class="col-10 div">
           <label for="firstname1">Goal</label>
           <input id="firstname1" type="text"  class="input"   matInput formControlName="goal" [(ngModel)]="data.goal">
-        </div>
-        <div class="col-10 div">
+        </div> -->
+        <!-- <div class="col-10 div">
           <label for="firstname2">Number Donation</label>
           <input id="firstname2" type="text"  class="input"   matInput formControlName="numdonation" [(ngModel)]="data.numdonation">
-        </div>
+        </div> -->
         <div class="col-10 div">
           <label for="firstname3">Category</label>
         <select class="input"   [(ngModel)]="data.categoryidFk" formControlName="categoryidFk">
@@ -129,7 +129,7 @@
               <div class="row gx-4">
                   <div class="col-auto">
                       <div class="avatar avatar-xl position-relative">
-                          <img src="../../../assets/img/{{beneficary.charityId.imagepath}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                          <img src="../../../assets/img/{{beneficary.user.imagepath}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                       </div>
                   </div>
                   <div class="col-auto my-auto">
@@ -199,7 +199,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-xl-6">
+         
+            <div class="col-12 col-xl-4" *ngIf="!show">
               <div class="card h-100">
                   <div class="card-header pb-0 p-3">
                       <div class="row">
@@ -208,7 +209,7 @@
                           </div>
                           <div class="col-md-4 text-end">
                               <a href="javascript:;">
-                                  <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                                  <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"  (click)="updatecharityInfo(beneficary.charityId)" title="Edit Profile"></i>
                               </a>
                           </div>
                       </div>
@@ -224,10 +225,9 @@
 
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Num Donation :</strong> &nbsp;{{beneficary.charityId.numdonation}}</li>
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 19px;">Is Accepted :</strong> &nbsp; {{beneficary.charityId.isaccepted}}</li>
-                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="    padding-right: 27px;">Document :</strong> &nbsp;<a href="../../../assets/img/{{beneficary.charityId.docidFk}}" target="_blank">Show</a> </li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="    padding-right: 27px;">Document :</strong> &nbsp;<a href="../../../assets/Docs/{{beneficary.charityId.docidFk}}" target="_blank">Show</a> </li>
                       </ul>
-                        <div style="text-align: right;">
-                          <BUtton *ngIf="showupdate" (click)="updatecharityInfo(beneficary.charityId)"    class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Edit</BUtton>
+                        <div >
                         </div>
                   </div>
               </div>

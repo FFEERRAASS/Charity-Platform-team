@@ -25,7 +25,7 @@ export class ManageRequestComponent implements OnInit {
       this.docu=obj;
       let x =document.getElementById("ifram");
       let attr = document.createAttribute("src");
-      attr.value="../../../assets/img/"+obj;
+      attr.value="../../../assets/Docs/"+obj;
       x?.setAttributeNode(attr);
       let s =document.getElementById("ifram");
       console.log(s);

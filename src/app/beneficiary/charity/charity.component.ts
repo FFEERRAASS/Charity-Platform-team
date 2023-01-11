@@ -23,7 +23,7 @@ export class CharityComponent implements OnInit{
     let fileToUpload =<File>file[0];
     const formdata=new FormData();
     formdata.append('file',fileToUpload,fileToUpload.name);
-    this.beneficiary.uploadAttachmentforabout2(formdata);
+    this.beneficiary.uploadAttachmentBeneficary(formdata);
   }
   CreateForm :FormGroup= new FormGroup({
     useridFk:new FormControl('',Validators.required),
@@ -45,6 +45,9 @@ export class CharityComponent implements OnInit{
   }
   SaveDate(){
     debugger;
+    this.CreateForm.controls['balance'].setValue(0);
+    this.CreateForm.controls['goal'].setValue(0);
+
     this.beneficiary.CreateCharity(this.CreateForm.value);
     setTimeout(() => {
       this.route.navigate(['beneficiary/profile'])

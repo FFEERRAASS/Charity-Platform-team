@@ -1,6 +1,6 @@
-<ng-template #docDialog class="mat-mdc-dialog-surfac">
-  <div style="width: 600px;height: 600px;">
-    <iframe width="100%" height="100%" src="../../../assets/img/{{docu}}" frameborder="5"></iframe>
+<ng-template #docDialog class="mat-mdc-dialog-surfac" >
+  <div style="width: 600px;height: 600px;" >
+    <iframe width="100%" height="100%"    id="ifram" frameborder="5"></iframe>
   </div>
 </ng-template>
 
@@ -85,7 +85,7 @@
                         <p class="text-xs font-weight-bold mb-0">{{obj.isaccepted}}</p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0" (click)="doc(obj.doc)">Show Document</p>
+                        <p class="text-xs font-weight-bold mb-0" (click)="doc(obj.docidFk)">Show Document</p>
                       </td>
                       <td>
                         <p class="text-xs font-weight-bold mb-0">{{obj.numdonation}}</p>
