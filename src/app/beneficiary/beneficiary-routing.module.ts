@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { InformationComponent } from './information/information.component';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 import { WalletComponent } from './wallet/wallet.component';
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
   },{
     path:"BeneficiaryProfile",
     component:ProfileUserComponent
+  },
+  {
+    path:'reviews',
+    component:ReviewsComponent
   }
 ];
 

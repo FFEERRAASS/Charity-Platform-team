@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { DonationComponent } from './donation/donation.component';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { WalletComponent } from './wallet/wallet.component';
 
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path:'testimonial',
     component:TestimonialComponent
+  },
+  {
+    path:'reviews',
+    component:ReviewsComponent
   }
 
 ];

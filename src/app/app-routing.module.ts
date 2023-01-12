@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MangeCharityComponent } from './modertor/mange-charity/mange-charity.component';
 import { ModertorModule } from './modertor/modertor.module';
 import { RegisterComponent } from './register/register.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 const routes: Routes = [{
   path:'admin',
@@ -51,6 +52,10 @@ canActivate:[AuthloginGuard]
   loadChildren:()=>ModertorModule,
   canActivate:[AuthloginGuard]
 
+},
+{
+  path:'review',
+  component:ReviewsComponent
 }
 ];
 

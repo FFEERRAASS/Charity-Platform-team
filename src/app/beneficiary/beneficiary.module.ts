@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ProfileUserComponent } from './profile-user/profile-user.component';
     ContactComponent,
     CharityComponent,
     SidebacComponent,
-    ProfileUserComponent
+    ProfileUserComponent,
+    ReviewsComponent
   ],
   imports: [
     CommonModule,

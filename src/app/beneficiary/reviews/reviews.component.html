@@ -1,0 +1,240 @@
+<!-- Navbar -->
+<div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+        <div class="col-12">
+            <app-navbar></app-navbar>
+            <!-- End Navbar -->
+        </div>
+    </div>
+</div>
+<!-- -------- START HEADER 8 w/ card over right bg image ------- -->
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('../assets/img/office-dark.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-center mx-auto">
+                    <img src="../assets/img/ReviewsHeaderTitle.png" width="500px" height="180px" />
+                </div>
+            </div>
+        </div>
+        <span class="mask bg-gradient-info opacity-8"></span>
+
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="moving-waves">
+          <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+          <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+          <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+          <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,1)"/>
+        </g>
+      </svg>
+        </div>
+
+    </div>
+</header>
+<div class="col-md-9 mt-7" style="align-content: center; margin:auto; margin-left: 200; ">
+    <div class="card">
+        <div class="card-header pb-0 px-3">
+            <h2 class="mb-0">Reviews</h2>
+            <div *ngIf="home.contact  !== null">
+                <br>
+            </div>
+        </div>
+        <div class="card-body pt-4 p-3 ">
+            <ul class="list-group" *ngFor="let obj of home.reviews ">
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">{{obj.email}}</h6>
+                        <span class="mb-2 text-xs">Name: <span class="text-dark font-weight-bold ms-sm-2">{{obj.firstname}} {{obj.lastname}}</span></span>
+                        <span class="mb-2 text-xs">Username: <span class="text-dark ms-sm-2 font-weight-bold">{{obj.username}}</span></span>
+                        <span class="text-xs">Review: <span class="text-dark ms-sm-2 font-weight-bold">{{obj.paragraph}}</span></span>
+                    </div>
+                    <div class="ms-auto text-end" style="    justify-content: center;
+            display: flex;
+            align-items: center;">
+
+                    </div>
+                </li>
+                <!-- <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+            <div class="d-flex flex-column">
+              <h6 class="mb-3 text-sm">Lucas Harper</h6>
+              <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Stone Tech Zone</span></span>
+              <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>
+              <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+            </div>
+            <div class="ms-auto text-end">
+              <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+              <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+            </div>
+          </li>
+          <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+            <div class="d-flex flex-column">
+              <h6 class="mb-3 text-sm">Ethan James</h6>
+              <span class="mb-2 text-xs">Company Name: <span class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>
+              <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>
+              <span class="text-xs">VAT Number: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+            </div>
+            <div class="ms-auto text-end">
+              <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+              <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+            </div>
+          </li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+<footer class="footer pt-5 mt-5">
+    <hr class="horizontal dark mb-5">
+    <div class="container">
+        <div class=" row">
+            <div class="col-md-3 mb-4 ms-auto">
+                <div>
+                    <h6 class="text-gradient text-primary font-weight-bolder">Soft UI Design System</h6>
+                </div>
+                <div>
+                    <h6 class="mt-3 mb-2 opacity-8">Social</h6>
+                    <ul class="d-flex flex-row ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link pe-1" href="https://www.facebook.com/CreativeTim/" target="_blank">
+                                <i class="fab fa-facebook text-lg opacity-8"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pe-1" href="https://twitter.com/creativetim" target="_blank">
+                                <i class="fab fa-twitter text-lg opacity-8"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pe-1" href="https://dribbble.com/creativetim" target="_blank">
+                                <i class="fab fa-dribbble text-lg opacity-8"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pe-1" href="https://github.com/creativetimofficial" target="_blank">
+                                <i class="fab fa-github text-lg opacity-8"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pe-1" href="https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w" target="_blank">
+                                <i class="fab fa-youtube text-lg opacity-8"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 col-6 mb-4">
+                <div>
+                    <h6 class="text-gradient text-primary text-sm">Company</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/presentation" target="_blank">
+                About Us
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/templates/free" target="_blank">
+                Freebies
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/templates/premium" target="_blank">
+                Premium Tools
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/blog" target="_blank">
+                Blog
+              </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 col-6 mb-4">
+                <div>
+                    <h6 class="text-gradient text-primary text-sm">Resources</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://iradesign.io/" target="_blank">
+                Illustrations
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/bits" target="_blank">
+                Bits & Snippets
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/affiliates/new" target="_blank">
+                Affiliate Program
+              </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 col-6 mb-4">
+                <div>
+                    <h6 class="text-gradient text-primary text-sm">Help & Support</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/contact-us" target="_blank">
+                Contact Us
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/knowledge-center" target="_blank">
+                Knowledge Center
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://services.creative-tim.com/?ref=ct-soft-ui-footer" target="_blank">
+                Custom Development
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/sponsorships" target="_blank">
+                Sponsorships
+              </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
+                <div>
+                    <h6 class="text-gradient text-primary text-sm">Legal</h6>
+                    <ul class="flex-column ms-n3 nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/terms" target="_blank">
+                Terms &amp; Conditions
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/privacy" target="_blank">
+                Privacy Policy
+              </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.creative-tim.com/license" target="_blank">
+                Licenses (EULA)
+              </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="text-center">
+                    <p class="my-4 text-sm">
+                        All rights reserved. Copyright ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script> Soft UI Design System by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
