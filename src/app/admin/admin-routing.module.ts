@@ -63,9 +63,6 @@ const routes: Routes = [{
   component:CreatecauseComponent
 },
 {
-  path:'managetestimonial',
-  component:ManagetestimonialComponent
-},{
   path:'donationReport',
   component:DonationsreportComponent
 },
@@ -79,10 +76,6 @@ const routes: Routes = [{
 },{
   path:'userblocked',
   component:BlockedUsersComponent
-},
-{
-  path:'manageTestimonial',
-  component:ManagetestimonialComponent
 }
 
 

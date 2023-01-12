@@ -492,7 +492,7 @@ export class HomeService {
 
   }
   accept_CHARTIY(body: any) {
-    body.isaccepted = 1
+    body.isaccepted = 4
     this.http.put('https://localhost:44324/api/Charity/Updatecahrity', body).subscribe((result) => {
 
       this.toastr.success('Accepted')

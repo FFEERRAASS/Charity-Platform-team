@@ -92,6 +92,8 @@ export class BeneficiaryService {
       Obj.isaccepted = 3
     } else if (Obj.isaccepted =="Accepted" ) {
       Obj.isaccepted = 1
+    }else if(Obj.isaccepted == "Waiting for the goal to be determined"){
+      Obj.isaccepted = 4
     }
     Obj.categoryidFk = parseInt(Obj.categoryidFk);
     Obj.charityid = parseInt(Obj.charityid);
@@ -147,6 +149,10 @@ export class BeneficiaryService {
           this.charityId.isaccepted = "Rejcted"
         } else if (this.charityId.isaccepted == 1) {
           this.charityId.isaccepted = "Accepted"
+        }
+        else if(this.charityId.isaccepted == 4){
+          this.charityId.isaccepted = "Waiting for the goal to be determined"
+
         }
         this.toastr.success('succeful')
       } else {

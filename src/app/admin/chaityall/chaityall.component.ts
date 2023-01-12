@@ -72,7 +72,7 @@ updatecharityInfo(obj:any){
     this.updateCharityForm.controls['email'].setValue(this.data.email);
     this.updateCharityForm.controls['numdonation'].setValue(this.data.numdonation);
     this.updateCharityForm.controls['balance'].setValue(this.data.balance);
-    this.updateCharityForm.controls['isaccepted'].setValue(this.data.isaccepted);
+    this.updateCharityForm.controls['isaccepted'].setValue(1);
     this.updateCharityForm.controls['categoryidFk'].setValue(this.data.categoryidFk);
     this.updateCharityForm.controls['imagepath'].setValue(this.data.imagepath);
     this.updateCharityForm.controls['docidFk'].setValue(this.data.docidFk);
