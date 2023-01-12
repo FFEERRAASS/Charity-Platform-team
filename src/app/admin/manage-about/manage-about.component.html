@@ -9,10 +9,10 @@
         <textarea id="#p1"
           style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;   width: 92%;  border: 0;  border-radius: 6px;" matInput
           formControlName="paraghraph1" [(ngModel)]=" p_data_about.paraghraph1" cols="50" rows="10"></textarea>
-        <label for="M1">Enter Image</label>
+        <!-- <label for="M1">Enter Image</label>
         <input style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
         border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath1" #filee
-          (change)="uploadFileabout1(filee.files)" [(ngModel)]=" p_data_about.imagepath1">
+          (change)="uploadFileabout1(filee.files)" [(ngModel)]=" p_data_about.imagepath1"> -->
       </div>
 
       <div class="col-6">
@@ -22,10 +22,11 @@
           [(ngModel)]=" p_data_about.paraghraph2" cols="50" rows="10">
 
         </textarea>
-        <label for="M2">Enter Image</label>
+
+        <!-- <label for="M2">Enter Image</label>
         <input id="#M2" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
         border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath2" #file
-          (change)="uploadFileabout2(file.files)" [(ngModel)]=" p_data_about.imagepath2">
+          (change)="uploadFileabout2(file.files)" [(ngModel)]=" p_data_about.imagepath2"> -->
       </div>
     </div>
 
@@ -43,73 +44,98 @@
   </div>
 </ng-template>
 
+
+
+
+<ng-template #cullUpadetDeveloper  >
+
+  <form [formGroup]="updateForn" style="max-width: 500px;">
+    <div class="row" style="margin: 0 10PX;">
+      <h3 style="text-align: center; padding-top: 15px;">Update About Info</h3>
+      <hr style="height: 1px;background-color: #000;">
+      <div class="col-12">
+        <label for="p1">Enter Name</label>
+        <input type="text"  id="#p1"
+        style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;   width: 92%;  border: 0;  border-radius: 6px;" matInput
+        formControlName="paraghraph1" [(ngModel)]=" p_data_about.paraghraph1">
+
+          <label for="p2">Enter Paraghraph</label>
+          <textarea id="#p2" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+            width: 92%;  border: 0;  border-radius: 6px;" matInput formControlName="paraghraph2"
+            [(ngModel)]=" p_data_about.paraghraph2" cols="50" rows="10">
+
+          </textarea>
+        <label for="M1">Enter Image</label>
+        <input style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
+        border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath1" #filee
+          (change)="uploadFileabout1(filee.files)" [(ngModel)]=" p_data_about.imagepath1">
+      </div>
+    </div>
+
+  </form>
+
+
+
+
+  <hr style="height: 1px;background-color: #000;">
+  <div class="row" style=" text-align: center;
+   justify-content: space-around;">
+    <button style="width: 33%;" class="btn" mat-button mat-dialog-close>Cancel</button>
+    <button style="width: 33%;" class="btn" mat-button cdkFocusInitial (click)="updateData()">Update</button>
+
+  </div>
+</ng-template>
+
+
+
+
+
+
+
 <div id="body" class="g-sidenav-show  bg-gray-100  ">
 
   <aside style="z-index: 0;"
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  "
-    id="sidenav-main" style="overflow: hidden;">
+    id="sidenav-main" style="overflow: hidden; z-index: 800;">
 
     <app-headerandfooter></app-headerandfooter>
   </aside>
 
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg "> 
     <app-sidebar></app-sidebar>
-
-
-
-
-
-    <div class="container-fluid py-4" style="    background-color: white;
-           ">
-
-
+    <div class="container-fluid py-4" style="    background-color: white;  ">
       <div class="row">
-
-
         <div class="card mb-4">
           <div class="card-header pb-0">
-
             <h4 style="  text-align: center; font-family: initial; letter-spacing: 2px;">About Information</h4>
             <hr style="height: 2px; background-color: #000;">
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
-
-
-              <div class="row" style="    padding: 0;
-                    margin: 0;">
-
-                <div class="col-md-6 col-sm-12" style="height:110%;overflow: auto;">
-                  <h1>Project slogan:</h1>
-                  <p>{{Admin.About[1].paraghraph2}}</p>
-                </div>
-              </div>
-
-              <hr style="background-color: #000;width: 90%;height: 1px;">
-              <div class="row" style=" padding: 0; margin: 0; margin-top: 5px;">
+              <div class="row" style="padding: 0;margin: 0;">
 
                 <div class="col-md-6 col-sm-12" style="height:417px;overflow: auto;">
                   <h1>Mission paragraph:</h1>
                   <p>{{Admin.About[1].paraghraph1}}</p>
                 </div>
+                <div class="col-md-6 col-sm-12" style="height:110%;overflow: auto;">
+                  <h1>Project slogan:</h1>
+                  <p>{{Admin.About[1].paraghraph2}}</p>
+                </div>
               </div>
-              <button class="btn bg-gradient-primary btn-sm me-2" (click)="upfateinfo(Admin.About[1])">Update</button>
+              <button class="btn bg-gradient-primary btn-sm me-2" style="bottom: 8px;position: absolute;  right: 47px;" (click)="upfateinfo(Admin.About[1])">Update</button>
             </div>
           </div>
         </div>
-
       </div>
-
-
-      <div class="row" style="border-radius: 20px; 
+      <div class="row" style="border-radius: 20px;
           box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px, rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px, rgb(0 0 0 / 9%) 0px -3px 5px;
           padding: 20px;">
-        <div class="col-md-6" style="padding-bottom: 80px;" *ngFor="let obj of Admin.participantsList ; ">
+        <div class="col-md-6" style="padding-bottom: 30px;" *ngFor="let obj of Admin.participantsList ; ">
           <div class="row" style="  position: relative;     padding: 10px; margin: 0;">
             <div class="col-md-4 col-sm-12" style="display: flex;">
               <img style="    width: 100%;
-                  height: 200px;
+                  height: 150px;
                   border-radius: 10px;
                   box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;" src="../assets/img/{{obj.imagepath1}}" alt="">
             </div>
@@ -124,52 +150,18 @@
                 box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;">
 
               <p><span style="color: #4e5dd4;"> Participant name:</span> {{obj.paraghraph1}}</p>
-              
+
               <p>{{obj.paraghraph2}}</p>
             </div>
-            <!-- <button  style="    /* padding-top: 29px; */
-            position: absolute;
-            width: 114px;
-            bottom: 0px;
-            right: 15px;
-            /* background-color: #000;">
-            </button>-->
-            <i (click)="upfateinfo(obj)" style="    position: absolute;
+
+            <i (click)="UpdateDevelopder(obj)" style="    position: absolute;
             bottom: 20px;
             /* right: 0; */
             left: 92%;
-            cursor: pointer; height: 10px; width: 10px;" class="fa fa-edit"></i> 
+            cursor: pointer; height: 10px; width: 10px;" class="fa fa-edit"></i>
           </div>
         </div>
       </div>
-      <!-- <div class="card mb-4">
-              <div class="card-header pb-0">
-
-                <h4 style="  text-align: center; font-family: initial; letter-spacing: 2px;">{{obj.paraghraph1}} Information:</h4>
-                <hr style="height: 2px; background-color: #000;">
-              </div>
-              <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0" >
-               
-
-                  <div class="row" style="    padding: 0;
-                  margin: 0;">
-                    <div class="col-md-6 col-sm-12" style="display: flex;height: 417px;">
-                      <img style="width: 188px;height: 188px;"  src="../assets/img/{{obj.imagepath1}}" alt="">
-                    </div>
-                    <div class="col-md-6 col-sm-12" style="height:417px;overflow: auto;">
-                      <h1>Participant name:</h1>
-                      <p>{{obj.paraghraph1}}</p>
-                    </div>
-                    <div class="col-md-6 col-sm-12" style="height:417px;overflow: auto;">
-                      <h1>Participant about:</h1>
-                      <p>{{obj.paraghraph2}}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-
     </div>
     <app-footer></app-footer>
   </main>
