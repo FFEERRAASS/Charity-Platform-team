@@ -23,6 +23,7 @@ export class MainComponent {
     //Add 'implements OnInit' to the class.
     // debugger;
     //
+    this.home.visitorabout();
     this.home.CountDonation();
     this.home.CountBeneficary();
     this.home.GetAllCategory();

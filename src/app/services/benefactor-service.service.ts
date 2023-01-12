@@ -248,6 +248,7 @@ export class BenefactorServiceService {
     debugger;
     this.http.get('https://localhost:44324/api/Charity/getAllCharityDto/' + categoryid).subscribe((result) => {
       this.charityCategoryDto = result;
+      this.charityCategoryDto=this.charityCategoryDto.filter((x: any) => x.isaccepted == 1);
       this.charityOps = categoryid;
 
       debugger;

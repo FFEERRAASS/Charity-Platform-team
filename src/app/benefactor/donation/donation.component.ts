@@ -19,7 +19,6 @@ export class DonationComponent implements OnInit {
   }
   SendDonation(charityid:number)
   {
- 
     this.benefactor.SendDonation(charityid,this.RechargeForm.controls['balance'].value);
   }
   
