@@ -16,12 +16,14 @@ import { TokenInterceptors } from 'src/Interceptor/token.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ReviewsComponent } from './reviews/reviews.component';
   @NgModule({
     declarations: [
       AppComponent,
       ContactComponent,
       AboutComponent,
       RegisterComponent,
+      ReviewsComponent,
 
 
 

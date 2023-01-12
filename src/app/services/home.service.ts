@@ -12,9 +12,12 @@ export class HomeService {
 
   constructor(private http: HttpClient, private toastr: ToastrService, public router: Router, public datepipe: DatePipe) { }
 
+
   [x: string]: any;
   display_Image: any;
   causes: any = [];
+  reviews:any=[];
+
   display_Image2: any;
   About: any = [];
   contact: any = [];
@@ -635,7 +638,13 @@ export class HomeService {
     })
 
   }
-
+  getreviews(){
+    this.http.get('https://localhost:44324/api/Testimonial/GetReviews').subscribe((result:any)=>{
+      this.reviews=result;
+    }, err => {
+      this.toastr.error('review Failed')
+    })
+  }
 
 
 

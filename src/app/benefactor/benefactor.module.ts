@@ -17,6 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { DonationComponent } from './donation/donation.component';
 import { AllcausesComponent } from './allcauses/allcauses.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 // --------------------------------------
 
@@ -31,7 +32,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
         MainComponent,
         DonationComponent,
         AllcausesComponent,
-        TestimonialComponent
+        TestimonialComponent,
+        ReviewsComponent
    
         
     ],
