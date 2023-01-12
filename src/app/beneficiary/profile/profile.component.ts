@@ -44,7 +44,6 @@ data:any={};
 updateuserInfo(boj:any){
   this.dialogg.open(this.callUpdate);
   this.data=boj;
-  debugger;
   this.updateForn.controls['userid'].setValue(this.data.userid);
   this.updateForn.controls['username'].setValue(this.data.username);
   this.updateForn.controls['gender'].setValue(this.data.gender);
@@ -55,7 +54,6 @@ updateuserInfo(boj:any){
 }
 
 requestmoney(boj:any){
-  debugger;
   if(boj.requestMoney=="Wating"){
       this.tostor.warning("Please wait for the moderator to accept your request");
   }else{
@@ -78,22 +76,28 @@ updateCharityForm:FormGroup=new FormGroup({
   isaccepted:new FormControl(),
   state:new FormControl(),
   categoryidFk:new FormControl(),
-  doc:new FormControl()
+  doc:new FormControl(),
+  balance:new FormControl(),
+  email:new FormControl()
 })
 
 updatecharityInfo(boj:any){
+  debugger;
   this.dialogg.open(this.callUpdatecharity);
   this.data=boj;
+
   this.updateCharityForm.controls['charityid'].setValue(this.data.charityid);
   this.updateCharityForm.controls['useridFk'].setValue(this.data.useridFk);
   this.updateCharityForm.controls['isaccepted'].setValue(this.data.isaccepted);
   this.updateCharityForm.controls['state'].setValue(this.data.state);
+  this.updateCharityForm.controls['email'].setValue(this.data.email);
+
   this.updateCharityForm.controls['balance'].setValue(this.data.balance);
   this.updateCharityForm.controls['numdonation'].setValue(this.data.numdonation);
   this.updateCharityForm.controls['goal'].setValue(this.data.goal);
 
-  this.beneficary.display_Image= this.data.docidFk;
-  this.beneficary.display_Image2= this.data.imagepath;
+  this.beneficary.display_Image2= this.data.docidFk;
+  this.beneficary.display_Image= this.data.imagepath;
 }
 
   ngOnInit(): void {
@@ -143,7 +147,6 @@ updatecharityInfo(boj:any){
 
 
   uploadFileabout2(file:any){
-    debugger;
     if(file.length==0) //zero image
     return ;
     let fileToUpload =<File>file[0];
@@ -155,7 +158,6 @@ updatecharityInfo(boj:any){
 
 
   uploadFileabout1(file:any){
-    debugger;
     if(file.length==0) //zero image
     return ;
     let fileToUpload =<File>file[0];
@@ -165,7 +167,6 @@ updatecharityInfo(boj:any){
     this.beneficary.uploadAttachmentBeneficary(formdata);
   }
   updateData(){
-    debugger;
     this.beneficary.UpdateUserInfo(this.updateForn.value);
    setTimeout(() => {
     window.location.reload();

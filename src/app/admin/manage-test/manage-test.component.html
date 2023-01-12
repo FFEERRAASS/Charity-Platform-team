@@ -1,0 +1,71 @@
+<div id="body" class="g-sidenav-show  bg-gray-100  ">
+
+    <aside style="overflow: hidden;" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " id="sidenav-main">
+        <app-headerandfooter></app-headerandfooter>
+    </aside>
+
+
+
+
+
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        <app-sidebar></app-sidebar>
+
+
+
+        <div class="container-fluid py-4">
+
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card mb-4">
+                        <div class="card-header pb-0">
+                            <h6>causes table</h6>
+                        </div>
+                        <div class="card-body px-0 pt-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">testimonial number </th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">username</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">description</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">description</th>
+
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let obj of home.testimonials">
+
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{obj.testimonialid}}</p>
+
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0">{{obj.firstname}} {{obj.lastname}}</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">{{obj.paragraph}}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">{{obj.rate}}</span>
+                                            </td>
+
+                                            <td class="align-middle">
+                                                <button type="button" (click)="updatetestimonial(obj.testimonialid)" class="btn bg-gradient-primary btn-sm me-2">accept</button>
+
+                                                <button type="button" (click)="deletetestimonial(obj.testimonialid)" class="btn bg-gradient-primary btn-sm me-2">reject</button>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

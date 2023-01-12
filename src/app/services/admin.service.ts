@@ -84,7 +84,7 @@ export class AdminService {
   }
   allusersinnerRole: any = [];
   allCharityWating:any=[];
-  GetAllChartyWatingForAdmin() {
+  GetAllChartyWatingForAdmin1() {
     this.http.get('https://localhost:44324/api/Charity/GetAllcahrity').subscribe((result) => {
     this.allCharityWating=result;
     this.allCharityWating = this.allCharityWating.filter((x: any) => x.isaccepted==2);
@@ -94,7 +94,36 @@ export class AdminService {
   })
 }
 
+Response:any={};
+GetCharitybyIdd(id: number) {
+   this.http.get('https://localhost:44324/api/Charity/getCharityProfile/'+id).subscribe((result:any) => {
+   
+     this.Response = result;
+     console.log(this.Response)
+     console.log("FERAS");
+ }, err => {
+   this.toastr.error('Charity Failed')
+ })
 
+}
+
+updateCharityData(Obj: any) {
+debugger;
+  Obj.categoryidFk = parseInt(Obj.categoryidFk);
+  Obj.charityid = parseInt(Obj.charityid);
+  Obj.goal = parseInt(Obj.goal);
+  Obj.numdonation = parseInt(Obj.numdonation);
+  Obj.balance = parseInt(Obj.balance);
+  Obj.isaccepted = parseInt(Obj.isaccepted);
+  Obj.state = parseInt(Obj.state);
+
+  
+  this.http.put('https://localhost:44324/api/Charity/Updatecahrity', Obj).subscribe((result) => {
+    this.toastr.success('Updated')
+  }, err => {
+    this.toastr.error('Failed')
+  })
+}
   getallusersinnerRole() {
     this.http.get('https://localhost:44324/api/Users/getallusersinnerrole').subscribe((userss) => {
 
@@ -106,6 +135,7 @@ export class AdminService {
     })
   }
   getallusersinnerRole2() {
+    debugger;
     this.http.get('https://localhost:44324/api/Users/getallusersinnerrole').subscribe((userss) => {
 
       this.allusersinnerRole = userss;

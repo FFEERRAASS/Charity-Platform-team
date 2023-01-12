@@ -37,7 +37,6 @@ export class HomeService {
   charityId: any;
   walletUser: any;
   category: any;
-
   alldonation: any = [];
   allusers: any = [];
   count: any = {};
@@ -291,6 +290,7 @@ export class HomeService {
   }
 
   GetAllTestimonial() {
+    debugger;
     this.http.get('https://localhost:44324/api/Testimonial/getusertestimonial').subscribe((result) => {
       this.testimonials = result;
       debugger;
@@ -328,10 +328,15 @@ export class HomeService {
   }
 
   rejecttestimonial(testimonialid: number) {
-    this.http.delete('https://localhost:44324/api/Testimonial/Deletetestimonial/' + testimonialid).subscribe((respone) => {
-      alert('deleted sucefuly')
+    this.http.get('https://localhost:44324/api/Testimonial/GettestimonialtById/' + testimonialid).subscribe((result) => {
+      this.testimonialupdate = result;
+      console.log(this.testimonialupdate);
+      this.testimonialupdate.isaccept = 2; //its not zero any more so it doesnt appear in the list to admin , its not one so its not int he testi , its 2  so now it is in the reviews and not delted from the table of testimonials
+      this.http.put('https://localhost:44324/api/Testimonial/UPDATEtestimonial', this.testimonialupdate).subscribe((response: any) => {
+        alert('updates succefuly');
+      });
     }, err => {
-      alert('operation delete didnt work');
+      alert('operation update didnt work');
 
     })
   }
@@ -380,15 +385,29 @@ export class HomeService {
     })
 
   }
-
+  bodyCheck:any={};
   register(body: any) {
-    debugger;
-    this.http.post('https://localhost:44324/api/users/CreateUser', body).subscribe((resp: any) => {
-      this.toastr.success("Done")
-    },
-      err => {
-        alert('Not Done');
-      })
+    this.bodyCheck={
+      email:body.email,
+      username:body.username,
+      phonenumber:body.phonenumber
+
+    }
+    this.http.post('https://localhost:44324/api/Users/CheckAvailable',this.bodyCheck).subscribe((response:any)=>{
+      if(response != null){
+        this.toastr.error('Email, phone number, or username is used. We apologize')
+      }
+      else{
+        this.http.post('https://localhost:44324/api/users/CreateUser', body).subscribe((resp: any) => {
+          this.toastr.success("Done")
+        },
+          err => {
+            alert('Not Done');
+          })
+      }
+    })
+    
+   
   }
 
 
