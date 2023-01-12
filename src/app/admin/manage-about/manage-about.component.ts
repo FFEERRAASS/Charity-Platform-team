@@ -15,12 +15,13 @@ import { AdminService } from 'src/app/services/admin.service';
 
 export class ManageAboutComponent implements OnInit  {
   @ViewChild ('callUpdateDialog') callUpdate! :TemplateRef<any>
+  @ViewChild ('cullUpadetDeveloper') cullUpadetDeveloper! :TemplateRef<any>
   dialog: any;
   constructor(public Admin:AdminService,public dialogg:MatDialog){}
 
 
   updateData(){
-    debugger;
+    ;
     console.log(this.updateForn.value);
     this.Admin.updateAbout(this.updateForn.value);
   }
@@ -35,7 +36,7 @@ export class ManageAboutComponent implements OnInit  {
 
   }
   uploadFileabout1(file:any){
-
+debugger;
     if(file.length==0) //zero image
     return ;
 
@@ -45,7 +46,7 @@ export class ManageAboutComponent implements OnInit  {
     this.Admin.uploadAttachmentforabout1(formdata);
 
   }
- 
+
   openDialog() {
     this.dialog.open(this.callUpdate, {
       height: '200px',
@@ -70,14 +71,25 @@ export class ManageAboutComponent implements OnInit  {
   p_data_about:any={}
 
   upfateinfo(obj:any){
-
     this.dialogg.open(this.callUpdate);
-    this.p_data_about=obj; 
+    this.p_data_about=obj;
     this.updateForn.controls['aboutid'].setValue(this.p_data_about.aboutid);
     //this.updateForm.controls['image'].setValue(this.p_data.image);
     this.Admin.display_Image= this.p_data_about.imagepath1;
     this.Admin.display_Image2= this.p_data_about.imagepath2;
   }
+
+  UpdateDevelopder(obj:any){
+    debugger
+    this.dialogg.open(this.cullUpadetDeveloper);
+    this.p_data_about=obj;
+    this.updateForn.controls['aboutid'].setValue(this.p_data_about.aboutid);
+    //this.updateForm.controls['image'].setValue(this.p_data.image);
+    this.Admin.display_Image= this.p_data_about.imagepath1;
+    this.Admin.display_Image2= this.p_data_about.imagepath2;
+  }
+
+
   public className = 'g-sidenav-pinned' ;
   handleNameInputChange = (inputevent:any) =>
   {

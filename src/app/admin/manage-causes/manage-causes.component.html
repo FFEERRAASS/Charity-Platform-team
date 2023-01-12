@@ -1,41 +1,42 @@
 <div id="body" class="g-sidenav-show  bg-gray-100  ">
 
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " style="overflow: hidden;" id="sidenav-main">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " style="overflow: hidden;z-index: 800;" id="sidenav-main">
       <app-headerandfooter></app-headerandfooter>
     </aside>
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
       <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
       <app-sidebar></app-sidebar>
-  
+
       <div class="container-fluid py-4">
     <div class="row">
 
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>causes table</h6>
+                    <h6 class="h">causes table</h6>
+                    <i class="fa fa-plus-square btnn" (click)="createcause()"></i>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">image</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">cause name</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">cause description</th>
-                                    <th class="text-secondary opacity-7"></th>
+                                    <th class="xx z">image</th>
+                                    <th class="xx z">cause name</th>
+                                    <th class="xx z">cause description</th>
+                                    <th class="xx z">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let obj of admin.causes">
 
                                     <td>
-                                        <div class="d-flex px-2 py-1">
+                                        <div class="xx">
                                             <div>
                                                 <img src="../../../assets/img/{{obj.categoryimage}}" class="avatar avatar-sm me-3" alt="user1">
                                             </div>
@@ -43,29 +44,24 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-xs font-weight-bold mb-0">{{obj.categoryname}}</p>
+                                        <p class="xx">{{obj.categoryname}}</p>
                                     </td>
-                                    <td class="align-middle text-center text-sm">
-                                        <span class="badge badge-sm bg-gradient-success">{{obj.categoryDesc}}</span>
+                                    <td class="xx" style="width: 300px;"> {{obj.categoryDesc}}
                                     </td>
 
-                                    <td class="align-middle">
-                                        <button type="button" (click)="updatefunction(obj)" class="btn bg-gradient-primary btn-sm me-2">edit</button>
-
-                                        <button type="button" (click)="DeleteFun(obj.categoryid)" class="btn bg-gradient-primary btn-sm me-2">delete</button>
-
+                                    <td class="xx ii">
+                                        <i class="fa fa-edit i" (click)="updatefunction(obj)" ></i>
+                                        <i class="fa fa-trash-alt i" (click)="DeleteFun(obj.categoryid)"></i>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <button type="button" (click)="createcause()" class="btn bg-gradient-primary btn-sm me-2">create cause</button>
-
     <ng-template #callDeleteDialog>
         <h3>Are you Sure?</h3>
         <button mat-dialog-close="yes" type="button" class="btn bg-gradient-primary btn-sm me-2">yes</button>
@@ -127,4 +123,4 @@
             </div>
         </section>
     </ng-template>
-    <app-footer style="position: absolute;top: 1000px;"></app-footer>
+    <app-footer></app-footer>

@@ -47,7 +47,7 @@ export class AdminService {
 
   updatecause(body: any) {
     body.categoryimage = this.display_Image;
-    debugger;
+    ;
     this.http.put('https://localhost:44324/api/Category/UPDATECategory', body).subscribe((result: any) => {
       alert('update suceeful');
     }, err => {
@@ -59,7 +59,7 @@ export class AdminService {
   usero = JSON.parse(localStorage.getItem('user') || '{}');
 
   getuserProfile() {
-    debugger;
+    ;
 
     this.http.get("https://localhost:44324/api/users/GetUserById/" + this.usero.USERID).subscribe((result1: any) => {
       this.users1 = result1;
@@ -71,7 +71,7 @@ export class AdminService {
   users2: any = {};
 
   getuserProfileuseBlock(id: number) {
-    debugger;
+    ;
 
     this.http.get("https://localhost:44324/api/users/GetUserById/" + id).subscribe((result1: any) => {
       this.users2 = result1;
@@ -161,7 +161,7 @@ debugger;
       })
   }
   CreateCategory(body: any) {
-    debugger;
+    ;
     //this.spinner.show();
     body.categoryimage = this.display_Image;
     this.http.post('https://localhost:44324/api/Category/CREATECategory', body).subscribe((resp) => {
@@ -177,7 +177,7 @@ debugger;
   }
   updateBenefactorProfile(body: any) {
     body.imagepath = this.display_Image;
-    debugger;
+    ;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
       alert('update suceeful');
       window.location.reload();
@@ -226,7 +226,7 @@ debugger;
     //Result => Toaster + Hide Spinner
     //this.spinner.show();
     this.http.get('https://localhost:44324/api/Aboutu/GetAllaboutus').subscribe((result) => {
-      debugger;
+      ;
       this.About = result;
       let count = 0;
       for (let index = 0; index < this.About.length; index++) {
@@ -263,7 +263,7 @@ debugger;
 
   }
   updateAbout(obj: any) {
-
+    obj.imagepath1=this.display_Image;
     this.http.put('https://localhost:44324/api/Aboutu/Updateaboutus', obj)
       .subscribe((result: any) => {
         this.toastr.success('updated');

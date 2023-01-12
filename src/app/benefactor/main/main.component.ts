@@ -28,7 +28,7 @@ export class MainComponent {
     this.home.GetAllCategory();
     this.home.getCountusers();
     this.home.ReturnLastthreeAccepted();
-    
+    this.home.visitorabout()
   }
   hoverPic(){
     debugger;
