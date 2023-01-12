@@ -26,6 +26,7 @@ import { ChaityallComponent } from './chaityall/chaityall.component';
 import { DonationsreportComponent } from './donationsreport/donationsreport.component';
 import { UsersComponent } from './users/users.component';
 import { FormsModule } from '@angular/forms';
+import { ManageTestComponent } from './manage-test/manage-test.component';
 import { DistributionOfFundsComponent } from './distribution-of-funds/distribution-of-funds.component';
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
 
@@ -49,6 +50,7 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     ChaityallComponent,
     DonationsreportComponent,
     UsersComponent,
+    ManageTestComponent,
     DistributionOfFundsComponent,
     BlockedUsersComponent
     
