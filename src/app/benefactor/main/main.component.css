@@ -1,0 +1,18 @@
+.h{
+  text-align: center;
+                            font-weight: 500;
+                            font-size: 30px;
+                            border-bottom: 2px #9a9494 solid;
+                            padding-bottom: 21px;
+}
+.xx .img{
+  top:0;
+
+}
+.xx:hover .img{
+  transition: 1s;
+  position: absolute;
+  top: -38px;
+  border-radius: 0;
+
+}
