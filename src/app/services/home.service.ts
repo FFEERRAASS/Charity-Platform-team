@@ -37,7 +37,6 @@ export class HomeService {
   charityId: any;
   walletUser: any;
   category: any;
-
   alldonation: any = [];
   allusers: any = [];
   count: any = {};
@@ -380,15 +379,29 @@ export class HomeService {
     })
 
   }
-
+  bodyCheck:any={};
   register(body: any) {
-    debugger;
-    this.http.post('https://localhost:44324/api/users/CreateUser', body).subscribe((resp: any) => {
-      this.toastr.success("Done")
-    },
-      err => {
-        alert('Not Done');
-      })
+    this.bodyCheck={
+      email:body.email,
+      username:body.username,
+      phonenumber:body.phonenumber
+
+    }
+    this.http.post('https://localhost:44324/api/Users/CheckAvailable',this.bodyCheck).subscribe((response:any)=>{
+      if(response != null){
+        this.toastr.error('Email, phone number, or username is used. We apologize')
+      }
+      else{
+        this.http.post('https://localhost:44324/api/users/CreateUser', body).subscribe((resp: any) => {
+          this.toastr.success("Done")
+        },
+          err => {
+            alert('Not Done');
+          })
+      }
+    })
+    
+   
   }
 
 

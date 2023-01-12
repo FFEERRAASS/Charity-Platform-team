@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BeneficiaryService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService, public router: Router, public datepipe: DatePipe) { }
+  constructor(private http: HttpClient, public spinner :NgxSpinnerService,private toastr: ToastrService, public router: Router, public datepipe: DatePipe) { }
   category: any;
   display_Image2: any;
   display_Image: any;
@@ -84,6 +85,14 @@ export class BeneficiaryService {
   }
   updateCharityData(Obj: any) {
     debugger;
+    
+    if (Obj.isaccepted =="Wating" ) {
+      Obj.isaccepted = 2
+    } else if (Obj.isaccepted == "Rejcted") {
+      Obj.isaccepted = 3
+    } else if (Obj.isaccepted =="Accepted" ) {
+      Obj.isaccepted = 1
+    }
     Obj.categoryidFk = parseInt(Obj.categoryidFk);
     Obj.charityid = parseInt(Obj.charityid);
     Obj.goal = parseInt(Obj.goal);
@@ -93,6 +102,7 @@ export class BeneficiaryService {
     Obj.state = parseInt(Obj.state);
     Obj.imagepath = this.display_Image;
     Obj.docidFk = this.display_Image2;
+    
     this.http.put('https://localhost:44324/api/Charity/Updatecahrity', Obj).subscribe((result) => {
       this.toastr.success('Updated')
     }, err => {
@@ -124,10 +134,11 @@ export class BeneficiaryService {
   testWallet: any;
   charityId: any;
 
-  async GetCharitybyId(id: number) {
-    await this.http.get('https://localhost:44324/api/Charity/GetcahrityById/' + id).subscribe((result1) => {
+   GetCharitybyId(id: number) {
+    debugger;
+
+     this.http.get('https://localhost:44324/api/Charity/GetcahrityById/' + id).subscribe((result1) => {
       if (result1 != null) {
-        debugger;
         this.charityId = result1;
 
         if (this.charityId.isaccepted == 2) {

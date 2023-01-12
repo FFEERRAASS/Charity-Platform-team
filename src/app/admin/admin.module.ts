@@ -21,7 +21,6 @@ import{HttpClientModule}from  '@angular/common/http';
 import { CreatecauseComponent } from './createcause/createcause.component';
 import { ManagetestimonialComponent } from './managetestimonial/managetestimonial.component'
 import {MatDialogModule} from '@angular/material/dialog';
-import { AllCharityComponent } from './all-charity/all-charity.component';
 import { HeaderandfooterComponent } from './headerandfooter/headerandfooter.component';
 import { ChaityallComponent } from './chaityall/chaityall.component';
 import { DonationsreportComponent } from './donationsreport/donationsreport.component';
@@ -52,6 +51,7 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     UsersComponent,
     DistributionOfFundsComponent,
     BlockedUsersComponent
+    
 
 
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllCharityComponent } from './all-charity/all-charity.component';
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
 import { ChaityallComponent } from './chaityall/chaityall.component';
 import { CreatecauseComponent } from './createcause/createcause.component';
@@ -76,6 +75,10 @@ const routes: Routes = [{
 {
   path:'userblocked',
   component:BlockedUsersComponent
+},
+{
+  path:'manageTestimonial',
+  component:ManagetestimonialComponent
 }
 
 
