@@ -17,13 +17,10 @@ export class LineChartComponent implements OnInit{
 
 
 
-  createChart(){
-
-
+createChart(){
 let dates=[];
 let amountOfDonationsPerDate=[];
 let sumOfTheDonationsPerDate=[];
-// datedonation
 for(let i=0;i<this.home.alldonation.length;i++){
   let datedonationpiped = this.datepipe.transform((this.home.alldonation[i].datedonation), 'yyyy-MM-dd');
 this.home.alldonation[i].datedonation=this.datepipe.transform((this.home.alldonation[i].datedonation), 'yyyy-MM-dd');
@@ -33,18 +30,13 @@ this.home.alldonation[i].datedonation=this.datepipe.transform((this.home.alldona
   else{
     dates.push(datedonationpiped);
   }
-  
-}    
-
-
-    
+}        
 for(let i=0;i<dates.length;i++){
      let datetemp:string | null=dates[i];
      let datearratemp=this.home.alldonation;
      let temp=datearratemp.filter((x:any)=>x.datedonation==datetemp);
      amountOfDonationsPerDate.push(temp.length);
 }
-
 for(let i=0;i<dates.length;i++){
   let tempsumofdonationperdation=0;
   for(let y=0;y<this.home.alldonation.length;y++){
@@ -54,12 +46,9 @@ for(let i=0;i<dates.length;i++){
       continue;
     }
   }
-
   sumOfTheDonationsPerDate.push(tempsumofdonationperdation);
   tempsumofdonationperdation=0;
 }
-  
-debugger;
     this.chart = new Chart("MyChart", {
       type: 'line', //this denotes tha type of chart
 
@@ -84,8 +73,7 @@ debugger;
       
     });
   }
-
-  ngOnInit(): void {
+ ngOnInit(): void {
     this.home.getDonation();
 setTimeout(() => {
   this.createChart();
