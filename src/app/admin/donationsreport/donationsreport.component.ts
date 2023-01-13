@@ -33,7 +33,7 @@ export class DonationsreportComponent implements OnInit  {
   DownloadData(){
     const doc = new jsPDF()
     
-    autoTable(doc, { html: '#my-table' ,theme:'grid',startY:2,margin:{horizontal:10},pageBreak:'auto',rowPageBreak:'avoid',columnStyles: {0: {cellWidth: 22, minCellHeight: 25},1: {cellWidth: 22},2: {cellWidth: 22},3: {cellWidth: 25},4: {cellWidth: 20},5: {cellWidth: 20}}})
+    autoTable(doc, { html: '#my-table' ,theme:'grid',startY:2,margin:{horizontal:10},pageBreak:'auto',rowPageBreak:'avoid',columnStyles: {0: {cellWidth: 28, minCellHeight: 25},1: {cellWidth: 28},2: {cellWidth: 28},3: {cellWidth: 34},4: {cellWidth: 28}}})
     
     doc.save('table.pdf')
   }
