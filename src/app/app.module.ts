@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { NgChartsModule } from 'ng2-charts';
   @NgModule({
     declarations: [
       AppComponent,
@@ -30,6 +31,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
     ],
     imports: [
       BrowserModule,ToastrModule.forRoot(),ToastNoAnimationModule.forRoot(),
+      NgChartsModule,
       AppRoutingModule,
       BrowserAnimationsModule,
       MatDialogModule,
