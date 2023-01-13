@@ -14,6 +14,7 @@ export class AdminService {
   display_Image: any;
   causes: any = [];
   generalreport: any = {}
+ backup2:any=[];
 
   About: any = [];
 
@@ -129,6 +130,7 @@ debugger;
 
       this.allusersinnerRole = userss;
       this.allusersinnerRole = this.allusersinnerRole.filter((x: any) => x.isaccepted == 1);
+      this.backup2=this.allusersinnerRole.filter((x: any) => x.isaccepted == 1);
       this.toastr.success("User Blocked")
     }, err => {
       this.toastr.success("User Can't blocked")
