@@ -4,12 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { ThisReceiver } from '@angular/compiler';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Injectable({
   providedIn: 'root'
 })
 export class BenefactorServiceService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService, public router: Router, public datepipe: DatePipe) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, public spinner: NgxSpinnerService, public router: Router, public datepipe: DatePipe) { }
   TestFeras: any;
   singleuserdoantions: any = [];
   body5: any = {}
@@ -71,8 +72,9 @@ export class BenefactorServiceService {
 
     })
   }
-
+  CheckGoal: any = {};
   SendDonation(charityid: number, balance: number) {
+    this.spinner.show()
     this.http.get('https://localhost:44324/api/Wallet/getwalletforuser/' + this.usero.USERID).subscribe((result: any) => {
       if (result.balance >= balance) {
         result.balance = result.balance - balance;
@@ -81,8 +83,8 @@ export class BenefactorServiceService {
             balance,
             charityid
           }
+
           this.http.put('https://localhost:44324/api/charity/UpdateBalanceCharity', objBalance).subscribe((resp) => {
-            debugger;
             let amount = balance;
             let charityfk = charityid;
             let userfk = parseInt(this.usero.USERID);
@@ -93,20 +95,29 @@ export class BenefactorServiceService {
               userfk,
               datedonation
             }
+
+
             this.http.post('https://localhost:44324/api/Donation/CreateDonation', abjdonation).subscribe((result3) => {
               alert('added to list');
 
             })
 
+            this.spinner.hide()
+
             window.location.reload();
-            alert('Success Donations')
           })
         })
 
 
       }
+      else {
+        this.toastr.error("The balance is insufficient");
+        this.spinner.hide()
+
+      }
 
     }, err => {
+      this.toastr.error("Website Have Error , Try Again Later");
 
     })
   }
@@ -174,12 +185,20 @@ export class BenefactorServiceService {
   openCauseProfile(charityid: number) {
     this.http.get('https://localhost:44324/api/Charity/getCharityProfile/' + charityid).subscribe((result: any) => {
       this.charityProfile = result;
+      if (this.charityProfile.balance >= this.charityProfile.goal) {
+        this.charityProfile.isaccepted = 5;
 
+        this.http.put('https://localhost:44324/api/Charity/Updatecahrity', this.charityProfile).subscribe((resultCheck) => {
+          this.toastr.success('Thank you, we have collected the goal in the donation campaign and you are the last donor');
+        })
+      }
       this.router.navigate(['/benefactor/donation'])
     }, err => {
 
     })
   }
+
+
 
 
   updateBenefactorProfile(body: any) {
@@ -248,7 +267,7 @@ export class BenefactorServiceService {
     debugger;
     this.http.get('https://localhost:44324/api/Charity/getAllCharityDto/' + categoryid).subscribe((result) => {
       this.charityCategoryDto = result;
-      this.charityCategoryDto=this.charityCategoryDto.filter((x: any) => x.isaccepted == 1);
+      this.charityCategoryDto = this.charityCategoryDto.filter((x: any) => x.isaccepted == 1);
       this.charityOps = categoryid;
 
       debugger;
