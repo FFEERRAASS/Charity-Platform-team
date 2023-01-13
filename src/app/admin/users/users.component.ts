@@ -102,7 +102,7 @@ export class UsersComponent implements OnInit {
 
     this.admin.allusersinnerRole=this.admin.backup2;
 
-    this.admin.allusersinnerRole= this.admin.allusersinnerRole.filter((x:any)=> name== x.firstname || name==x.lastname )
+    this.admin.allusersinnerRole= this.admin.allusersinnerRole.filter((x:any)=> name== x.firstname || name==x.lastname || name==x.username ||name ==x.gender || name==x.phonenumber || name==x.email)
 
   }
 
