@@ -233,7 +233,7 @@ debugger;
 
 
         const element = this.About[index];
-        if (index != 1) {
+        if (index != 1&&index != 6) {
           this.participantsList[count] = this.About[index]
           count++
 
