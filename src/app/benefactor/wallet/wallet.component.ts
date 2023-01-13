@@ -5,6 +5,7 @@ import { HomeService } from 'src/app/services/home.service';
 import { DatePipe } from '@angular/common';
 import {render} from 'creditcardpayments/creditCardPayments'
 import { BenefactorServiceService } from 'src/app/services/benefactor-service.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.component.html',
@@ -13,7 +14,7 @@ import { BenefactorServiceService } from 'src/app/services/benefactor-service.se
 export class WalletComponent implements OnInit {
 
   amountt:number=0;
-  constructor(private dialog : MatDialog , public benefactor:BenefactorServiceService,public pipe:DatePipe )
+  constructor(private dialog : MatDialog , public benefactor:BenefactorServiceService,public pipe:DatePipe ,public spinner:NgxSpinnerService)
   {
 
     debugger;
@@ -49,15 +50,21 @@ export class WalletComponent implements OnInit {
     
     public valuee :any;
     ngOnInit(): void {
- 
+      this.spinner.show()
+     
+
         this.benefactor.displaybenefactorbalance(parseInt(this.benefactor.usero.USERID));
         this.benefactor.getuserdonationssolo(parseInt(this.benefactor.usero.USERID));
 
         setTimeout(() => {
+
           this.show=this.benefactor.TestFeras;
           this.showRequrement=!this.show;
+          this.spinner.hide();
+
         }, 4000);
       
+     
         }
     
         wallet:any={
@@ -66,10 +73,11 @@ export class WalletComponent implements OnInit {
             bankaccountFk:null
         }
          counter :number= 0;
-
+showPic:boolean=true;
         PAY(){
             this.counter++;
           if(this.counter==1){
+            this.showPic=false
             this.paypal();
           }
         }
@@ -89,6 +97,9 @@ export class WalletComponent implements OnInit {
     )
     
 
+  }
+  reload(){
+    window.location.reload()
   }
 
   Recharge(){

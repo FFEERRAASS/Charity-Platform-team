@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { ManageTestComponent } from './manage-test/manage-test.component';
 import { DistributionOfFundsComponent } from './distribution-of-funds/distribution-of-funds.component';
 import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { BlockedUsersComponent } from './blocked-users/blocked-users.component';
     UsersComponent,
     ManageTestComponent,
     DistributionOfFundsComponent,
-    BlockedUsersComponent
+    BlockedUsersComponent,
+    LineChartComponent
     
 
 

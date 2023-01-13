@@ -5,6 +5,7 @@ import { ChaityallComponent } from './chaityall/chaityall.component';
 import { CreatecauseComponent } from './createcause/createcause.component';
 import { DonationsreportComponent } from './donationsreport/donationsreport.component';
 import { FainanceComponent } from './fainance/fainance.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 import { MainComponent } from './main/main.component';
 import { ManageAboutComponent } from './manage-about/manage-about.component';
 import { ManageCausesComponent } from './manage-causes/manage-causes.component';
@@ -77,9 +78,10 @@ const routes: Routes = [{
   path:'userblocked',
   component:BlockedUsersComponent
 }
-
-
-
+,{
+  path:'chart',
+  component:LineChartComponent
+}
 
 ];
 

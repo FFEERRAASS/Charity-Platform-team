@@ -4,13 +4,15 @@ import { ToastrService } from 'ngx-toastr';
 import { ThisReceiver } from '@angular/compiler';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { AuthService } from './auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService, public router: Router, public datepipe: DatePipe) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, public router: Router, public spinner:NgxSpinnerService,public datepipe: DatePipe,public auth:AuthService) { }
 
 
   [x: string]: any;
@@ -131,7 +133,7 @@ export class HomeService {
       this.alldonation = response;
       this.backup = response;
     }, err => {
-      alert('Shit')
+      alert('cant get donations')
     })
   }
   TestFeras: any;
@@ -389,29 +391,65 @@ export class HomeService {
 
   }
   bodyCheck:any={};
+  bodySubmit:any={};
   register(body: any) {
+    debugger;
+    body.imagepath = this.ImageUser;
+
     this.bodyCheck={
       email:body.email,
       username:body.username,
       phonenumber:body.phonenumber
 
     }
+    this.bodySubmit={
+      email:body.email,
+      password:body.password
+    }
     this.http.post('https://localhost:44324/api/Users/CheckAvailable',this.bodyCheck).subscribe((response:any)=>{
       if(response != null){
+        this.spinner.hide();
+
         this.toastr.error('Email, phone number, or username is used. We apologize')
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       }
+      
       else{
+
         this.http.post('https://localhost:44324/api/users/CreateUser', body).subscribe((resp: any) => {
-          this.toastr.success("Done")
+
+          this.auth.submit( this.bodySubmit)
+          this.spinner.hide();
+
+
         },
           err => {
-            alert('Not Done');
+            this.toastr.error("Have Error")
           })
       }
     })
     
    
   }
+  ImageUser:any;
+  uploadImage(file: FormData) {
+    this.http.post('https://localhost:44324/api/users/UploadImages', file)
+      .subscribe((data: any) => { 
+        this.ImageUser = data.imagepath;
+      }, err => {
+        this.toastr.error('operation image didnt work');
+      })
+  }
+
+  Avaliable(body:any){
+    this.http.post('https://localhost:44324/api/Users/CheckAvailable',this.bodyCheck).subscribe((response:any)=>{
+      if(response != null){
+        this.toastr.error('Email, phone number, or username is used. We apologize')
+      }
+  }
+    )}
 
 
 
@@ -443,7 +481,7 @@ export class HomeService {
     this.http.get('https://localhost:44324/api/Charity/GetAllcahrity').subscribe((result) => {
       this.chartiy = result;
     }, err => {
-      alert('operation didnt work');
+      this.toastr.error('operation didnt work');
     })
   }
   WatingCharity:any=[]
@@ -460,7 +498,7 @@ export class HomeService {
         }
       };
     }, err => {
-      alert('operation didnt work');
+      this.toastr.error('operation didnt work');
     })
   }
 
@@ -531,9 +569,9 @@ export class HomeService {
 
   CreatContact(body: any) {
     this.http.post('https://localhost:44324/api/ContactUs/CREATEcontactus', body).subscribe((result: any) => {
-      alert('creat suceeful');
+      this.toastr.error('Create suceeful');
     }, err => {
-      alert('oh no!!')
+      this.toastr.error('oh no!!')
     })
   }
 
@@ -639,10 +677,16 @@ export class HomeService {
 
   }
   getreviews(){
+    this.spinner.show()
+
     this.http.get('https://localhost:44324/api/Testimonial/GetReviews').subscribe((result:any)=>{
       this.reviews=result;
+      this.spinner.hide()
+
     }, err => {
       this.toastr.error('review Failed')
+      this.spinner.hide()
+
     })
   }
 

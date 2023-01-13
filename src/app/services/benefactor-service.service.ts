@@ -26,21 +26,34 @@ export class BenefactorServiceService {
 
 
   generateWallet(wallet: any) {
+    this.spinner.show()
 
     this.http.post('https://localhost:44324/api/Wallet/CREATEWallets', wallet).subscribe((Result) => {
       this.toastr.success("Done")
+      this.spinner.hide()
+
     }, err => {
+      this.spinner.hide()
+
       this.toastr.error("Error")
     })
   }
   addcard(body: any) {
+    this.spinner.show()
+
     this.http.post('https://localhost:44324/api/Bank/createBank', body).subscribe((Result) => {
+      this.spinner.hide()
+
       this.toastr.success('Done')
     }, err => {
+      this.spinner.hide()
+
       this.toastr.error('Error')
     })
   }
   displaybenefactorbalance(id: number) {
+
+
     this.http.get('https://localhost:44324/api/Wallet/getwalletforuser/' + id).subscribe((result) => {
 
 
@@ -54,6 +67,7 @@ export class BenefactorServiceService {
         this.TestFeras = true;
 
       }
+      
 
 
       //   let id2:number=parseInt(this.userwalletfull.walletid) ;
@@ -71,6 +85,7 @@ export class BenefactorServiceService {
 
 
     })
+
   }
   CheckGoal: any = {};
   SendDonation(charityid: number, balance: number) {
@@ -98,7 +113,7 @@ export class BenefactorServiceService {
 
 
             this.http.post('https://localhost:44324/api/Donation/CreateDonation', abjdonation).subscribe((result3) => {
-              alert('added to list');
+              this.toastr.info('added to list');
 
             })
 
@@ -124,14 +139,21 @@ export class BenefactorServiceService {
 
 
   rechargePaypal(amount: any) {
+    this.spinner.show()
+
     this.userwalletfull.balance += amount;
 
     this.http.put('https://localhost:44324/api/Wallet/UPDATEWallets', this.userwalletfull).subscribe((result4: any) => {
-      alert('recharge is sucessful');
+      this.spinner.hide()
+
+      this.toastr.success('recharge is sucessful');
     })
+    this.spinner.hide()
+
   }
 
   rechargebenefactor(body: any) {
+    this.spinner.show()
 
     this.http.post('https://localhost:44324/api/bank/checkforcard', body).subscribe((result: any) => {
       if (result.balance > body.chargeamount) {
@@ -141,7 +163,8 @@ export class BenefactorServiceService {
             result3.balance = parseInt(result3.balance) + parseInt(body.chargeamount);
 
             this.http.put('https://localhost:44324/api/Wallet/UPDATEWallets', result3).subscribe((result4: any) => {
-              alert('recharge is sucessful');
+              this.toastr.success('recharge is sucessful');
+
             })
           })
         })
@@ -149,9 +172,13 @@ export class BenefactorServiceService {
     }, err => {
       this.toastr.error(err.message, err.status);
     })
+    this.spinner.hide()
+
   }
   AlltestimonialAccepted: any = [];
   sendTesti(body: any) {
+    this.spinner.show()
+
     body.useridFk = parseInt(this.usero.USERID);
     body.rate = 4;
     body.isaccept = 0;
@@ -160,15 +187,23 @@ export class BenefactorServiceService {
     }, err => {
       this.toastr.error("Can't Add");
     })
+    this.spinner.hide()
+
   }
   getAllTestimonialAccept() {
+    this.spinner.show()
+
     this.http.get('https://localhost:44324/api/Testimonial/GetAlltestimonialAccepted').subscribe((testimonial) => {
       this.AlltestimonialAccepted = testimonial;
     }, err => {
       this.toastr.error('Network Error')
     })
+    this.spinner.hide()
+
   }
   uploadBenefactorImage(file: FormData) {
+    this.spinner.show()
+
     this.http.post('https://localhost:44324/api/users/UploadImages', file)
       .subscribe((data: any) => {
 
@@ -179,10 +214,14 @@ export class BenefactorServiceService {
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
+      this.spinner.hide()
+
   }
   openCauseProfile(charityid: number) {
+    this.spinner.show()
+
     this.http.get('https://localhost:44324/api/Charity/getCharityProfile/' + charityid).subscribe((result: any) => {
       this.charityProfile = result;
       if (this.charityProfile.balance >= this.charityProfile.goal) {
@@ -192,70 +231,96 @@ export class BenefactorServiceService {
           this.toastr.success('Thank you, we have collected the goal in the donation campaign and you are the last donor');
         })
       }
+
       this.router.navigate(['/benefactor/donation'])
     }, err => {
+      this.toastr.error('You have Error')
 
     })
+    this.spinner.hide()
+
   }
 
 
 
 
   updateBenefactorProfile(body: any) {
+    this.spinner.show()
+
     body.imagepath = this.display_Image;
     debugger;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update suceeful');
+      this.toastr.success('Update suceeful');
+      this.spinner.hide()
+
       window.location.reload();
 
 
     }, err => {
-      alert('shit')
+      this.toastr.error('There is a problem, please try again later');
     })
+    this.spinner.hide()
 
   }
   updateBenefactorPassword(body: any) {
+    this.spinner.show()
+
     body.imagepath = this.display_Image;
 
     debugger;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update suceeful');
+      this.toastr.success('update suceeful');
     }, err => {
-      alert('shit')
+      this.toastr.error('There is a problem, please try again later');
+
     })
+    this.spinner.hide()
 
   }
 
 
   getuserProfile() {
+    this.spinner.show()
 
     this.http.get("https://localhost:44324/api/users/GetUserById/" + this.usero.USERID).subscribe((result1: any) => {
       debugger;
       this.benfactorprofile = result1;
 
     }, err => {
-      alert('not found');
+
+      this.toastr.error('There is a problem, please try again later');
     })
+    this.spinner.hide()
+
   }
   WalletCheck: any = [];
   GetWalletByUserCheck() {
     debugger;
+    this.spinner.show()
+
     this.http.get('https://localhost:44324/api/Wallet/getwalletforuser/' + this.usero.USERID).subscribe((result: any) => {
       this.WalletCheck = result;
+      this.spinner.hide()
 
 
 
     }, err => {
+      this.toastr.error('There is a problem, please try again later');
 
     })
   }
 
   transfermoney(id: number) {
+    this.spinner.show()
+
     this.http.get('https://localhost:44324/api/Wallet/transfermoney/' + id).subscribe((result) => {
+      this.spinner.hide()
 
       this.toastr.success('Transfer completed successfully')
     }, err => {
       this.toastr.error('Transfer Failed')
+      this.spinner.hide()
+
     })
 
   }
@@ -265,25 +330,33 @@ export class BenefactorServiceService {
 
   getCharitybyCategory(categoryid: number) {
     debugger;
+    this.spinner.show()
+
     this.http.get('https://localhost:44324/api/Charity/getAllCharityDto/' + categoryid).subscribe((result) => {
       this.charityCategoryDto = result;
       this.charityCategoryDto = this.charityCategoryDto.filter((x: any) => x.isaccepted == 1);
       this.charityOps = categoryid;
 
-      debugger;
+      this.spinner.hide()
+
 
 
     }, err => {
-      alert('Operation Didnt Worl')
+      this.toastr.error('Operation Didnt Worl')
+      this.spinner.hide()
+
     })
   }
   getAllCausesAccepted() {
+    this.spinner.show()
     this.http.get('https://localhost:44324/api/Charity/GetAllcahrityAccepted').subscribe((resultCauese) => {
       debugger;
       this.AllCauses = resultCauese;
-      this.toastr.success('Done');
+      this.spinner.hide()
     }, err => {
       this.toastr.error('Error Get All Causes');
+      this.spinner.hide()
+
     })
   }
 }

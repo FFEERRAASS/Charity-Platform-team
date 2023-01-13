@@ -4,128 +4,134 @@
   </div>
 </ng-template>
 
+
 <div id="body" class="g-sidenav-show bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
-    id="sidenav-main" style="overflow: hidden;">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
+    id="sidenav-main" style="overflow: hidden;"
+  >
     <app-headerandfooter></app-headerandfooter>
   </aside>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+
+
+
+
+
+
+ <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg" >
     <app-sidebar></app-sidebar>
-    <div class="container-fluid py-4" style="min-height: 90vh;">
+
+    <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-12">
-          <div class="card mb-4">
-            <div class="row card-header pb-0" style="margin:0 ;padding:13px;background-image: linear-gradient(10deg,#e7e4ec 0%,#ababab 100%);box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;">
-              <div class="col-4 x">
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6>Select Goal</h6>
               </div>
-              <div class="col-4 x">
-              </div>
-              <div class="col-4 x">
-              </div>
-            </div>
-            <div class="card-header pb-0">
-              <h6 id="ax">All Charity</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Image
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        Email
-                      </th>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0" id="content">
+                  <section >
+                    <div class="container">
+                      <div class="row justify-space-between py-2">
+                        <div class="col-lg-12 mx-auto">
+                    
+                        </div>
+                      </div>
+                    </div>
+                  </section>
 
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        goal
+                  <table id="my-table" style="width: 100%;">
+                    <thead>
+                      <tr>
+                        <th
+                          class="xx z"
+                        >
+                          Charity Image
+                        </th>
+                        <th
+                        class="xx z"
+                      >
+                        Charity Name
                       </th>
-               
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                        <th
+                          class="xx z"
+                        >
+                        Description
+                        </th>
+                        <th
+                          class="xx z"
+                        >
                         Document
-                      </th>
-
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                        </th>
+                        <th
+                          class="xx z"
+                        >
                         Numdonation
-                      </th>
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let obj of admin.allCharityWating">
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
+                        </th>
+                        <th class="xx z">
+                          Action
+                        </th>
+                      
+
+                        <!-- <th></th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let obj of admin.allCharityWating">
+                        <td>
+                          <p class="xx ">
                             <img src="../../../assets/img/{{ obj.imagepath }}" class="avatar avatar-sm me-3"
                               alt="user1" />
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">
-                          {{ obj.email }}
-                        </p>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">
-                          {{ obj.goal }} $
-                        </p>
-                      </td>
-               
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0" (click)="doc(obj.docidFk)">
+                          </p>
+                        </td>
+                        <td>
+                          <p class="xx ">
+                            {{ obj.charityname }} $
+                          </p>
+                        </td>
+                        <td>
+                          <p class="xx" >
+                            {{ obj.email }} $
+                          </p>
+                        </td>
+                        <td><p  (click)="doc(obj.docidFk)" class="xx">
                           Show Document
                         </p>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">
+                        <p  class="xx">
                           {{ obj.numdonation }}
                         </p>
                       </td>
-                      <td class="align-middle" style="width: 30">
-                        <button type="button" (click)="updatecharityInfo(obj.charityid)"
-                          class="btn bg-gradient-primary btn-sm me-2" style="padding: 10px 16px">Determine the
-                          amount</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                        <td class="xx">
+                          <button type="button" (click)="updatecharityInfo(obj.charityid)"
+                            class="btn bg-gradient-primary btn-sm me-2" style="padding: 10px 16px">Determine the
+                            amount</button>
+                        </td>
+
+
+                      </tr>
+
+                      
+                   
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <app-footer></app-footer>
       </div>
     </div>
-    <app-footer></app-footer>
   </main>
-  <div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2"><i class="fa fa-cog py-2"></i></a>
-    <div class="card shadow-lg">
-      <div class="card-header pb-0 pt-3">
-        <div class="float-start">
-          <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
-          <p>See our dashboard options.</p>
-        </div>
-        <div class="float-end mt-4">
-          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-            <i class="fa fa-close"></i>
-          </button>
-        </div>
-      </div>
-      <hr class="horizontal dark my-1" />
-      <div class="card-body pt-sm-3 pt-0">
-        <div>
-          <h6 class="mb-0">Sidebar Colors</h6>
-        </div>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard"
-          class="btn btn-dark mb-0 me-2" target="_blank">
-          <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-        </a>
-      </div>
-    </div>
-  </div>
 </div>
+
+
+
+
 
 
 <ng-template #callUpdatecharityDialog class="mat-mdc-dialog-surfac">

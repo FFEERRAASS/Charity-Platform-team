@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AllcausesComponent } from './allcauses/allcauses.component';
 import { CausesComponent } from './causes/causes.component';
-import { ChatComponent } from './chat/chat.component';
 import { ContactComponent } from './contact/contact.component';
 import { DonationComponent } from './donation/donation.component';
 import { MainComponent } from './main/main.component';
@@ -29,10 +28,7 @@ const routes: Routes = [
     path:'about',
     component:AboutComponent
   },
-  {
-    path:'chat',
-    component:ChatComponent
-  },
+ 
   {
     path:'causes',
     component:CausesComponent

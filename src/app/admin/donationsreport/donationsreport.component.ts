@@ -33,7 +33,7 @@ export class DonationsreportComponent implements OnInit  {
   DownloadData(){
     const doc = new jsPDF()
     
-    autoTable(doc, { html: '#my-table' ,theme:'grid',startY:2,margin:{horizontal:10},pageBreak:'auto',rowPageBreak:'avoid',columnStyles: {0: {cellWidth: 22, minCellHeight: 25},1: {cellWidth: 22},2: {cellWidth: 22},3: {cellWidth: 25},4: {cellWidth: 20},5: {cellWidth: 20}}})
+    autoTable(doc, { html: '#my-table' ,theme:'grid',startY:2,margin:{horizontal:10},pageBreak:'auto',rowPageBreak:'avoid',columnStyles: {0: {cellWidth: 28, minCellHeight: 25},1: {cellWidth: 28},2: {cellWidth: 28},3: {cellWidth: 34},4: {cellWidth: 28}}})
     
     doc.save('table.pdf')
   }
@@ -48,7 +48,22 @@ export class DonationsreportComponent implements OnInit  {
 
 
     debugger;
-    this.home.alldonation=   this.home.alldonation.filter((x:any)=> date1 <= x.datedonation && date2>= x.datedonation)
+    if((this.searchForm.controls['date1'].value==null || date1==null)&&(this.searchForm.controls['date2'].value!=null || date2!=null)){
+      this.home.alldonation= this.home.alldonation.filter((x:any)=> date2>= x.datedonation)
+
+    }
+    else if((this.searchForm.controls['date2'].value==null || date2==null)&&(this.searchForm.controls['date1'].value!=null || date1!=null)){
+      this.home.alldonation= this.home.alldonation.filter((x:any)=> date1 <= x.datedonation)
+    }
+    else if((this.searchForm.controls['date1'].value!=null || date2!=null) &&((this.searchForm.controls['date2'].value!=null || date2!=null))){
+    this.home.alldonation= this.home.alldonation.filter((x:any)=> date1 <= x.datedonation && date2>= x.datedonation)}
+    else if((this.searchForm.controls['date1'].value==null || date2==null) &&((this.searchForm.controls['date2'].value==null || date2==null))){
+      this.home.alldonation
+    }
+
   }
-  }
+}
+  
+   
+  
 

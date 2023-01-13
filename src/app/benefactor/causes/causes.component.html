@@ -1,12 +1,13 @@
+
 <div class="container position-sticky z-index-sticky top-0">
   <app-navbar></app-navbar>
 </div>
 <div style="width: 100%;height: 150px;">
 
 </div>
-<div class="row container">
-  <div class="col-xl-4 col-md-6 mb-xl-0 mb-4" *ngFor="let obj of benefactor.charityCategoryDto" >
-    <div class="card card-blog card-plain" style="border: 1px rgb(173, 171, 171) solid; padding: 5px;">
+<div class="row " style="margin: 0px 8%;justify-content: center;">
+  <div class="col-xl-3 col-md-6 mb-xl-0 mb-4" *ngFor="let obj of benefactor.charityCategoryDto" >
+    <div class="card card-blog card-plain" style="border: 1px rgb(173, 171, 171) solid; padding: 5px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
       <div class="position-relative">
         <a class="d-block shadow-xl border-radius-xl">
           <img src="../assets/img/{{obj.imagepath}}" style="width: 100%; height: 250px;" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
@@ -14,8 +15,12 @@
       </div>
       <div class="card-body px-1 pb-0">
         <p class="text-gradient text-dark mb-2 text-sm">{{obj.charityname}}</p>
+        <p class="text-gradient text-dark mb-2 text-sm" style="height:120px">{{obj.email}}</p>
+
         <!-- <a href="javascript:;"> <h5> Modern </h5> </a> -->
-        <p class="mb-4 text-sm"> {{obj.balance}} of {{obj.goal}}  </p>
+        <p class="mb-4 text-sm"> {{obj.balance}}$ out of  {{obj.goal}}$ collected   </p>
+        <p class="mb-4 text-sm"> The number of donors so far {{obj.numdonation}} <i class="fa fa-user" aria-hidden="true"></i></p>
+
         <div class="d-flex align-items-center justify-content-between">
           <div class="avatar-group mt-2">
             <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
@@ -36,8 +41,13 @@
       </div>
     </div>
   </div>
+
 </div>
 
+
+<!--
+
+<app-footer></app-footer> -->
 
 <!--
 

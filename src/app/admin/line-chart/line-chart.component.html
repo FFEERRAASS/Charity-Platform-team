@@ -1,0 +1,18 @@
+<aside style="overflow: hidden;" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " id="sidenav-main">
+    <app-headerandfooter></app-headerandfooter>
+</aside>
+
+
+
+
+
+
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <app-sidebar></app-sidebar>
+    <div class="chart-container">
+        <canvas id="MyChart">{{ chart }}</canvas>
+    </div>
+
+    <div class="btnn">
+        <i class="fa fa-print i" (click)="printPage()"></i>
+    </div>

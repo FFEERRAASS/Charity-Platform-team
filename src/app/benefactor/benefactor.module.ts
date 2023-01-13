@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { BenefactorRoutingModule } from './benefactor-routing.module';
 import { WalletComponent } from './wallet/wallet.component';
-import { ChatComponent } from './chat/chat.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CausesComponent } from './causes/causes.component';
 import { SharedbenefactorModule } from '../sharedbenefactor/sharedbenefactor.module';
@@ -24,7 +23,6 @@ import { ReviewsComponent } from './reviews/reviews.component';
 @NgModule({
     declarations: [
         WalletComponent,
-        ChatComponent,
         ProfileComponent,
         AboutComponent,
         ContactComponent,
