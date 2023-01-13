@@ -48,7 +48,22 @@ export class DonationsreportComponent implements OnInit  {
 
 
     debugger;
-    this.home.alldonation=   this.home.alldonation.filter((x:any)=> date1 <= x.datedonation && date2>= x.datedonation)
+    if((this.searchForm.controls['date1'].value==null || date1==null)&&(this.searchForm.controls['date2'].value!=null || date2!=null)){
+      this.home.alldonation= this.home.alldonation.filter((x:any)=> date2>= x.datedonation)
+
+    }
+    else if((this.searchForm.controls['date2'].value==null || date2==null)&&(this.searchForm.controls['date1'].value!=null || date1!=null)){
+      this.home.alldonation= this.home.alldonation.filter((x:any)=> date1 <= x.datedonation)
+    }
+    else if((this.searchForm.controls['date1'].value!=null || date2!=null) &&((this.searchForm.controls['date2'].value!=null || date2!=null))){
+    this.home.alldonation= this.home.alldonation.filter((x:any)=> date1 <= x.datedonation && date2>= x.datedonation)}
+    else if((this.searchForm.controls['date1'].value==null || date2==null) &&((this.searchForm.controls['date2'].value==null || date2==null))){
+      this.home.alldonation
+    }
+
   }
-  }
+}
+  
+   
+  
 

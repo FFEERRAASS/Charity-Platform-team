@@ -20,6 +20,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { RecaptchaModule } from 'ng-recaptcha';
 
+import { NgChartsModule } from 'ng2-charts';
   @NgModule({
     declarations: [
       AppComponent,
@@ -33,6 +34,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     ],
     imports: [
       BrowserModule,ToastrModule.forRoot(),ToastNoAnimationModule.forRoot(),
+      NgChartsModule,
       AppRoutingModule,
       BrowserAnimationsModule,
       MatDialogModule,

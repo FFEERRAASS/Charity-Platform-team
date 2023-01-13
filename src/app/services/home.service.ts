@@ -133,7 +133,7 @@ export class HomeService {
       this.alldonation = response;
       this.backup = response;
     }, err => {
-      alert('Shit')
+      alert('cant get donations')
     })
   }
   TestFeras: any;

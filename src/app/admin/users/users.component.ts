@@ -6,6 +6,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { MatDialog } from '@angular/material/dialog';
 // declare var require: any;
+import { DatePipe } from '@angular/common';
+
 
 // import * as pdfMake from "pdfmake/build/pdfmake";
 // import * as pdfFonts from "pdfmake/build/vfs_fonts";
@@ -18,7 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  constructor(public home: HomeService, public admin: AdminService, public dialog: MatDialog) { }
+  constructor(public home: HomeService, public admin: AdminService, public dialog: MatDialog,private pipe:DatePipe) { }
   @ViewChild('SureBlock') SureBlock1!: TemplateRef<any>;
 
   UpdateBlock: FormGroup = new FormGroup({
@@ -38,6 +40,10 @@ export class UsersComponent implements OnInit {
 
 
   })
+
+  searchForm:FormGroup=new FormGroup({
+    name:new FormControl()
+})
   p_data: any = {}
   users: any = [];
   ngOnInit(): void {
@@ -89,6 +95,17 @@ export class UsersComponent implements OnInit {
     doc.save('table.pdf')
   }
 
+  searchindoniation(){
+    // this.home.searchfordonations(this.searchForm.value);
 
+    const name:any=this.searchForm.controls['name'].value;
+
+    this.admin.allusersinnerRole=this.admin.backup2;
+
+    
+
+    this.admin.allusersinnerRole= this.admin.allusersinnerRole.filter((x:any)=> name== x.firstname || name==x.lastname || name==x.username ||name ==x.gender || name==x.phonenumber || name==x.email)
+
+  }
 
 }
