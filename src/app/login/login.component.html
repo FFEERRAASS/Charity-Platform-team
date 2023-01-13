@@ -2,7 +2,6 @@
     <div class="container position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
-
             </div>
         </div>
     </div>
@@ -18,35 +17,31 @@
                                     <p class="mb-0">Enter your email and password to sign in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form  method="post">
+                                    <form method="post" [formGroup]="LoginForm">
                                         <label>Email</label>
                                         <div class="mb-3">
-                                            <input type="email"  matInput [formControl]="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-                                            <mat-error *ngIf="email.hasError('email')" >
-                                               <p style="font-family: Georgia, 'Times New Roman', Times, serif;font-size: 12;">Please enter a valid email address</p> 
-                                            </mat-error>
-                                            <mat-error *ngIf="email.hasError('required')">
-                                                Email is <strong>required</strong>
-                                            </mat-error>
-                                        </div>
-                                        <label>Password</label>
-                                        <div class="mb-3">
-                                            <input type="email" class="form-control"  matInput [formControl]="password" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                                            <mat-error *ngIf="password.hasError('minlength')">
-                                                Please enter a strong password
-                                            </mat-error>
-                                            <mat-error *ngIf="password.hasError('required')">
-                                                password is <strong>required</strong>
-                                            </mat-error>
-                                        </div>
+                                            <input type="text" class="form-control" placeholder="Email" matInput formControlName="email" aria-describedby="email-addon" >
+                                            <mat-error *ngIf="LoginForm.controls['email'].hasError('required')" style="font-size: 12px;">Email name is required</mat-error>
+                                            <mat-error *ngIf="LoginForm.controls['email'].hasError('email')" style="font-size: 12px;"> Enter Email Valid required</mat-error>
+
+                                            
+                        
+                                          </div>
+                                          <div class="mb-3">
+                                            <input [type]="showPassword ? 'text' : 'password'"
+                                            class="form-control"  placeholder="password" id="password-field" matInput formControlName="password"  aria-label="Name" aria-describedby="email-addon" >
+                                            <mat-error *ngIf="LoginForm.controls['password'].hasError('required')" style="font-size: 12px;">Password is required</mat-error>
+                        
+                                          </div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"  >
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            <input class="form-check-input" (change)="showPass()" type="checkbox">
+                                            <label class="form-check-label">Show Password</label>
                                         </div>
-                                       
+
                                     </form>
                                     <div class="text-center">
-                                        <input type="submit" (click)="submit()" class="btn bg-gradient-info w-100 mt-4 mb-0">
+                                        <input type="submit" (click)="submit()" [disabled]="!LoginForm.valid"
+                                            class="btn bg-gradient-info w-100 mt-4 mb-0">
                                     </div>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
@@ -59,7 +54,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div>
+                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
+                                    style="background-image:url('../assets/img/IMG_2393.jpg')"></div>
                             </div>
                         </div>
                     </div>
@@ -67,78 +63,43 @@
             </div>
         </section>
     </main>
-    <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT 
-        (click)="rememberme()"--->
+    
     <footer class="footer py-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mb-4 mx-auto text-center">
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Company
-            </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              About Us
-            </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Team
-            </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Products
-            </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Blog
-            </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Pricing
-            </a>
+                <div class="col-lg-8 mb-6 mx-auto text-center" style="justify-content: center;">
+                    <a routerLink="" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Home
+                    </a>
+                    <a routerLink="/about" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        About Us
+                    </a>
+                    <a routerLink="/contact" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Contact
+                    </a>
+                    <a routerLink="/causes" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        Causes
+                    </a>
+                    
                 </div>
-                <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-dribbble"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-twitter"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-instagram"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-pinterest"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-github"></span>
-                    </a>
-                </div>
+  
             </div>
             <div class="row">
                 <div class="col-8 mx-auto text-center mt-1">
                     <p class="mb-0 text-secondary">
                         Copyright ©
                         <script>
-                            document.write(new Date().getFullYear())
-                        </script> Soft by Creative Tim.
+                            
+                        </script> Charity Platform.
                     </p>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-    <!-- Github buttons -->
+    
+    
+    
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
 </body>

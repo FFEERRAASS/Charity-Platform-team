@@ -12,8 +12,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent {
   constructor(private spinner:NgxSpinnerService,private router:Router,public auth:AuthService){}
 
-  email :FormControl = new FormControl('',[Validators.required,Validators.email]);
-  password :FormControl= new FormControl('',[Validators.required,Validators.minLength(8)])
+  LoginForm : FormGroup = new FormGroup({
+    email: new FormControl('',[Validators.required,Validators.email]),
+    password : new FormControl('',[Validators.required,Validators.minLength(8)])
+  })
+
 
    
   
@@ -24,21 +27,24 @@ export class LoginComponent {
     localStorage.setItem('password',this.loginForm.controls['password'].value);
   }
   */
-  
+  showPassword = false;
+  showPass(){
+    this.showPassword=!this.showPassword;
+  }
   ngOnInit() {
     /** spinner starts on init */
 
   }
+
+  xyz:string="text";
   
   submit(){
     
-    this.spinner.show();
 
 
 
 
-    this.auth.submit(this.email,this.password) 
-    this.spinner.hide();
+    this.auth.submit(this.LoginForm.value) 
 
     
   }

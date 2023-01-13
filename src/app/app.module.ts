@@ -17,6 +17,9 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { RecaptchaModule } from 'ng-recaptcha';
+
   @NgModule({
     declarations: [
       AppComponent,
@@ -37,8 +40,9 @@ import { ReviewsComponent } from './reviews/reviews.component';
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
-      NgxSpinnerModule
-
+      NgxSpinnerModule,
+    NgxCaptchaModule
+, RecaptchaModule
 
 
 

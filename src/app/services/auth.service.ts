@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
@@ -9,13 +10,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router,public spinner:NgxSpinnerService) { }
   obj: any;
-  submit(email: any, password: any) {
-
-    var body = {
-      username: email.value.toString(),
-      password: password.value.toString()
+  submit(body:any) {
+    this.spinner.show()
+    var body2 = {
+      username: body.email.toString(),
+      password: body.password.toString()
     }
 
     const headerDirc =
@@ -29,7 +30,7 @@ export class AuthService {
       headers: new HttpHeaders(headerDirc)
     }
 
-    this.http.post('https://localhost:44324/api/JWT/login', body, requestOption).subscribe((resp: any) => {
+    this.http.post('https://localhost:44324/api/JWT/login', body2, requestOption).subscribe((resp: any) => {
       const responce = {
         token: resp.toString()
       }
@@ -56,8 +57,12 @@ export class AuthService {
       } else if (user.Role == '6') {
         this.router.navigate(['beneficiary/BeneficiaryProfile']);
       }
+      this.spinner.hide()
+
+
 
     }, err => {
+      this.spinner.hide()
       this.toastr.error('Incorrect username or password ')
     })
 
