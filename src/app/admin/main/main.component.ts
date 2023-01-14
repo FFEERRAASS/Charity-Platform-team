@@ -1,12 +1,23 @@
 import { HtmlTagDefinition } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
+  constructor(public admin :AdminService,public home:HomeService){}
+  ngOnInit(): void {
+    this.admin.getgeneralreport();
+    this.home.ReturnLastthreeAccepted();
+    this.home.visitorabout();
+
+
+
+  }
 
 
 
