@@ -13,7 +13,13 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit(): void {
       this.home.getreviews();
-  }
 
+      this.home.visitorabout();
+      this.home.CountDonation();
+      this.home.CountBeneficary();
+      this.home.GetAllCategory();
+      this.home.getCountusers();
+      this.home.ReturnLastthreeAccepted();
+  }
 
 }

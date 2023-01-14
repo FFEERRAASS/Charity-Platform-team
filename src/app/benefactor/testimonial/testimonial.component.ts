@@ -9,7 +9,7 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./testimonial.component.css']
 })
 export class TestimonialComponent implements OnInit{
-  constructor(public benefactor : BenefactorServiceService){}
+  constructor(public benefactor : BenefactorServiceService ,public home:HomeService){}
   createTestimonial:FormGroup = new FormGroup({
     paragraph:new FormControl(),
     useridFk:new FormControl(),
@@ -18,8 +18,20 @@ export class TestimonialComponent implements OnInit{
 
   })
   ngOnInit(): void {
-    
+    this.home.visitorabout();
     this.benefactor.getAllTestimonialAccept();
+    setTimeout(() => {
+      this.fun();
+    }, 1000);
+  }
+
+  fun(){
+    let x=document.querySelector('.carousel-item');
+    console.log('ffffffffffff');
+    console.log(x);
+
+    x?.classList.add("active")
+    console.log(x);
   }
   sendTestimonial(){
     debugger;

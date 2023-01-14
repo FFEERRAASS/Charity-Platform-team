@@ -13,6 +13,7 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit(): void {
       this.home.getreviews();
+      this.home.visitorabout();
   }
 
 }
