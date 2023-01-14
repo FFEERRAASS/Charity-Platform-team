@@ -3,6 +3,9 @@ import Chart from 'chart.js/auto';
 import { each } from 'jquery';
 import { HomeService } from 'src/app/services/home.service';
 import { DatePipe } from '@angular/common';
+import { AdminService } from 'src/app/services/admin.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 //or
 @Component({
@@ -13,7 +16,7 @@ import { DatePipe } from '@angular/common';
 export class LineChartComponent implements OnInit{
   public chart: any;
 
-  constructor(public home :HomeService,private datepipe:DatePipe){}
+  constructor(public home :HomeService,private datepipe:DatePipe,public admin:AdminService){}
 
 
 
@@ -75,6 +78,8 @@ for(let i=0;i<dates.length;i++){
   }
  ngOnInit(): void {
     this.home.getDonation();
+    this.admin.getgeneralreport();
+
 setTimeout(() => {
   this.createChart();
 }, 1000);  

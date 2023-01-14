@@ -1,18 +1,90 @@
-<aside style="overflow: hidden;" class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " id="sidenav-main">
-    <app-headerandfooter></app-headerandfooter>
-</aside>
+
+<div id="body" class="g-sidenav-show  bg-gray-100  ">
+
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3  " id="sidenav-main" style="overflow: hidden;">
+      <app-headerandfooter></app-headerandfooter>
+  </aside>
 
 
 
 
 
 
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <app-sidebar></app-sidebar>
-    <div class="chart-container" style="width:500px">
-        <canvas id="MyChart" >{{ chart }}</canvas>
-    </div>
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <app-sidebar></app-sidebar>
+      <div class="container-fluid py-4" style="overflow: hidden;">
 
-    <div class="btnn">
-        <i class="fa fa-print i" (click)="printPage()"></i>
-    </div>
+          <div class="row">
+              <div class="col-12">
+                  <div class="card mb-4">
+                      <div class="card-header pb-0">
+                          <h6 class="h">Charts</h6>
+                        
+                      </div>
+                      <div class="card-body px-0 pt-0 pb-2">
+                          <!-------------  //  -->
+                          <div class="table-responsive p-0">
+                     
+                         
+                                  <div style="justify-content: center;display: flex;">
+                            <div  class="col-md-9 mt-7" style="border: 3px solid rgb(202, 198, 198);border-radius: 10px;">
+                                <canvas id="MyChart" >{{ chart }}</canvas>
+                            </div>
+                          </div>
+                            <br><br><br><br><br><br>
+
+                            <div style="justify-content: center;display: flex;">
+                              
+                                  <div style="display: flex;justify-content: center;border: 3px solid rgb(202, 198, 198);border-radius: 10px;margin-bottom: 10px;width:1200px;"> 
+                                    <br><br><br>
+                            <p>
+
+                                  Benefactors:
+                                  {{ this.admin.generalreport.numberofdoners }} <i class="fa fa-user "></i>
+                                </p>
+                                  &nbsp;
+                                  &nbsp;   &nbsp;
+                                  &nbsp;
+                                <p>
+
+                                  Beneficiaries:
+                                  {{ this.admin.generalreport.numberofbenificiaries }} <i class="fa fa-user "></i>
+                                </p>
+                                &nbsp; &nbsp;   &nbsp;
+                                &nbsp;
+
+                                <p>
+
+                                  Users: {{ this.admin.generalreport.totalusers }} <i class="fa fa-user "></i>
+                                </p>
+                                &nbsp; &nbsp;   &nbsp;
+                                &nbsp;
+                                <p>
+
+                                  Total Donations
+                                  {{ this.admin.generalreport.numberofdonations }} <i class="fa fa-money "></i>
+                                </p> &nbsp; &nbsp;   &nbsp;
+                                &nbsp;
+                                <p>
+
+                                  Total Amounts:
+                                  {{ this.admin.generalreport.totaldonations }} <i class="fa fa-money "></i>
+                                </p>
+                                <br><br><br>
+                              </div> 
+                            </div> 
+                            <div style="justify-content: center;display: flex;">
+
+                            <button class="btn bg-gradient-primary" (click)="printPage()">Print Chart</button>
+                          </div>
+
+                              <br><br><br><br><br><br>
+                            
+                      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+         

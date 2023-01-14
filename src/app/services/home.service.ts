@@ -50,7 +50,7 @@ export class HomeService {
   AllCauses: any = [];
   AlltestimonialAccepted: any = [];
   Last3Testimonial: any = [];
-
+lastTestimonial:any={};
   sendTesti(body: any) {
     body.useridFk = parseInt(this.usero.USERID);
     body.rate = 4;
