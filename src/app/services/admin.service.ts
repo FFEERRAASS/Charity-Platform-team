@@ -32,9 +32,9 @@ export class AdminService {
   }
   deleteCourse(id: number) {
     this.http.delete('https://localhost:44324/api/Category/DeleteCategory/' + id).subscribe((result) => {
-      alert('delete successfully');
+      this.toastr.success('delete successfully');
     }, err => {
-      alert('delet failed');
+      this.toastr.error('delet failed');
     })
 
   }
@@ -49,7 +49,7 @@ export class AdminService {
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
   }
 
@@ -57,9 +57,9 @@ export class AdminService {
     body.categoryimage = this.display_Image;
     ;
     this.http.put('https://localhost:44324/api/Category/UPDATECategory', body).subscribe((result: any) => {
-      alert('update successfully');
+      this.toastr.success('update successfully');
     }, err => {
-      alert('update unsuccessful')
+      this.toastr.error('update unsuccessful')
     })
 
   }
@@ -98,7 +98,7 @@ export class AdminService {
     this.allCharityWating = this.allCharityWating.filter((x: any) => x.isaccepted==4);
 
   }, err => {
-    alert('operation didnt work');
+    this.toastr.error('operation didnt work');
   })
 }
 
@@ -166,7 +166,7 @@ debugger;
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.success('operation image didnt work');
       })
   }
   CreateCategory(body: any) {
@@ -174,12 +174,12 @@ debugger;
     //this.spinner.show();
     body.categoryimage = this.display_Image;
     this.http.post('https://localhost:44324/api/Category/CREATECategory', body).subscribe((resp) => {
-      alert('operation creation  work');
+      this.toastr.success('operation creation  work');
       // this.toastr.success('Created');
       //this.spinner.hide();
     }, err => {
       //this.spinner.hide();
-      alert('operation creation didnt work');
+      this.toastr.error('operation creation didnt work');
 
     })
 
@@ -188,12 +188,12 @@ debugger;
     body.imagepath = this.display_Image;
     ;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update successfully');
+      this.toastr.success('update successfully');
       window.location.reload();
 
 
     }, err => {
-      alert('update unsuccessful')
+      this.toastr.error('update unsuccessful')
     })
 
   }
@@ -203,7 +203,7 @@ debugger;
       this.causes = result;
 
     }, err => {
-      alert('operation didnt work');
+      this.toastr.error('operation didnt work');
 
     })
   }
@@ -218,7 +218,7 @@ debugger;
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
 
   }
@@ -264,10 +264,10 @@ debugger;
 
   deletContact(contactid: Number) {
     this.http.delete('https://localhost:44324/api/ContactUs/Deletecontactus/' + contactid).subscribe((result: any) => {
-      alert('delete successfully');
+      this.toastr.success('delete successfully');
 
     }, err => {
-      alert('didn\'t work')
+      this.toastr.error('didn\'t work')
     })
 
   }
@@ -303,7 +303,7 @@ debugger;
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
   }
 }
