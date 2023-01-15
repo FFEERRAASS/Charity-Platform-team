@@ -11,7 +11,7 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./testimonial.component.css']
 })
 export class TestimonialComponent implements OnInit{
-  constructor(public benefactor : BenefactorServiceService ,public home:HomeService){}
+  constructor(public benefactor : BenefactorServiceService,public spinner:NgxSpinnerService ,public home:HomeService,public admin:AdminService){}
   createTestimonial:FormGroup = new FormGroup({
     paragraph:new FormControl(),
     useridFk:new FormControl(),
@@ -20,11 +20,15 @@ export class TestimonialComponent implements OnInit{
 
   })
   ngOnInit(): void {
-    this.home.visitorabout();
+    this.spinner.show();
+    setTimeout(() => {
+      this.home.visitorabout();
     this.benefactor.getAllTestimonialAccept();
       this.fun();
       this.spinner.hide();
     }, 1000);
+    
+    
   }
 
   fun(){
