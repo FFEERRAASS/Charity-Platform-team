@@ -99,12 +99,12 @@ export class ProfileComponent implements OnInit {
 
       }
       else{
-        alert('Shit')
+        alert('Unsuccessful')
        }
        
     }
     else{
-     alert('Shit')
+      alert('Unsuccessful')
     }
     
 

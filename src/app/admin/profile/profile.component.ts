@@ -97,12 +97,12 @@ export class ProfileComponent {
 
       }
       else {
-        alert('Shit')
+        alert('Unsuccessfully')
       }
 
     }
     else {
-      alert('Shit')
+      alert('Unsuccessfully')
     }
 
 

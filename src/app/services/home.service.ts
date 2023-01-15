@@ -123,7 +123,7 @@ lastTestimonial:any={};
     this.http.get('https://localhost:44324/api/Users/GetAllUsers').subscribe((userss) => {
       this.allusers = userss;
     }, err => {
-      alert('Shit');
+      alert('unsuccessful');
     })
   }
   getDonation() {
@@ -239,7 +239,7 @@ lastTestimonial:any={};
       this.contact = res;
       this.contact = res;
     }, err => {
-      alert('damn it');
+      alert('unsuccessful');
 
     })
   }
@@ -373,7 +373,7 @@ lastTestimonial:any={};
 
 
     }, err => {
-      alert('shit')
+      alert('unsuccessful')
     })
 
   }
@@ -382,9 +382,9 @@ lastTestimonial:any={};
 
     debugger;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update suceeful');
+      alert('update successfully');
     }, err => {
-      alert('shit')
+      alert('update unsuccessful')
     })
 
   }

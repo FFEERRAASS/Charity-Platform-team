@@ -32,7 +32,7 @@ export class AdminService {
   }
   deleteCourse(id: number) {
     this.http.delete('https://localhost:44324/api/Category/DeleteCategory/' + id).subscribe((result) => {
-      alert('delete succeful');
+      alert('delete successfully');
     }, err => {
       alert('delet failed');
     })
@@ -57,9 +57,9 @@ export class AdminService {
     body.categoryimage = this.display_Image;
     ;
     this.http.put('https://localhost:44324/api/Category/UPDATECategory', body).subscribe((result: any) => {
-      alert('update suceeful');
+      alert('update successfully');
     }, err => {
-      alert('shit')
+      alert('update unsuccessful')
     })
 
   }
@@ -188,12 +188,12 @@ debugger;
     body.imagepath = this.display_Image;
     ;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update suceeful');
+      alert('update successfully');
       window.location.reload();
 
 
     }, err => {
-      alert('shit')
+      alert('update unsuccessful')
     })
 
   }
@@ -264,7 +264,7 @@ debugger;
 
   deletContact(contactid: Number) {
     this.http.delete('https://localhost:44324/api/ContactUs/Deletecontactus/' + contactid).subscribe((result: any) => {
-      alert('delete suceeful');
+      alert('delete successfully');
 
     }, err => {
       alert('didn\'t work')
