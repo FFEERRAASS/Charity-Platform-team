@@ -21,6 +21,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { RecaptchaModule } from 'ng-recaptcha';
 
 import { NgChartsModule } from 'ng2-charts';
+import { CausesComponent } from './causes/causes.component';
+import { TestimonialHomeComponent } from './testimonial-home/testimonial-home.component';
   @NgModule({
     declarations: [
       AppComponent,
@@ -28,6 +30,8 @@ import { NgChartsModule } from 'ng2-charts';
       AboutComponent,
       RegisterComponent,
       ReviewsComponent,
+      CausesComponent,
+      TestimonialHomeComponent,
 
 
 
