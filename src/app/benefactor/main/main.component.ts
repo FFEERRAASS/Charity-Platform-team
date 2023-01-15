@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-main',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 `
 })
 export class MainComponent {
-  constructor(public home:HomeService,public router :Router){}
+  constructor(public home:HomeService,public router :Router, public admin:AdminService){}
 
   onMouseOver(event: MouseEvent) {
     const element = event.currentTarget as HTMLDivElement;
@@ -24,6 +25,8 @@ export class MainComponent {
     // debugger;
     //
     this.home.CountDonation();
+    this.admin.getAllInformationHome();
+
     this.home.CountBeneficary();
     this.home.GetAllCategory();
     this.home.getCountusers();

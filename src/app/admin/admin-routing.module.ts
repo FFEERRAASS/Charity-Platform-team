@@ -81,8 +81,11 @@ const routes: Routes = [{
 ,{
   path:'chart',
   component:LineChartComponent
-}
-
+},
+{
+  path:'mhome',
+  component:ManageHomeComponent
+},
 ];
 
 @NgModule({
