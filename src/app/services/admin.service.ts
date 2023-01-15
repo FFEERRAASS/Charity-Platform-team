@@ -278,7 +278,7 @@ debugger;
     obj.imagepath1=this.display_Image;
     this.http.put('https://localhost:44324/api/Aboutu/Updateaboutus', obj)
       .subscribe((result: any) => {
-        this.toastr.success('updated');
+        this.toastr.success('Updated');
       }, err => {
         this.toastr.error(err.message, err.status);
       });

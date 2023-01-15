@@ -21,7 +21,7 @@ export class ManageAboutComponent implements OnInit  {
 
 
   updateData(){
-    ;
+    
     console.log(this.updateForn.value);
     this.Admin.updateAbout(this.updateForn.value);
   }
