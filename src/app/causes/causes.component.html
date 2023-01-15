@@ -1,0 +1,100 @@
+<div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+        <div class="col-12">
+            <app-navbar></app-navbar>
+        </div>
+    </div>
+</div>
+
+
+
+<header class="header-2" style="position: relative;">
+    <div style="    position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  z-index: 1;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;">
+        <h1 class="text-black" style="    font-size: 47px;
+                              color: #ffffff;
+                              letter-spacing: 5px;
+                              font-family: math;
+                              font-weight: 600;">Causes</h1>
+
+    </div>
+    <div class="page-header min-vh-75 relative" style="background-image: url('../assets/img/{{home.vistorabout[1].imagepath1}}')">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-7 text-center mx-auto">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="position-absolute w-100 z-index-1 bottom-0">
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+          </defs>
+          <g class="moving-waves">
+            <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40)" />
+            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
+            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
+            <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
+            <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
+            <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95)" />
+          </g>
+        </svg>
+        </div>
+    </div>
+
+
+</header>
+<div class="row " style="margin: 0px 8%;justify-content: center;">
+    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4" *ngFor="let obj of benefactor.AllCauses">
+        <div class="card card-blog card-plain " style="border: 1px rgb(173, 171, 171) solid; padding: 5px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; height: 530px; ">
+            <div class="position-relative ">
+                <a class="d-block shadow-xl border-radius-xl ">
+                    <img src="../assets/img/{{obj.imagepath}} " style="width: 100%; height: 250px; " alt="img-blur-shadow " class="img-fluid shadow border-radius-xl ">
+                </a>
+            </div>
+            <div class="card-body px-1 pb-0 ">
+                <p class="text-gradient text-dark mb-2 text-sm ">{{obj.charityname}}</p>
+                <p class="text-gradient text-dark mb-2 text-sm " style="height:50px ">{{obj.email}}</p>
+
+                <!-- <a href="javascript:; "> <h5> Modern </h5> </a> -->
+                <p class="mb-4 text-sm "> {{obj.balance}}$ out of {{obj.goal}}$ collected </p>
+                <p class="mb-4 text-sm "> The number of donors so far {{obj.numdonation}} <i class="fa fa-user " aria-hidden="true "></i></p>
+
+                <div class="d-flex align-items-center justify-content-between ">
+                    <div class="avatar-group mt-2 ">
+                        <a href="javascript:; " class="avatar avatar-xs rounded-circle " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Elena Morison ">
+                            <img alt="Image placeholder " src="../assets/img/team-1.jpg ">
+                        </a>
+                        <a href="javascript:; " class="avatar avatar-xs rounded-circle " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Ryan Milly ">
+                            <img alt="Image placeholder " src="../assets/img/team-2.jpg ">
+                        </a>
+                        <a href="javascript:; " class="avatar avatar-xs rounded-circle " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Nick Daniel ">
+                            <img alt="Image placeholder " src="../assets/img/team-3.jpg ">
+                        </a>
+                        <a href="javascript:; " class="avatar avatar-xs rounded-circle " data-bs-toggle="tooltip " data-bs-placement="bottom " title="Peterson ">
+                            <img alt="Image placeholder " src="../assets/img/team-4.jpg ">
+                        </a>
+                    </div>
+                    <button type="button " (click)="openCause(obj.charityid) " class="btn btn-outline-primary btn-sm mb-0 ">Donate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--
+  
+  <app-footer></app-footer> -->

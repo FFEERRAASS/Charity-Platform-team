@@ -17,4 +17,9 @@ export class HeaderandfooterComponent implements OnInit {
       this.Router.navigate(['dashboard/main']);
   }
   */
+
+  logout(){
+    this.Router.navigate(['/login']);
+    localStorage.clear();
+  }
 }
