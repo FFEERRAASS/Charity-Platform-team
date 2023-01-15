@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { AdminService } from 'src/app/services/admin.service';
 import { BenefactorServiceService } from 'src/app/services/benefactor-service.service';
 import { HomeService } from 'src/app/services/home.service';
 
@@ -10,7 +11,7 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class TestimonialComponent implements OnInit{
 
-  constructor(public benefactor : BenefactorServiceService ,public home:HomeService){}
+  constructor(public benefactor : BenefactorServiceService ,public home:HomeService, public admin : AdminService){}
   createTestimonial:FormGroup = new FormGroup({
     paragraph:new FormControl(),
     useridFk:new FormControl(),
@@ -19,6 +20,8 @@ export class TestimonialComponent implements OnInit{
 
   })
   ngOnInit(): void {
+    this.admin.getAllInformationHome();
+
     this.home.visitorabout();
     this.benefactor.getAllTestimonialAccept();
     setTimeout(() => {

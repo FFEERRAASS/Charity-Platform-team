@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../services/admin.service';
 import { BenefactorServiceService } from '../services/benefactor-service.service';
 import { HomeService } from '../services/home.service';
 
@@ -8,9 +9,11 @@ import { HomeService } from '../services/home.service';
   styleUrls: ['./testimonial-home.component.css']
 })
 export class TestimonialHomeComponent implements OnInit{
-  constructor(public benefactor : BenefactorServiceService ,public home:HomeService){}
+  constructor(public benefactor : BenefactorServiceService ,public home:HomeService, public admin : AdminService){}
   
   ngOnInit(): void {
+    this.admin.getAllInformationHome();
+
     this.home.visitorabout();
     this.benefactor.getAllTestimonialAccept();
     setTimeout(() => {

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BeneficiaryService } from 'src/app/services/beneficiary.service';
 import {OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,9 +16,11 @@ export class ProfileComponent implements OnInit{
   @ViewChild ('callUpdateDialog') callUpdate! :TemplateRef<any>
   @ViewChild ('callUpdatecharityDialog') callUpdatecharity! :TemplateRef<any>
   constructor(public beneficary:BeneficiaryService , private rt:Router,private dialogg : MatDialog
-    , private tostor:ToastrService){}
+    , private tostor:ToastrService, public admin:AdminService){}
 
   ngOnInit(): void {
+      this.admin.getAllInformationHome();
+
       var usero= JSON.parse(localStorage.getItem('user')|| '{}');
       this.id =parseFloat(usero.USERID);
       this.beneficary.GetWalletByUserId(this.id);

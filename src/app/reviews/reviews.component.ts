@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../services/admin.service';
 import { HomeService } from '../services/home.service';
 
 @Component({
@@ -8,11 +9,12 @@ import { HomeService } from '../services/home.service';
 })
 export class ReviewsComponent implements OnInit {
 
-  constructor(public home:HomeService){};
+  constructor(public home:HomeService, public admin:AdminService){};
 
 
   ngOnInit(): void {
       this.home.getreviews();
+      this.admin.getAllInformationHome();
 
       this.home.visitorabout();
       this.home.CountDonation();
