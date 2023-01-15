@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { BenefactorServiceService } from 'src/app/services/benefactor-service.service';
 import { HomeService } from 'src/app/services/home.service';
 
@@ -9,7 +10,7 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./testimonial.component.css']
 })
 export class TestimonialComponent implements OnInit{
-  constructor(public benefactor : BenefactorServiceService ,public home:HomeService){}
+  constructor(public benefactor : BenefactorServiceService,public spinner:NgxSpinnerService ,public home:HomeService){}
   createTestimonial:FormGroup = new FormGroup({
     paragraph:new FormControl(),
     useridFk:new FormControl(),
@@ -18,10 +19,14 @@ export class TestimonialComponent implements OnInit{
 
   })
   ngOnInit(): void {
-    this.home.visitorabout();
-    this.benefactor.getAllTestimonialAccept();
+    // this.home.visitorabout();
+    // this.benefactor.getAllTestimonialAccept();
+    this.spinner.show();
     setTimeout(() => {
+      this.home.visitorabout();
+    this.benefactor.getAllTestimonialAccept();
       this.fun();
+      this.spinner.hide();
     }, 1000);
   }
 

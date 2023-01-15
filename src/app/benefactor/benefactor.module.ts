@@ -17,7 +17,6 @@ import { DonationComponent } from './donation/donation.component';
 import { AllcausesComponent } from './allcauses/allcauses.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-
 // --------------------------------------
 
 @NgModule({
@@ -32,6 +31,7 @@ import { ReviewsComponent } from './reviews/reviews.component';
         AllcausesComponent,
         TestimonialComponent,
         ReviewsComponent
+        
    
         
     ],
@@ -43,7 +43,8 @@ import { ReviewsComponent } from './reviews/reviews.component';
         FormsModule,
         MatDialogModule,
         MatInputModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        
         
     ]})
 export class BenefactorModule { }

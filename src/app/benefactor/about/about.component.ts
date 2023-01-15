@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HomeService } from 'src/app/services/home.service';
 @Component({
   selector: 'app-about',
@@ -7,10 +8,13 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(public home :HomeService  ){}
+  constructor(public home :HomeService ,public spinner:NgxSpinnerService ){}
 
 
   ngOnInit(): void {
+    this.spinner.show();
+
+    setTimeout(() => {
 
       this.home.visitorabout();
       this.home.CountDonation();
@@ -18,5 +22,9 @@ export class AboutComponent implements OnInit {
       this.home.GetAllCategory();
       this.home.getCountusers();
       this.home.ReturnLastthreeAccepted();
+      this.spinner.hide();
+
+    }, 1000);
+      
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { BenefactorServiceService } from 'src/app/services/benefactor-service.service';
 import { HomeService } from 'src/app/services/home.service';
 
@@ -10,7 +11,7 @@ import { HomeService } from 'src/app/services/home.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(public benefactor :BenefactorServiceService,public dialog:MatDialog){}
+  constructor(public benefactor :BenefactorServiceService,public dialog:MatDialog,public spinner:NgxSpinnerService){}
   @ViewChild ('callUpdateDialog') callUpdate! :TemplateRef<any>;
   @ViewChild ('callChangeDialog') ChangePasswords! :TemplateRef<any>;
 
@@ -34,8 +35,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void 
   {
     debugger;
-    this.benefactor.getuserProfile();
-   
+    this.spinner.show();
+    setTimeout(() => {
+      this.benefactor.getuserProfile();
+    }, 1000);
   }
 
   uploadFile(file:any){

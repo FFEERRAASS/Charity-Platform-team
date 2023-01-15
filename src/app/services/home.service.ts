@@ -56,6 +56,7 @@ lastTestimonial:any={};
     body.rate = 4;
     body.isaccept = 0;
     this.http.post('https://localhost:44324/api/Testimonial/CREATEtestimonial', body).subscribe((returnn) => {
+      
       this.toastr.success("Done Add")
     }, err => {
       this.toastr.error("Can't Add");
@@ -64,6 +65,7 @@ lastTestimonial:any={};
   ReturnLastthreeAccepted() {
     this.http.get('https://localhost:44324/api/Testimonial/ReturnLastthreeAccepted').subscribe((Last3Testimo) => {
       this.Last3Testimonial = Last3Testimo;
+      
     }, err => {
       this.toastr.error('Network Error');
     })
@@ -677,7 +679,6 @@ lastTestimonial:any={};
 
   }
   getreviews(){
-    this.spinner.show()
 
     this.http.get('https://localhost:44324/api/Testimonial/GetReviews').subscribe((result:any)=>{
       this.reviews=result;
@@ -685,7 +686,6 @@ lastTestimonial:any={};
 
     }, err => {
       this.toastr.error('review Failed')
-      this.spinner.hide()
 
     })
   }

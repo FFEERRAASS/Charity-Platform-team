@@ -4,12 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { ThisReceiver } from '@angular/compiler';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { NgxSpinnerService } from 'ngx-spinner';
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService, public router: Router, public datepipe: DatePipe) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, public router: Router,public spinner:NgxSpinnerService, public datepipe: DatePipe) { }
   display_Image2: any;
   display_Image: any;
   causes: any = [];
@@ -21,7 +22,9 @@ export class AdminService {
   getAllInformationHome(){
     this.http.get('https://localhost:44324/api/Home/getallhome').subscribe((result:any)=>{
       this.homeInformation=result
+
     })
+
   }
 
 

@@ -3,6 +3,7 @@ import { HomeService } from 'src/app/services/home.service';
 import { HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +14,7 @@ import { AdminService } from 'src/app/services/admin.service';
 `
 })
 export class MainComponent {
-  constructor(public home:HomeService,public router :Router, public admin:AdminService){}
+  constructor(public home:HomeService,public router :Router, public admin:AdminService,public spinner: NgxSpinnerService){}
 
   onMouseOver(event: MouseEvent) {
     const element = event.currentTarget as HTMLDivElement;
@@ -24,14 +25,20 @@ export class MainComponent {
     //Add 'implements OnInit' to the class.
     // debugger;
     //
-    this.home.CountDonation();
-    this.admin.getAllInformationHome();
-
-    this.home.CountBeneficary();
-    this.home.GetAllCategory();
-    this.home.getCountusers();
-    this.home.ReturnLastthreeAccepted();
-    this.home.visitorabout()
+    this.spinner.show();
+    setTimeout(() => {
+      this.home.CountDonation();
+      this.admin.getAllInformationHome();
+      this.home.CountBeneficary();
+      this.home.GetAllCategory();
+      this.home.getCountusers();
+      this.home.ReturnLastthreeAccepted();
+      this.home.visitorabout();
+      this.spinner.hide();
+    }, 1000);
+     
+    
+   
   }
   hoverPic(){
     debugger;
