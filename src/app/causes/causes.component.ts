@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../services/admin.service';
 import { BenefactorServiceService } from '../services/benefactor-service.service';
 import { HomeService } from '../services/home.service';
 
@@ -9,7 +10,7 @@ import { HomeService } from '../services/home.service';
   styleUrls: ['./causes.component.css']
 })
 export class CausesComponent implements OnInit{
-  constructor(public benefactor : BenefactorServiceService,public router:Router,public home :HomeService){}
+  constructor(public benefactor : BenefactorServiceService,public router:Router,public home :HomeService ,public admin:AdminService){}
   ngOnInit(): void {
     this.home.visitorabout();
 

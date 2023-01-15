@@ -85,7 +85,7 @@ lastTestimonial:any={};
       this.causes = result;
 
     }, err => {
-      alert('operation didnt work');
+      this.toastr.error('operation didnt work');
 
     })
   }
@@ -125,7 +125,7 @@ lastTestimonial:any={};
     this.http.get('https://localhost:44324/api/Users/GetAllUsers').subscribe((userss) => {
       this.allusers = userss;
     }, err => {
-      alert('Shit');
+      this.toastr.error('unsuccessful');
     })
   }
   getDonation() {
@@ -133,7 +133,7 @@ lastTestimonial:any={};
       this.alldonation = response;
       this.backup = response;
     }, err => {
-      alert('cant get donations')
+      this.toastr.error('cant get donations')
     })
   }
   TestFeras: any;
@@ -214,12 +214,12 @@ lastTestimonial:any={};
               datedonation
             }
             this.http.post('https://localhost:44324/api/Donation/CreateDonation', abjdonation).subscribe((result3) => {
-              alert('added to list');
+              this.toastr.success('added to list');
 
             })
 
             window.location.reload();
-            alert('Success Donations')
+            this.toastr.success('Success Donations')
           })
         })
 
@@ -241,7 +241,7 @@ lastTestimonial:any={};
       this.contact = res;
       this.contact = res;
     }, err => {
-      alert('damn it');
+      this.toastr.error('unsuccessful');
 
     })
   }
@@ -260,7 +260,7 @@ lastTestimonial:any={};
     this.userwalletfull.balance += amount;
 
     this.http.put('https://localhost:44324/api/Wallet/UPDATEWallets', this.userwalletfull).subscribe((result4: any) => {
-      alert('recharge is sucessful');
+      this.toastr.success('recharge is sucessful');
     })
   }
   rechargebenefactor(body: any) {
@@ -273,7 +273,7 @@ lastTestimonial:any={};
             result3.balance = parseInt(result3.balance) + parseInt(body.chargeamount);
 
             this.http.put('https://localhost:44324/api/Wallet/UPDATEWallets', result3).subscribe((result4: any) => {
-              alert('recharge is sucessful');
+              this.toastr.success('recharge is sucessful');
             })
           })
         })
@@ -289,7 +289,7 @@ lastTestimonial:any={};
     this.http.get('https://localhost:44324/api/Aboutu/GetAllaboutus').subscribe((result) => {
       this.vistorabout = result;
     }, err => {
-      alert('failed to fetch visitor about');
+      this.toastr.error('failed to fetch visitor about');
 
     })
   }
@@ -300,7 +300,7 @@ lastTestimonial:any={};
       this.testimonials = result;
       debugger;
     }, err => {
-      alert('operation didnt work');
+      this.toastr.error('operation didnt work');
 
     })
   }
@@ -315,7 +315,7 @@ lastTestimonial:any={};
 
 
     }, err => {
-      alert('Operation Didnt Worl')
+      this.toastr.error('Operation Didnt Worl')
     })
   }
   changetestimonialstate(testimonialid: number) {
@@ -324,10 +324,10 @@ lastTestimonial:any={};
       console.log(this.testimonialupdate);
       this.testimonialupdate.isaccept = 1;
       this.http.put('https://localhost:44324/api/Testimonial/UPDATEtestimonial', this.testimonialupdate).subscribe((response: any) => {
-        alert('updates succefuly');
+        this.toastr.success('updates succefuly');
       });
     }, err => {
-      alert('operation update didnt work');
+      this.toastr.error('operation update didnt work');
 
     })
   }
@@ -338,10 +338,10 @@ lastTestimonial:any={};
       console.log(this.testimonialupdate);
       this.testimonialupdate.isaccept = 2; //its not zero any more so it doesnt appear in the list to admin , its not one so its not int he testi , its 2  so now it is in the reviews and not delted from the table of testimonials
       this.http.put('https://localhost:44324/api/Testimonial/UPDATEtestimonial', this.testimonialupdate).subscribe((response: any) => {
-        alert('updates succefuly');
+        this.toastr.success('updates succefuly');
       });
     }, err => {
-      alert('operation update didnt work');
+      this.toastr.error('operation update didnt work');
 
     })
   }
@@ -370,12 +370,12 @@ lastTestimonial:any={};
     body.imagepath = this.display_Image;
     debugger;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update suceeful');
+      this.toastr.success('update suceeful');
       window.location.reload();
 
 
     }, err => {
-      alert('shit')
+      this.toastr.error('unsuccessful')
     })
 
   }
@@ -384,9 +384,9 @@ lastTestimonial:any={};
 
     debugger;
     this.http.put('https://localhost:44324/api/users/UpdateUser', body).subscribe((result: any) => {
-      alert('update suceeful');
+      this.toastr.success('update successfully');
     }, err => {
-      alert('shit')
+      this.toastr.error('update unsuccessful')
     })
 
   }

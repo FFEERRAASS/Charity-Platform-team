@@ -36,7 +36,7 @@ export class BeneficiaryService {
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
 
   }
@@ -57,7 +57,7 @@ export class BeneficiaryService {
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
   }
 
@@ -72,7 +72,7 @@ export class BeneficiaryService {
           console.log(data);
         }
       }, err => {
-        alert('operation image didnt work');
+        this.toastr.error('operation image didnt work');
       })
   }
   UpdateUserInfo(Obj: any) {

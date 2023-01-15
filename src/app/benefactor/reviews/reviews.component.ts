@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AdminService } from 'src/app/services/admin.service';
 import { HomeService } from 'src/app/services/home.service';
 
 @Component({
@@ -9,12 +10,10 @@ import { HomeService } from 'src/app/services/home.service';
 })
 export class ReviewsComponent implements OnInit {
 
-  constructor(public home:HomeService,public spinner:NgxSpinnerService){};
+  constructor(public home:HomeService){};
 
 
   ngOnInit(): void {
-    this.spinner.show();
-    setTimeout(() => {
       this.home.getreviews();
       this.home.visitorabout();
       this.spinner.hide();

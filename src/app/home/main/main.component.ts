@@ -30,7 +30,7 @@ export class MainComponent {
     this.home.GetAllCategory();
     this.home.getCountusers();
     this.admin.getAllInformationHome();
-
+    
     this.home.ReturnLastthreeAccepted();
     
   }
