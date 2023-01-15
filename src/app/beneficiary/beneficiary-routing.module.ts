@@ -4,10 +4,10 @@ import { AboutComponent } from './about/about.component';
 import { CharityComponent } from './charity/charity.component';
 import { ContactComponent } from './contact/contact.component';
 import { InformationComponent } from './information/information.component';
-import { ProfileUserComponent } from './profile-user/profile-user.component';
+import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReviewsComponent } from './reviews/reviews.component';
-import { WalletComponent } from './wallet/wallet.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 const routes: Routes = [
   {
@@ -22,23 +22,23 @@ const routes: Routes = [
     path:'contact',
     component:ContactComponent
   },
-  {
-    path:'wallet',
-    component:WalletComponent
-  },
+  
   {
     path:'information',
     component:InformationComponent
   },{
     path:"charity",
     component:CharityComponent
-  },{
-    path:"BeneficiaryProfile",
-    component:ProfileUserComponent
   },
   {
     path:'reviews',
     component:ReviewsComponent
+  },{
+    path:'main',
+    component:MainComponent
+  },{
+    path:'testimonial',
+    component:TestimonialComponent
   }
 ];
 

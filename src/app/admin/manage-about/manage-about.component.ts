@@ -125,6 +125,6 @@ debugger;
 
 }
 }
-export class DialogAnimationsExampleDialog {
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
-}
+// export class DialogAnimationsExampleDialog {
+//   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
+// }

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BeneficiaryRoutingModule } from './beneficiary-routing.module';
-import { WalletComponent } from './wallet/wallet.component';
 import { ChatComponent } from './chat/chat.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InformationComponent } from './information/information.component';
@@ -20,12 +19,12 @@ import { NgChartsModule } from 'ng2-charts';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { ProfileUserComponent } from './profile-user/profile-user.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { MainComponent } from './main/main.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
-    WalletComponent,
     ChatComponent,
     ProfileComponent,
     InformationComponent,
@@ -33,8 +32,9 @@ import { ReviewsComponent } from './reviews/reviews.component';
     ContactComponent,
     CharityComponent,
     SidebacComponent,
-    ProfileUserComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    MainComponent,
+    TestimonialComponent
   ],
   imports: [
     CommonModule,

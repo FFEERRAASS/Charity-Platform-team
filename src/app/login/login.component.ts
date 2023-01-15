@@ -1,16 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HomeService } from '../services/home.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  constructor(private spinner:NgxSpinnerService,private router:Router,public auth:AuthService){}
+export class LoginComponent implements OnInit {
+
+  constructor(private spinner:NgxSpinnerService,public router:Router,public auth:AuthService,public home :HomeService){}
+  ngOnInit(): void {
+
+    if(this.home.usero.USERID != null){
+      if(this.home.usero.Role == 3){
+        this.router.navigate(['/benefactor/main'])
+      }
+      else if(this.home.usero.Role == 4){
+        this.router.navigate(['/beneficiary/main'])
+      }
+      else if(this.home.usero.Role == 2){
+        this.router.navigate(['/Moderator/ManageCharity'])
+      }
+      else if(this.home.usero.Role == 1){
+        this.router.navigate(['/admin/main1'])
+      }
+    }
+  }
 
   LoginForm : FormGroup = new FormGroup({
     email: new FormControl('',[Validators.required,Validators.email]),
@@ -31,10 +50,7 @@ export class LoginComponent {
   showPass(){
     this.showPassword=!this.showPassword;
   }
-  ngOnInit() {
-    /** spinner starts on init */
-
-  }
+  
 
   xyz:string="text";
   

@@ -53,9 +53,7 @@ export class AuthService {
         this.router.navigate(['benefactor/main']);
       }
       else if (user.Role == '4') {
-        this.router.navigate(['beneficiary/profile']);
-      } else if (user.Role == '6') {
-        this.router.navigate(['beneficiary/BeneficiaryProfile']);
+        this.router.navigate(['beneficiary/main']);
       }
       this.spinner.hide()
 

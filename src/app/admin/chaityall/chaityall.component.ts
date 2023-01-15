@@ -55,6 +55,8 @@ updatecharityInfo(obj:any){
 
   this.admin.GetCharitybyIdd(obj);
   debugger;
+  this.dialog.open(this.callUpdatecharity);
+
   setTimeout(() => {
     this.data=this.admin.Response;
 
@@ -79,7 +81,6 @@ updatecharityInfo(obj:any){
   
 
     console.log(this.updateCharityForm.value);
-    this.dialog.open(this.callUpdatecharity);
 
 
   }, 2000);

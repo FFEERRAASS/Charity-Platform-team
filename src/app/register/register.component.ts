@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgxCaptchaModule } from 'ngx-captcha';
-
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HomeService } from '../services/home.service';
@@ -13,9 +12,30 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+
+  
    
   constructor(private formBuilder: FormBuilder,public benefactor:BenefactorServiceService,public spinner:NgxSpinnerService,public home:HomeService,public router : Router,public toastr:ToastrService){}
+  ngOnInit(): void {
+    
+    if(this.home.usero.USERID != null){
+      if(this.home.usero.Role == 3){
+        this.router.navigate(['/benefactor/main'])
+      }
+      else if(this.home.usero.Role == 4){
+        this.router.navigate(['/beneficiary/main'])
+      }
+      else if(this.home.usero.Role == 2){
+        this.router.navigate(['/Moderator/ManageCharity'])
+      }
+      else if(this.home.usero.Role == 1){
+        this.router.navigate(['/admin/main1'])
+      }
+    }
+  }
+  
+
   
   
 
@@ -64,7 +84,8 @@ export class RegisterComponent {
     this.Hidden=true;
   }
   uploadFile(files:any){
-    if(files.length==0) //zero image 
+    if(files.length==0)
+     
     return ; 
     let fileToUpload =<File>files[0];
     const formdata=new FormData();
@@ -73,6 +94,7 @@ export class RegisterComponent {
     this.home.uploadImage(formdata);
   }
   registers(){
+   
     if(this.register.controls['password'].value != this.register.controls['retype'].value){
       this.toastr.error("Password Not Match")
 

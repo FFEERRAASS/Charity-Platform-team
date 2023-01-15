@@ -15,8 +15,15 @@ export class AdminService {
   causes: any = [];
   generalreport: any = {}
  backup2:any=[];
-
   About: any = [];
+  homeInformation:any=[];
+
+  getAllInformationHome(){
+    this.http.get('https://localhost:44324/api/Home/getallhome').subscribe((result:any)=>{
+      this.homeInformation=result
+    })
+  }
+
 
   getgeneralreport() {
     this.http.get('https://localhost:44324/api/Report/GetGeneralReport').subscribe((result: any) => {
@@ -267,6 +274,17 @@ debugger;
   updateAbout(obj: any) {
     obj.imagepath1=this.display_Image;
     this.http.put('https://localhost:44324/api/Aboutu/Updateaboutus', obj)
+      .subscribe((result: any) => {
+        this.toastr.success('updated');
+      }, err => {
+        this.toastr.error(err.message, err.status);
+      });
+    window.location.reload();
+  }
+  updateHome(obj: any) {
+    obj.imagepath1=this.display_Image;
+    obj.imagepath2=this.display_Image2;
+    this.http.put('https://localhost:44324/api/Home/updateHome', obj)
       .subscribe((result: any) => {
         this.toastr.success('updated');
       }, err => {

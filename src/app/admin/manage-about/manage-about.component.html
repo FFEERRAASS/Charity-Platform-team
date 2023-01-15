@@ -38,12 +38,15 @@
   <hr style="height: 1px;background-color: #000;">
   <div class="row" style=" text-align: center;
    justify-content: space-around;">
-    <button style="width: 33%;" class="btn" mat-button mat-dialog-close>Cancel</button>
-    <button style="width: 33%;" class="btn" mat-button cdkFocusInitial (click)="updateData()">Update</button>
+
     <input style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
     border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath1" #filee
       (change)="uploadFileabout1(filee.files)" [(ngModel)]=" p_data_about.imagepath1">
   </div>
+  <br>
+  <br>
+  <button style="width: 33%;" class="btn" mat-button mat-dialog-close>Cancel</button>
+  <button style="width: 33%;" class="btn" mat-button cdkFocusInitial (click)="updateData()">Update</button>
 </ng-template>
 
 

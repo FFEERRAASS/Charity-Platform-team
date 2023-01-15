@@ -91,7 +91,6 @@ lastTestimonial:any={};
 
   getAllCausesAccepted() {
     this.http.get('https://localhost:44324/api/Charity/GetAllcahrityAccepted').subscribe((resultCauese) => {
-      debugger;
       this.AllCauses = resultCauese;
       this.toastr.success('Done');
     }, err => {
@@ -101,8 +100,9 @@ lastTestimonial:any={};
 
 
   getCountusers() {
+    debugger;
+
     this.http.get('https://localhost:44324/api/Users/getCountusers').subscribe((count1) => {
-      debugger;
       this.CountUsers = count1;
     })
 
@@ -111,13 +111,11 @@ lastTestimonial:any={};
 
   CountBeneficary() {
     this.http.get('https://localhost:44324/api/Users/GetbeneficharyCount').subscribe((count1) => {
-      debugger;
       this.countBenefichary = count1;
     })
   }
   CountDonation() {
     this.http.get('https://localhost:44324/api/Donation/GetDonationCount').subscribe((count1) => {
-      debugger;
       this.count = count1;
     })
   }
@@ -395,7 +393,9 @@ lastTestimonial:any={};
   register(body: any) {
     debugger;
     body.imagepath = this.ImageUser;
-
+    if(body.imagepath == null){
+      body.imagepath ="userDefault.png";
+    }
     this.bodyCheck={
       email:body.email,
       username:body.username,

@@ -11,6 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class BenefactorServiceService {
 
   constructor(private http: HttpClient, private toastr: ToastrService, public spinner: NgxSpinnerService, public router: Router, public datepipe: DatePipe) { }
+  
   TestFeras: any;
   singleuserdoantions: any = [];
   body5: any = {}
@@ -19,7 +20,12 @@ export class BenefactorServiceService {
   display_Image2: any;
   charityProfile: any = {};
   benfactorprofile: any = [];
-
+  AlltestimonialAccepted: any = [];
+  CheckGoal: any = {};
+  WalletCheck: any = [];
+  AllCauses: any = [];
+  charityCategoryDto: any = [];
+  charityOps: any;
 
 
   usero = JSON.parse(localStorage.getItem('user') || '{}');
@@ -87,7 +93,6 @@ export class BenefactorServiceService {
     })
 
   }
-  CheckGoal: any = {};
   SendDonation(charityid: number, balance: number) {
     this.spinner.show()
     this.http.get('https://localhost:44324/api/Wallet/getwalletforuser/' + this.usero.USERID).subscribe((result: any) => {
@@ -175,7 +180,6 @@ export class BenefactorServiceService {
     this.spinner.hide()
 
   }
-  AlltestimonialAccepted: any = [];
   sendTesti(body: any) {
     this.spinner.show()
 
@@ -293,7 +297,6 @@ export class BenefactorServiceService {
     this.spinner.hide()
 
   }
-  WalletCheck: any = [];
   GetWalletByUserCheck() {
     debugger;
     this.spinner.show()
@@ -324,9 +327,7 @@ export class BenefactorServiceService {
     })
 
   }
-  AllCauses: any = [];
-  charityCategoryDto: any = [];
-  charityOps: any;
+ 
 
   getCharitybyCategory(categoryid: number) {
     debugger;

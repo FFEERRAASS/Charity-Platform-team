@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 import { BeneficiaryService } from 'src/app/services/beneficiary.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -13,12 +14,13 @@ import { BeneficiaryService } from 'src/app/services/beneficiary.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  
   @ViewChild ('callUpdateDialog') callUpdate! :TemplateRef<any>
   @ViewChild ('callUpdatecharityDialog') callUpdatecharity! :TemplateRef<any>
 
 
   public  id?:number;
-  public show?:boolean;
+  public show?:boolean=true;
   public showupdate?:boolean;
   public showInverse?:boolean;
 
@@ -35,7 +37,7 @@ export class ProfileComponent implements OnInit {
     isaccepted:new FormControl(),
     roleidFk:new FormControl(),
 })
-constructor(public beneficary:BeneficiaryService , private rt:Router,private dialogg : MatDialog , private tostor:ToastrService)
+constructor(public beneficary:BeneficiaryService , public spinner :NgxSpinnerService,private rt:Router,private dialogg : MatDialog , private tostor:ToastrService)
   {
         // Assign the data to the data source for the table to render.
   }
@@ -60,6 +62,7 @@ requestmoney(boj:any){
   boj.requestMoney="Wating";
   this.beneficary.requestmony(boj);
   setTimeout(() => {
+    
    window.location.reload();
   }, 1000);
 }
@@ -101,6 +104,8 @@ updatecharityInfo(boj:any){
 }
 
   ngOnInit(): void {
+    this.spinner.show()
+
       this.beneficary.getAllCatecory();
       var usero= JSON.parse(localStorage.getItem('user')|| '{}');
       this.id =parseFloat(usero.USERID);
@@ -122,6 +127,7 @@ updatecharityInfo(boj:any){
         }else{
           this.showInverse=true;
         }
+        this.spinner.hide()
       }, 3000);
   }
 
