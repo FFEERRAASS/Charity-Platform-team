@@ -5,16 +5,15 @@
     </aside>
 
 
+    <app-sidebar></app-sidebar>
 
 
 
+ <main class="main-content position-relative min-height-100  border-radius-lg " style="min-height:100vh !important;">
 
-      <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-      <app-sidebar></app-sidebar>
 
-      <div class="container-fluid py-4">
+  <div class="container-fluid py-4">
     <div class="row">
-
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
@@ -62,65 +61,69 @@
             </div>
         </div>
     </div>
-    <ng-template #callDeleteDialog>
-        <h3>Are you Sure?</h3>
-        <button mat-dialog-close="yes" type="button" class="btn bg-gradient-primary btn-sm me-2">yes</button>
-        <button mat-dialog-close="no" type="button" class="btn bg-gradient-primary btn-sm me-2">no</button>
-    </ng-template>
+  </div>
+  <app-footer></app-footer>
+ </main>
+</div>
+
+ <ng-template #callDeleteDialog>
+  <h3>Are you Sure?</h3>
+  <button mat-dialog-close="yes" type="button" class="btn bg-gradient-primary btn-sm me-2">yes</button>
+  <button mat-dialog-close="no" type="button" class="btn bg-gradient-primary btn-sm me-2">no</button>
+</ng-template>
 
 
-    <ng-template #callUpdateDialog>
-        <section>
-            <div class="container py-4">
-                <div class="row">
-                    <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-                        <h3 class="text-center">Contact us</h3>
-                        <form [formGroup]="updateForm" role="form" id="contact-form" method="post" autocomplete="off">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <mat-label>cause name </mat-label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" matInput formControlName="categoryname" [(ngModel)]="p_data.categoryname" type="text">
+<ng-template #callUpdateDialog>
+  <section>
+      <div class="container py-4">
+          <div class="row">
+              <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+                  <h3 class="text-center">Contact us</h3>
+                  <form [formGroup]="updateForm" role="form" id="contact-form" method="post" autocomplete="off">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <mat-label>cause name </mat-label>
+                                  <div class="input-group mb-4">
+                                      <input class="form-control" matInput formControlName="categoryname" [(ngModel)]="p_data.categoryname" type="text">
 
-                                        </div>
-                                    </div>
-                                    <div class="mb-4 ">
-                                        <label>cause image</label>
-                                        <div class="input-group ">
-                                            <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" [(ngModel)]="p_data.categoryimage" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 ps-2 ">
+                                  </div>
+                              </div>
+                              <div class="mb-4 ">
+                                  <label>cause image</label>
+                                  <div class="input-group ">
+                                      <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" [(ngModel)]="p_data.categoryimage" class="form-control">
+                                  </div>
+                              </div>
+                              <div class="col-md-6 ps-2 ">
 
-                                        <mat-label>cause description</mat-label>
-                                        <div class="input-group ">
-                                            <input type="text" matInput formControlName="categoryDesc" [(ngModel)]="p_data.categoryDesc" class="form-control">
+                                  <mat-label>cause description</mat-label>
+                                  <div class="input-group ">
+                                      <input type="text" matInput formControlName="categoryDesc" [(ngModel)]="p_data.categoryDesc" class="form-control">
 
-                                        </div>
-                                    </div>
+                                  </div>
+                              </div>
 
-                                    <div class="col-md-6 ps-2 ">
+                              <div class="col-md-6 ps-2 ">
 
-                                        <mat-label>cause paragraph</mat-label>
-                                        <div class="input-group ">
-                                            <input type="text" matInput formControlName="categoryParagraph" [(ngModel)]="p_data.categoryParagraph" class="form-control">
+                                  <mat-label>cause paragraph</mat-label>
+                                  <div class="input-group ">
+                                      <input type="text" matInput formControlName="categoryParagraph" [(ngModel)]="p_data.categoryParagraph" class="form-control">
 
-                                        </div>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
+                          </div>
 
 
-                                <div class="row ">
-                                    <div class="col-md-12 ">
-                                        <button type="submit" class="btn bg-gradient-dark w-100 " (click)="updatecause()">update cause</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </ng-template>
-    <app-footer></app-footer>
+                          <div class="row ">
+                              <div class="col-md-12 ">
+                                  <button type="submit" class="btn bg-gradient-dark w-100 " (click)="updatecause()">update cause</button>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+</ng-template>

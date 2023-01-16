@@ -21,16 +21,16 @@
           width: 92%;  border: 0;  border-radius: 6px;" matInput formControlName="paraghraph2"
           [(ngModel)]=" obj1.paraghraph2" cols="50" rows="10">
 
-        </textarea> 
+        </textarea>
 
        <label for="M2">Enter Image</label>
         <input id="#M2" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
         border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath2" #file
-          (change)="uploadFileabout2(file.files)" [(ngModel)]=" obj1.imagepath2"> 
+          (change)="uploadFileabout2(file.files)" [(ngModel)]=" obj1.imagepath2">
       </div>
     </div>
 
-  </form>  
+  </form>
 
 
 
@@ -46,7 +46,7 @@
   <br><br>
   <button style="width: 33%;" class="btn" mat-button mat-dialog-close>Cancel</button>
   <button style="width: 33%;" class="btn" mat-button cdkFocusInitial (click)="updateData()">Update</button>
-</ng-template> 
+</ng-template>
 
 
 
@@ -61,7 +61,7 @@
     <app-headerandfooter></app-headerandfooter>
   </aside>
 
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg "> 
+  <main class="main-content position-relative   h-100 border-radius-lg ">
     <app-sidebar></app-sidebar>
     <div class="container-fluid py-4" style="    background-color: white;  ">
       <div class="row">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-    
+
     </div>
     <app-footer></app-footer>
   </main>

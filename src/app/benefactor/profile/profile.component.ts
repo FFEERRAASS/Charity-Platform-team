@@ -29,10 +29,11 @@ export class ProfileComponent implements OnInit {
     password:new FormControl(),
     email:new FormControl(),
     rePassword:new FormControl(),
-    oldPassword:new FormControl()
+    oldPassword:new FormControl(),
+    requestMoney:new FormControl()
 })
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
     debugger;
     this.spinner.show();
@@ -42,8 +43,8 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadFile(file:any){
-    if(file.length==0) //zero image 
-    return ; 
+    if(file.length==0) //zero image
+    return ;
     let fileToUpload =<File>file[0];
     const formdata=new FormData();
     formdata.append('file',fileToUpload,fileToUpload.name);
@@ -65,6 +66,7 @@ export class ProfileComponent implements OnInit {
     this.updateForm.controls['isaccepted'].setValue(this.p_data.isaccepted);
     this.updateForm.controls['password'].setValue(this.p_data.password);
     this.benefactor.display_Image= this.p_data.imagepath;
+    this.updateForm.controls['requestMoney'].setValue(this.p_data.requestMoney);
 
 
    }
@@ -77,7 +79,7 @@ export class ProfileComponent implements OnInit {
     this.p_data=this.benefactor.benfactorprofile;
     this.benefactor.display_Image= this.p_data.imagepath;
 
-   
+
     // this.updateForm.controls['userid'].setValue(this.p_data.userid);
     // this.updateForm.controls['roleidFk'].setValue(this.p_data.roleidFk);
     // this.updateForm.controls['isaccepted'].setValue(this.p_data.isaccepted);
@@ -89,7 +91,7 @@ export class ProfileComponent implements OnInit {
     // this.home.display_Image= this.p_data.imagepath;
     // this.updateForm.controls['username'].setValue(this.p_data.imagepath);
 
-  
+
    }
    updatePassword(){
     debugger;
@@ -98,21 +100,21 @@ export class ProfileComponent implements OnInit {
         this.p_data.password=this.updateForm.controls['password'].value;
         this.benefactor.updateBenefactorProfile(this.p_data)
 
-        
+
 
       }
       else{
         alert('Unsuccessful')
        }
-       
+
     }
     else{
       alert('Unsuccessful')
     }
-    
 
-    
+
+
    }
-   
+
 
 }
