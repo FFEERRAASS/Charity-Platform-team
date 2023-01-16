@@ -116,7 +116,6 @@ export class BenefactorServiceService {
               datedonation
             }
 
-
             this.http.post('https://localhost:44324/api/Donation/CreateDonation', abjdonation).subscribe((result3) => {
               this.toastr.info('Added to list');
 
