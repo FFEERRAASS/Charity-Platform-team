@@ -26,6 +26,7 @@ export class BeneficiaryService {
   }
 
   uploadAttachmentforabout1(file: FormData) {
+    debugger;
     this.http.post('https://localhost:44324/api/Category/UploadImages', file)
       .subscribe((data: any) => {
 
@@ -76,7 +77,8 @@ export class BeneficiaryService {
       })
   }
   UpdateUserInfo(Obj: any) {
-    Obj.imagepath = this.display_Image2;
+    debugger;
+    Obj.imagepath = this.display_Image;
     this.http.put('https://localhost:44324/api/Users/UpdateUser', Obj).subscribe((result) => {
       this.toastr.success('Updated')
     }, err => {
@@ -154,7 +156,6 @@ export class BeneficiaryService {
           this.charityId.isaccepted = "Waiting for the goal to be determined"
 
         }
-        this.toastr.success('succeful')
       } else {
         this.charityId = {
           "charityname": "",

@@ -100,7 +100,6 @@ export class AuthloginGuard implements CanActivate {
       }
    
    else{
-    this.toaster.warning('Please login');
     this.router.navigate(['/login']);
     return false;
    }

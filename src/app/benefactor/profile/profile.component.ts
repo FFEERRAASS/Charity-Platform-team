@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
     this.spinner.show();
     setTimeout(() => {
       this.benefactor.getuserProfile();
-    }, 1000);
+    }, 1500);
   }
 
   uploadFile(file:any){

@@ -36,6 +36,7 @@ export class ProfileComponent implements OnInit {
     gender:new FormControl(),
     isaccepted:new FormControl(),
     roleidFk:new FormControl(),
+    requestMoney:new FormControl()
 })
 constructor(public beneficary:BeneficiaryService , public spinner :NgxSpinnerService,private rt:Router,private dialogg : MatDialog , private tostor:ToastrService)
   {
@@ -52,7 +53,9 @@ updateuserInfo(boj:any){
   this.updateForn.controls['isaccepted'].setValue(this.data.isaccepted);
   this.updateForn.controls['password'].setValue(this.data.password);
   this.updateForn.controls['roleidFk'].setValue(this.data.roleidFk);
-  this.beneficary.display_Image2= this.data.imagepath1;
+  this.updateForn.controls['requestMoney'].setValue(this.data.requestMoney);
+
+  this.beneficary.display_Image= this.data.imagepath;
 }
 
 requestmoney(boj:any){
@@ -153,6 +156,7 @@ updatecharityInfo(boj:any){
 
 
   uploadFileabout2(file:any){
+    debugger;
     if(file.length==0) //zero image
     return ;
     let fileToUpload =<File>file[0];

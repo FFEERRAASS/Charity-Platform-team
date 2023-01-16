@@ -118,13 +118,17 @@ export class BenefactorServiceService {
 
 
             this.http.post('https://localhost:44324/api/Donation/CreateDonation', abjdonation).subscribe((result3) => {
-              this.toastr.info('added to list');
+              this.toastr.info('Added to list');
 
             })
 
             this.spinner.hide()
 
-            window.location.reload();
+            this.toastr.success("Successfully")
+            setTimeout(() => {
+              window.location.reload();
+
+            }, 1000);
           })
         })
 
@@ -188,6 +192,9 @@ export class BenefactorServiceService {
     body.isaccept = 0;
     this.http.post('https://localhost:44324/api/Testimonial/CREATEtestimonial', body).subscribe((returnn) => {
       this.toastr.success("Done Add")
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
     }, err => {
       this.toastr.error("Can't Add");
     })
