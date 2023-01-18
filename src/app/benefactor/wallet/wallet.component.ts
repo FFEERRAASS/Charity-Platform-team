@@ -17,11 +17,7 @@ export class WalletComponent implements OnInit {
   constructor(private dialog : MatDialog , public benefactor:BenefactorServiceService,public pipe:DatePipe ,public spinner:NgxSpinnerService)
   {
 
-    debugger;
-      
-
-    
-    
+   
   }
   
   @ViewChild ('paymentdialog') paymentdialogCall! :TemplateRef<any>

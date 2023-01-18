@@ -180,6 +180,7 @@ export class BeneficiaryService {
   }
   user: any;
   transfermoney(id: number) {
+    
     this.http.get('https://localhost:44324/api/Wallet/transfermoney/' + id).subscribe((result) => {
 
       this.toastr.success('Transfer completed successfully')

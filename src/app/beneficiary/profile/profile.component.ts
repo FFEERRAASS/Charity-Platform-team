@@ -1,11 +1,12 @@
 import { Component, DebugNode, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from 'src/app/services/home.service';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 import { BeneficiaryService } from 'src/app/services/beneficiary.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BenefactorServiceService } from 'src/app/services/benefactor-service.service';
 
 
 @Component({
@@ -17,13 +18,14 @@ export class ProfileComponent implements OnInit {
   
   @ViewChild ('callUpdateDialog') callUpdate! :TemplateRef<any>
   @ViewChild ('callUpdatecharityDialog') callUpdatecharity! :TemplateRef<any>
-
+@ViewChild('callcreatecharity') callcreatecharity!:TemplateRef<any>
 
   public  id?:number;
   public show?:boolean=true;
   public showupdate?:boolean;
   public showInverse?:boolean;
-
+  public show1?:boolean=false;
+  public showRequrement1?:boolean;
   updateForn:FormGroup=new FormGroup({
     userid:new FormControl(),
     email:new FormControl(),
@@ -38,7 +40,7 @@ export class ProfileComponent implements OnInit {
     roleidFk:new FormControl(),
     requestMoney:new FormControl()
 })
-constructor(public beneficary:BeneficiaryService , public spinner :NgxSpinnerService,private rt:Router,private dialogg : MatDialog , private tostor:ToastrService)
+constructor(public route :Router,public beneficary:BeneficiaryService ,public benefactor:BenefactorServiceService, public spinner :NgxSpinnerService,private dialogg : MatDialog , private tostor:ToastrService)
   {
         // Assign the data to the data source for the table to render.
   }
@@ -105,13 +107,25 @@ updatecharityInfo(boj:any){
   this.beneficary.display_Image2= this.data.docidFk;
   this.beneficary.display_Image= this.data.imagepath;
 }
+CreateForm :FormGroup= new FormGroup({
+  useridFk:new FormControl('',Validators.required),
+  docidFk:new FormControl('',Validators.required),
+  imagepath:new FormControl('',Validators.required),
+  goal:new FormControl('',Validators.required),
+  email:new FormControl('',Validators.required || Validators.email) ,
+  numdonation :new FormControl(),
+  charityname :new FormControl('',Validators.required),
+  balance:new FormControl('',Validators.required),
+  categoryidFk:new FormControl('',Validators.required)
+})
 
   ngOnInit(): void {
     this.spinner.show()
-
       this.beneficary.getAllCatecory();
       var usero= JSON.parse(localStorage.getItem('user')|| '{}');
       this.id =parseFloat(usero.USERID);
+      this.benefactor.displaybenefactorbalance(this.id)
+
       this.beneficary.GetWalletByUserId(this.id);
       this.beneficary.GetCharitybyId(this.id);
       this.beneficary.GetUserbyId(this.id);
@@ -130,14 +144,22 @@ updatecharityInfo(boj:any){
         }else{
           this.showInverse=true;
         }
-        this.spinner.hide()
       }, 3000);
+
+      setTimeout(() => {
+
+        this.show1=!this.benefactor.TestFeras;
+     
+        this.spinner.hide()
+        debugger;
+      }, 5000);
+      
   }
 
   
 
   Create(){
-    this.rt.navigate(['beneficiary/charity']);
+    this.dialogg.open(this.callcreatecharity);
   }
   transfermoney(){
     let amount:any= document.getElementById("walletmonye")?.innerText;
@@ -151,7 +173,16 @@ updatecharityInfo(boj:any){
   }
   
 
+  uploadFile(file:any){
+    if(file.length==0) //zero image
+    return ;
+    let fileToUpload =<File>file[0];
+    const formdata=new FormData();
+    formdata.append('file',fileToUpload,fileToUpload.name);
+    debugger;
+    this.beneficary.uploadAttachmentforabout1(formdata);
 
+  }
 
 
 
@@ -190,7 +221,31 @@ updatecharityInfo(boj:any){
      window.location.reload();
     }, 1000);
   }
+  matchError(){
+    if(this.CreateForm.controls['goal'].value >=0)
+        this.CreateForm.controls['goal'].setErrors(null);
+        else
+        this.CreateForm.controls['goal'].setErrors({mismatch:true})
+  }
+  SaveDate(){
+    debugger;
+    this.CreateForm.controls['balance'].setValue(0);
+    this.CreateForm.controls['goal'].setValue(0);
 
+    this.beneficary.CreateCharity(this.CreateForm.value);
+    setTimeout(() => {
+      this.route.navigate(['beneficiary/profile'])
+    }, 1000);
 
+  }
+  
+  wallet:any={
+    balance:0,
+    useridFk:parseInt(this.benefactor.usero.USERID),
+    bankaccountFk:null
+}
+generateWallett(){
+  this.benefactor.generateWallet(this.wallet);
+}
 }
 

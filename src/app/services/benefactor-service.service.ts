@@ -30,19 +30,24 @@ export class BenefactorServiceService {
 
   usero = JSON.parse(localStorage.getItem('user') || '{}');
 
-
+bodyBank:any={}
+randomNumber = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
   generateWallet(wallet: any) {
-    this.spinner.show()
+  
 
-    this.http.post('https://localhost:44324/api/Wallet/CREATEWallets', wallet).subscribe((Result) => {
-      this.toastr.success("Done")
-      this.spinner.hide()
-
-    }, err => {
-      this.spinner.hide()
-
-      this.toastr.error("Error")
-    })
+      this.http.post('https://localhost:44324/api/Wallet/CREATEWallets', wallet).subscribe((Result) => {
+        this.toastr.success("Done")
+        this.spinner.hide()
+  
+      }, err => {
+        this.spinner.hide()
+  
+        this.toastr.error("Error")
+      })
+  
+      window.location.reload();
+    
+    
   }
   addcard(body: any) {
     this.spinner.show()
