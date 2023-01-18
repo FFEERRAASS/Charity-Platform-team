@@ -1,10 +1,10 @@
  <ng-template #callUpdateDialog >
 
    <form [formGroup]="homeForm">
-    <div class="row" style="margin: 0 10PX;">
+    <div class="row" style="margin: 0 10PX;justify-content: center;display: flex;">
       <h3 style="text-align: center; padding-top: 15px;">Update About Info</h3>
       <hr style="height: 1px;background-color: #000;">
-      <div class="col-6">
+      <div class="col-8" >
         <label for="p1">Enter Paraghraph</label>
         <textarea id="#p1"
           style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;   width: 92%;  border: 0;  border-radius: 6px;" matInput
@@ -13,21 +13,13 @@
         <input style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
         border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath1" #filee
           (change)="uploadFileabout1(filee.files)" [(ngModel)]="obj1.imagepath1">
+          <label for="M2">Enter Image</label>
+          <input id="#M2" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
+          border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath2" #file
+            (change)="uploadFileabout2(file.files)" [(ngModel)]=" obj1.imagepath2">
       </div>
 
-      <div class="col-6">
-        <label for="p2">Enter Paraghraph</label>
-        <textarea id="#p2" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
-          width: 92%;  border: 0;  border-radius: 6px;" matInput formControlName="paraghraph2"
-          [(ngModel)]=" obj1.paraghraph2" cols="50" rows="10">
 
-        </textarea>
-
-       <label for="M2">Enter Image</label>
-        <input id="#M2" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px; width: 92%;
-        border: 1px #000 solid;     border-radius: 5px;" type="file" formControlName="imagepath2" #file
-          (change)="uploadFileabout2(file.files)" [(ngModel)]=" obj1.imagepath2">
-      </div>
     </div>
 
   </form>
@@ -83,8 +75,8 @@
                   <p>{{admin.homeInformation[0].paraghraph2}}</p>
                 </div>
               </div>
-              <img src="../../../assets/img/{{admin.homeInformation[0].imagepath1}}" width="150" height="150"/>
-              <img src="../../../assets/img/{{admin.homeInformation[0].imagepath2}}" width="150" height="150"/>
+              <img src="../../../assets/img/{{admin.homeInformation[0].imagepath1}}" width="150" height="150" style="margin-right: 20px;border: 1px solid black;"/>
+              <img src="../../../assets/img/{{admin.homeInformation[0].imagepath2}}" width="150" height="150" style="border: 1px solid black;"/>
 
               <button class="btn bg-gradient-primary btn-sm me-2" style="bottom: 8px;position: absolute;  right: 47px;" (click)="updatehome(admin.homeInformation[0])">Update</button>
             </div>

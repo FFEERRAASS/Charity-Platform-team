@@ -141,9 +141,8 @@ debugger;
       this.allusersinnerRole = userss;
       this.allusersinnerRole = this.allusersinnerRole.filter((x: any) => x.isaccepted == 1);
       this.backup2=this.allusersinnerRole.filter((x: any) => x.isaccepted == 1);
-      this.toastr.success("User Blocked")
     }, err => {
-      this.toastr.success("User Can't blocked")
+      this.toastr.success("Error Network")
     })
   }
   getallusersinnerRole2() {
@@ -152,10 +151,9 @@ debugger;
 
       this.allusersinnerRole = userss;
       this.allusersinnerRole = this.allusersinnerRole.filter((x: any) => x.isaccepted == 0);
-      this.toastr.success("User Unblocked")
 
     }, err => {
-      this.toastr.error("User Can't Unblocked")
+      this.toastr.error("Error Network")
     })
   }
   uploadBenefactorImage(file: FormData) {

@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   
   @ViewChild ('callUpdateDialog') callUpdate! :TemplateRef<any>
   @ViewChild ('callUpdatecharityDialog') callUpdatecharity! :TemplateRef<any>
-@ViewChild('callcreatecharity') callcreatecharity!:TemplateRef<any>
+  @ViewChild('callcreatecharity') callcreatecharity!:TemplateRef<any>
 
   public  id?:number;
   public show?:boolean=true;
@@ -246,6 +246,10 @@ CreateForm :FormGroup= new FormGroup({
 }
 generateWallett(){
   this.benefactor.generateWallet(this.wallet);
+}
+deletecharity(id:any){
+  debugger;
+  this.beneficary.deletecharity(id);
 }
 }
 

@@ -78,14 +78,14 @@
       <div class="container py-4">
           <div class="row">
               <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
-                  <h3 class="text-center">Contact us</h3>
+                  <h3 class="text-center"></h3>
                   <form [formGroup]="updateForm" role="form" id="contact-form" method="post" autocomplete="off">
                       <div class="card-body">
                           <div class="row">
                               <div class="col-md-6">
                                   <mat-label>cause name </mat-label>
                                   <div class="input-group mb-4">
-                                      <input class="form-control" matInput formControlName="categoryname" [(ngModel)]="p_data.categoryname" type="text">
+                                      <input class="form-control" matInput formControlName="categoryname" [(ngModel)]="p_data.categoryname" type="text"><br>
 
                                   </div>
                               </div>
@@ -93,14 +93,15 @@
                                   <label>cause image</label>
                                   <div class="input-group ">
                                       <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" [(ngModel)]="p_data.categoryimage" class="form-control">
-                                  </div>
+                                      <br>
+                                    </div>
                               </div>
                               <div class="col-md-6 ps-2 ">
 
                                   <mat-label>cause description</mat-label>
                                   <div class="input-group ">
                                       <input type="text" matInput formControlName="categoryDesc" [(ngModel)]="p_data.categoryDesc" class="form-control">
-
+                                      <br>
                                   </div>
                               </div>
 
@@ -109,12 +110,12 @@
                                   <mat-label>cause paragraph</mat-label>
                                   <div class="input-group ">
                                       <input type="text" matInput formControlName="categoryParagraph" [(ngModel)]="p_data.categoryParagraph" class="form-control">
-
+                                      <br>
                                   </div>
                               </div>
                           </div>
 
-
+<br><br>
                           <div class="row ">
                               <div class="col-md-12 ">
                                   <button type="submit" class="btn bg-gradient-dark w-100 " (click)="updatecause()">update cause</button>

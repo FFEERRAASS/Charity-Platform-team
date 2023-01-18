@@ -285,7 +285,6 @@
                             </div>
                             <div class="col-md-4 text-end">
                                 <a href="javascript:;">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                                 </a>
                             </div>
                         </div>
@@ -336,7 +335,12 @@
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 19px;">Is Accepted :</strong> &nbsp; {{beneficary.charityId.isaccepted}}</li>
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="    padding-right: 27px;">Document :</strong> &nbsp;<a href="../../../assets/Docs/{{beneficary.charityId.docidFk}}" target="_blank">Show</a> </li>
                       </ul>
+                      <div style="text-align: right; padding-top: 16px;margin-top: 36px;">
+                        <BUtton (click)="deletecharity(beneficary.charityId.charityid)"  class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Delete</BUtton>
+
+                      </div>
                         <div >
+                            
                         </div>
                   </div>
               </div>

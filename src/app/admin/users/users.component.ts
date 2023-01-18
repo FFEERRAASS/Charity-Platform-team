@@ -102,7 +102,7 @@ export class UsersComponent implements OnInit {
 
     this.admin.allusersinnerRole=this.admin.backup2;
 
-    if( name==null&&this.searchForm.controls['name'].value==null ){
+    if( (name==null&&this.searchForm.controls['name'].value==null ) || (name==''&&this.searchForm.controls['name'].value=='')){
       this.admin.allusersinnerRole==this.admin.backup2;
 
     }else{

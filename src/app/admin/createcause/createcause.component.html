@@ -10,34 +10,38 @@
                                 <mat-label>cause name </mat-label>
                                 <div class="input-group mb-4">
                                     <input class="form-control" matInput formControlName="categoryname"  placeholder="" type="text">
+                                   
                                   
-                                    <mat-error *ngIf="CreateForm.controls['categoryname'].hasError( 'required') ">
-                                        cause name is <strong>required</strong>
-                                    </mat-error>
+                                   
                                 </div>
+                                <mat-error *ngIf="CreateForm.controls['categoryname'].hasError( 'required') ">
+                                    cause name is <strong>required</strong>
+                                </mat-error>
                             </div>
-                            <div class="mb-4 ">
+                            <br><br>
+                            <div class="mb-4 "><br><br>
                                 <label>cause image</label>
                                 <div class="input-group ">
-                                    <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" class="form-control " >
+                                    <input type="file" formControlName="categoryimage" #file (change)="uploadFile(file.files)" class="form-control " ><br>
                                 </div>
                             </div>
                             <div class="col-md-6 ps-2 ">
 
                                 <mat-label>cause description</mat-label>
                                 <div class="input-group ">
-                                    <input type="text " matInput formControlName="categoryDesc" class="form-control " placeholder=" " aria-label="Last Name... ">
-                                    <mat-error *ngIf="CreateForm.controls['categoryDesc'].hasError('required') ">
-                                        cause description is <strong>required</strong>
-                                    </mat-error>
+                                    <input type="text " matInput formControlName="categoryDesc" class="form-control " placeholder=" " aria-label="Last Name... "><br>
+                                    
                                 </div>
-                            </div>
+                                <br><br>
+
+                              
+                            </div><br><br>
 
                             <div class="col-md-6 ps-2 ">
 
                                 <mat-label>cause paragraph</mat-label>
                                 <div class="input-group ">
-                                    <input type="text " matInput formControlName="categoryParagraph" class="form-control " placeholder=" " aria-label="Last Name... ">
+                                    <input type="text " matInput formControlName="categoryParagraph" class="form-control " placeholder=" " aria-label="Last Name... "><br>
 
                                 </div>
                             </div>
