@@ -6,7 +6,7 @@
 
 </div>
 <div class="row " style="margin: 0px 8%;justify-content: center;">
-  <div class="col-xl-3 col-md-6 mb-xl-0 mb-4" *ngFor="let obj of benefactor.charityCategoryDto" >
+  <div class="col-lg-4 col-sm-4 col-md-4 mb-xl-0 mb-4" *ngFor="let obj of benefactor.charityCategoryDto" >
     <div class="card card-blog card-plain" style="border: 1px rgb(173, 171, 171) solid; padding: 5px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
       <div class="position-relative">
         <a class="d-block shadow-xl border-radius-xl">
@@ -15,7 +15,7 @@
       </div>
       <div class="card-body px-1 pb-0">
         <p class="text-gradient text-dark mb-2 text-sm">{{obj.charityname}}</p>
-        <p class="text-gradient text-dark mb-2 text-sm" style="height:120px">{{obj.email}}</p>
+        <p class="text-gradient text-dark mb-2 text-sm" style="height:90px;overflow: hidden;">{{obj.email}}</p>
 
         <!-- <a href="javascript:;"> <h5> Modern </h5> </a> -->
         <p class="mb-4 text-sm"> {{obj.balance}}$ out of  {{obj.goal}}$ collected   </p>

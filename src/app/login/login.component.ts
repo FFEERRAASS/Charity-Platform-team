@@ -13,8 +13,7 @@ import { HomeService } from '../services/home.service';
 export class LoginComponent implements OnInit {
 
   constructor(private spinner:NgxSpinnerService,public router:Router,public auth:AuthService,public home :HomeService){}
-  ngOnInit(): void {
-
+  ngOnInit(): void { 
     if(this.home.usero.USERID != null){
       if(this.home.usero.Role == 3){
         this.router.navigate(['/benefactor/main'])
@@ -37,8 +36,8 @@ export class LoginComponent implements OnInit {
   })
 
 
-   
-  
+
+
 /*
   rememberme()
   {
@@ -50,20 +49,20 @@ export class LoginComponent implements OnInit {
   showPass(){
     this.showPassword=!this.showPassword;
   }
-  
+
 
   xyz:string="text";
-  
+
   submit(){
-    
 
 
 
 
-    this.auth.submit(this.LoginForm.value) 
 
-    
+    this.auth.submit(this.LoginForm.value)
+
+
   }
- 
+
 
 }
