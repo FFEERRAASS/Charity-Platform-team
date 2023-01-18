@@ -98,9 +98,110 @@
 
   </div>
 </ng-template>
+<ng-template #callcreatecharity >
 
+    <div class="row" style="justify-content: center;width: 1500px;">
+        <div class="col-md-6 col-sm-7" style="box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+        margin: 32px;
+        padding: 23px;
+        border-radius: 5px;">
+          <h2 mat-dialog-title style="    text-align: center; font-family: fangsong;  font-weight: bolder; font-size: 32px;">
+            Create Charity</h2>
+          <hr
+            style="height: 2px;margin: 30px 0px; width: 100%; background-color: #000;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+          <mat-dialog-content class="mat-typography">
+            <form [formGroup]="CreateForm" style="width: 100%;">
+      
+              <!-- <div class="col-12  ">
+                    <label>Goal</label>
+                    <input type="number"  min="1" (change)="matchError()" required class="input" matInput formControlName="goal">
+      
+                    <label  class="error"  *ngIf="CreateForm.controls['goal'].hasError('required')">
+                      goal is <strong>required</strong>
+                    </label>
+                  </div> -->
+      
+      
+              <br>
+              <div class="col-12">
+                <label>Document</label><br>
+                <input class="input" required type="file" #filEe (change)="uploadFileabout1(filEe.files)"
+                  formControlName="docidFk"><br>
+                <label class="error" *ngIf="CreateForm.controls['docidFk'].hasError('required')">
+                  Document is <strong>required</strong>
+                </label>
+              </div>
+              <br>
+              <div class="col-12">
+                <label>Charity Name</label><br>
+                <input class="input" required type="text" matInput formControlName="charityname"><br>
+                <label class="error" *ngIf="CreateForm.controls['charityname'].hasError('required')">
+                  Charity Name is <strong>required</strong>
+                </label>
+              </div>
+              <br>
+              <div class="col-12">
+                <label>Description</label><br>
+                <input class="input" required type="email" matInput formControlName="email"><br>
+                <label class="error"
+                  *ngIf="CreateForm.controls['email'].hasError('required') || CreateForm.controls['email'].hasError('email')">
+                  Description is <strong>required</strong>
+                </label>
+              </div>
+              <br>
+              <!-- <div class="col-12">
+                      <label>Number Donation</label>
+                      <input class="input" min="1" required type="number" matInput formControlName="numdonation">
+                        <label  class="error"  *ngIf="CreateForm.controls['numdonation'].hasError('required')">
+                        Numdonation is <strong>required</strong>
+                      </label>
+                    </div> -->
+              <br>
+              <div class="col-12">
+                <label>Category</label><br>
+                <select class="input" required formControlName="categoryidFk">
+                  <option *ngFor="let option of beneficary.category" [value]="option.categoryid">{{ option.categoryname }}
+                  </option>
+                </select><br>
+                <label class="error" *ngIf="CreateForm.controls['balance'].hasError('required')">
+                  Category is <strong>required</strong>
+                </label>
+              </div>
+              <!-- <br>
+                    <div class="col-12">
+                      <label>Balance</label>
+                      <input class="input" min="1" required type="number" matInput formControlName="balance">
+                       <label  class="error"  *ngIf="CreateForm.controls['balance'].hasError('required')">
+                        Balance is <strong>required</strong>
+                      </label>
+                    </div> -->
+              <br>
+              <div class="col-12">
+                <label>Image</label><br>
+                <input class="input" required type="file" formControlName="imagepath" #file (change)="uploadFile(file.files)"><br>
+                <label class="error" *ngIf="CreateForm.controls['imagepath'].hasError('required')">
+                  Image is <strong>required</strong>
+                </label>
+              </div>
+      
+            </form>
+          </mat-dialog-content>
+          <mat-dialog-actions align="end">
+            <div style="margin-top: 30px;">
+              <button style="    margin: 33px 32px 0 0;"
+                class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0" mat-button
+                mat-dialog-close>Cancel</button>
+              <button style="    margin: 33px 32px 0 0;"
+                class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0" mat-button [mat-dialog-close]="true"
+                cdkFocusInitial (click)="SaveDate()">Save</button>
+      
+            </div>
+          </mat-dialog-actions>
+      
+        </div>
+      </div>
 
-
+</ng-template>
 
 
 
@@ -137,7 +238,7 @@
                   <div class="col-auto my-auto">
                       <div class="h-100">
                           <h5 class="mb-1">
-                            
+                            {{beneficary.user.firstname}}
                           </h5>
                           <p class="mb-0 font-weight-bold text-sm">
                             {{beneficary.charityId.charityname}}
@@ -159,6 +260,12 @@
                               <li class="nav-item">
                                 <Button *ngIf="show" (click)="Create()" class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Create Charity</Button>
                             </li>
+                            <li>
+                                
+                                    <button *ngIf="show1" class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0" (click)='generateWallett()'><i
+                                        class="fas fa-plus"></i>&nbsp;&nbsp;Create Wallet</button>
+                                  
+                            </li>
                           </ul>
                       </div>
                   </div>
@@ -178,7 +285,6 @@
                             </div>
                             <div class="col-md-4 text-end">
                                 <a href="javascript:;">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                                 </a>
                             </div>
                         </div>
@@ -189,7 +295,7 @@
                         <ul class="list-group" >
                             <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">First Name:</strong> &nbsp; {{beneficary.user.firstname}}</li>
                             <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Last Name:</strong> &nbsp; {{beneficary.user.lastname}}</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">USERNAME</strong> &nbsp;{{beneficary.user.username}}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Username:</strong> &nbsp;{{beneficary.user.username}}</li>
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 36px;">Email:</strong> &nbsp;{{beneficary.user.email}}</li>
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 31px;">Phone:</strong> &nbsp;{{beneficary.user.phonenumber}}</li>
                         </ul>
@@ -220,7 +326,7 @@
                     <img width="100%" style="    height: 292px;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" src="../../../assets/img/{{beneficary.charityId.imagepath}}" class="text-sm" alt="">
 
                       <hr class="horizontal gray-light my-4">
-                      <ul class="list-group">
+                      <ul class="list-group" >
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Charity Name:</strong> &nbsp;{{beneficary.charityId.charityname}}</li>
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 56px;">GOAL :</strong> &nbsp;{{beneficary.charityId.goal}}$</li>
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Your Balance :</strong> &nbsp;{{beneficary.charityId.balance}}</li>
@@ -229,7 +335,12 @@
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="padding-right: 19px;">Is Accepted :</strong> &nbsp; {{beneficary.charityId.isaccepted}}</li>
                           <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark" style="    padding-right: 27px;">Document :</strong> &nbsp;<a href="../../../assets/Docs/{{beneficary.charityId.docidFk}}" target="_blank">Show</a> </li>
                       </ul>
+                      <div style="text-align: right; padding-top: 16px;margin-top: 36px;">
+                        <BUtton (click)="deletecharity(beneficary.charityId.charityid)"  class="btn btn-sm btn-outline-primary btn-round mb-0 me-1 mt-2 mt-md-0">Delete</BUtton>
+
+                      </div>
                         <div >
+                            
                         </div>
                   </div>
               </div>

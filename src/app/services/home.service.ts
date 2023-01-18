@@ -571,9 +571,9 @@ lastTestimonial:any={};
 
   CreatContact(body: any) {
     this.http.post('https://localhost:44324/api/ContactUs/CREATEcontactus', body).subscribe((result: any) => {
-      this.toastr.error('Create suceeful');
+      this.toastr.success('CREATE SUCCESSFULLY');
     }, err => {
-      this.toastr.error('oh no!!')
+      this.toastr.error('Error Network')
     })
   }
 

@@ -17,11 +17,7 @@ export class WalletComponent implements OnInit {
   constructor(private dialog : MatDialog , public benefactor:BenefactorServiceService,public pipe:DatePipe ,public spinner:NgxSpinnerService)
   {
 
-    debugger;
-      
-
-    
-    
+   
   }
   
   @ViewChild ('paymentdialog') paymentdialogCall! :TemplateRef<any>
@@ -62,15 +58,15 @@ export class WalletComponent implements OnInit {
           this.showRequrement=!this.show;
           this.spinner.hide();
 
-        }, 4000);
-      
+        }, 6000);
+
      
         }
     
         wallet:any={
             balance:0,
             useridFk:parseInt(this.benefactor.usero.USERID),
-            bankaccountFk:null
+            bankaccountFk:62
         }
          counter :number= 0;
 showPic:boolean=true;
@@ -111,10 +107,13 @@ showPic:boolean=true;
   }
   rechargewallet(){
     console.log("ABD");
+    this.spinner.show()
+
     console.log(this.RechargeForm.value);
     this.benefactor.rechargebenefactor(this.RechargeForm.value);
   }
   generateWallett(){
+    debugger;
     this.benefactor.generateWallet(this.wallet);
   }
 

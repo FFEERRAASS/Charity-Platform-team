@@ -24,7 +24,15 @@ export class BeneficiaryService {
       this.toastr.error('Failed')
     })
   }
-
+  deletecharity(id:any){
+    id=parseInt(id);
+    this.http.delete('https://localhost:44324/api/Charity/deletecharity/'+id).subscribe((res)=>{
+      this.toastr.success("Delete Done")
+    },err=>{
+      this.toastr.error("Error")
+    })
+    window.location.reload()
+  }
   uploadAttachmentforabout1(file: FormData) {
     debugger;
     this.http.post('https://localhost:44324/api/Category/UploadImages', file)
@@ -97,6 +105,10 @@ export class BeneficiaryService {
     }else if(Obj.isaccepted == "Waiting for the goal to be determined"){
       Obj.isaccepted = 4
     }
+    else if(Obj.isaccepted == "Your charity has rechead its goal"){
+      Obj.isaccepted = 5
+    }
+
     Obj.categoryidFk = parseInt(Obj.categoryidFk);
     Obj.charityid = parseInt(Obj.charityid);
     Obj.goal = parseInt(Obj.goal);
@@ -132,7 +144,7 @@ export class BeneficiaryService {
       this.toastr.error(err.message, err.status);
       //this.spinner.hide();
     })
-
+    window.location.reload()
   }
   walletUser: any;
   testWallet: any;
@@ -154,6 +166,9 @@ export class BeneficiaryService {
         }
         else if(this.charityId.isaccepted == 4){
           this.charityId.isaccepted = "Waiting for the goal to be determined"
+
+        }else if(this.charityId.isaccepted == 5){
+          this.charityId.isaccepted = "Your charity has rechead its goal"
 
         }
       } else {
@@ -180,6 +195,7 @@ export class BeneficiaryService {
   }
   user: any;
   transfermoney(id: number) {
+    
     this.http.get('https://localhost:44324/api/Wallet/transfermoney/' + id).subscribe((result) => {
 
       this.toastr.success('Transfer completed successfully')

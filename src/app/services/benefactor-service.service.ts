@@ -30,19 +30,20 @@ export class BenefactorServiceService {
 
   usero = JSON.parse(localStorage.getItem('user') || '{}');
 
-
   generateWallet(wallet: any) {
-    this.spinner.show()
-
-    this.http.post('https://localhost:44324/api/Wallet/CREATEWallets', wallet).subscribe((Result) => {
-      this.toastr.success("Done")
-      this.spinner.hide()
-
-    }, err => {
-      this.spinner.hide()
-
-      this.toastr.error("Error")
-    })
+      this.http.post('https://localhost:44324/api/Wallet/CREATEWallets', wallet).subscribe((Result) => {
+        this.toastr.success("Done")
+        this.spinner.hide()
+  
+      }, err => {
+        this.spinner.hide()
+  
+        this.toastr.error("Error")
+      })
+  
+      window.location.reload();
+    
+    
   }
   addcard(body: any) {
     this.spinner.show()
@@ -116,7 +117,6 @@ export class BenefactorServiceService {
               datedonation
             }
 
-
             this.http.post('https://localhost:44324/api/Donation/CreateDonation', abjdonation).subscribe((result3) => {
               this.toastr.info('Added to list');
 
@@ -162,11 +162,11 @@ export class BenefactorServiceService {
   }
 
   rechargebenefactor(body: any) {
-    this.spinner.show()
 
     this.http.post('https://localhost:44324/api/bank/checkforcard', body).subscribe((result: any) => {
-      if (result.balance > body.chargeamount) {
+      if (result.balance >= body.chargeamount) {
         result.balance = result.balance - body.chargeamount;
+        
         this.http.put('https://localhost:44324/api/bank/UpdateBank', result).subscribe((result2: any) => {
           this.http.get('https://localhost:44324/api/Wallet/getwalletforuser/' + this.usero.USERID).subscribe((result3: any) => {
             result3.balance = parseInt(result3.balance) + parseInt(body.chargeamount);
@@ -174,9 +174,16 @@ export class BenefactorServiceService {
             this.http.put('https://localhost:44324/api/Wallet/UPDATEWallets', result3).subscribe((result4: any) => {
               this.toastr.success('recharge is sucessful');
 
+            }, err => {
+              this.toastr.error(err.message, err.status);
             })
           })
+        }, err => {
+          this.toastr.error(err.message, err.status);
         })
+      }
+      else{
+          this.toastr.error("Balance not enough")
       }
     }, err => {
       this.toastr.error(err.message, err.status);
